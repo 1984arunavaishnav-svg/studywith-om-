@@ -1,29 +1,44 @@
+/* Sabhi devices ke liye common settings */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Light gray background */
+    background-color: #f4f4f4;
     margin: 0;
     padding: 20px;
     display: flex;
-    justify-content: center; /* Content ko center mein karne ke liye */
+    justify-content: center;
+    line-height: 1.6;
+    font-size: 16px; /* Phone ke liye default size */
 }
 
 .container {
-    background-color: white; /* Content ke piche white background */
-    padding: 40px;
-    width: 90%;
-    max-width: 800px; /* Screen ke hisab se width set hogi */
-    border-radius: 8px; /* Corners ko smooth karne ke liye */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Halka sa shadow effect */
+    background-color: white;
+    padding: 20px;
+    width: 100%; /* Phone par full width lega */
+    max-width: 800px; /* Laptop par 800px se zyada nahi badhega */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Laptop/Desktop ke liye settings (Jab screen 600px se badi ho) */
+@media screen and (min-width: 600px) {
+    body {
+        font-size: 18px; /* Laptop par text thoda bada aur comfortable hoga */
+    }
+    .container {
+        padding: 40px; /* Laptop par zyada padding achhi lagti hai */
+    }
 }
 
 h1 {
     color: #1565c0;
-    border-left: 5px solid #1565c0; /* Heading ke side mein line */
+    border-left: 5px solid #1565c0;
     padding-left: 15px;
+    font-size: 24px;
 }
 
 a {
     color: #1565c0;
     text-decoration: none;
     font-weight: bold;
-}
+    font-size: 18px;
+    }
