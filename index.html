@@ -1,108 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>StudyWithOm | Home</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="home.css">
 
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-   
 </head>
 
 <body>
-    <img src="logo.png" class="top-logo">
+
+    <!-- Logo -->
+    <img src="logo.png" class="top-logo" alt="StudyWithOm Logo">
+
     <div class="container">
+
+        <!-- ================= Slider ================= -->
+
+        <div class="slider">
+
+            <div class="slides fade">
+                <img src="banner1.png" alt="Banner 1">
+            </div>
+
+            <div class="slides fade">
+                <img src="banner2.png" alt="Banner 2">
+            </div>
+
+            <div class="slides fade">
+                <img src="banner3.png" alt="Banner 3">
+            </div>
+
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+
+        </div>
+
+        <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <!-- ================= Hero ================= -->
+
         <div class="hero">
-<h1>
- <i class="fas fa-book-open"></i>
-    StudyWithOm
-</h1>
-            <p>We are always with you!</p>
+
+            <h1>
+                <i class="fas fa-book-open"></i>
+                StudyWithOm
+            </h1>
+
+            <p>Learn Smart • Score High</p>
+
+        </div>
+
+        <!-- Hero Buttons -->
+
+        <div class="hero-buttons">
+
+            <a href="School.html" class="btn-primary">
+                Start Learning
+            </a>
+
+            <a href="#goals" class="btn-secondary">
+                Explore
+            </a>
+
         </div>
 
         <hr>
-        <div class="slider">
 
-    <div class="slides fade">
-        <img src="banner1.png" alt="StudyWithOm Banner 1">
-    </div>
-        <div class="hero-buttons">
-    <a href="School.html" class="btn-primary">Start Learning</a>
-    <a href="#goals" class="btn-secondary">Explore</a>
-</div>
-    
+        <!-- ================= Stats ================= -->
 
-    <div class="slides fade">
-        <img src="banner2.png" alt="StudyWithOm Banner 2">
-    </div>
+        <div class="stats">
 
-    <div class="slides fade">
-        <img src="banner3.png" alt="StudyWithOm Banner 3">
-    </div>
+            <div class="stat-box">
+                <h2>1000+</h2>
+                <p>Students</p>
+            </div>
 
-    <button class="prev">&#10094;</button>
-    <button class="next">&#10095;</button>
+            <div class="stat-box">
+                <h2>500+</h2>
+                <p>Notes</p>
+            </div>
 
-</div>
+            <div class="stat-box">
+                <h2>100+</h2>
+                <p>Tests</p>
+            </div>
 
-<div class="dots">
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-</div>
+        </div>
 
-<div class="stats">
-    <div class="stat-box">
-        <h2>1000+</h2>
-        <p>Students</p>
-    </div>
+        <!-- ================= Goals ================= -->
 
-    <div class="stat-box">
-        <h2>500+</h2>
-        <p>Notes</p>
-    </div>
-
-    <div class="stat-box">
-        <h2>100+</h2>
-        <p>Tests</p>
-    </div>
-</div>
-
-<h3 id="goals">Choose Your Goal</h3>
-        <h3>Choose Your Goal</h3>
+        <h3 id="goals">Choose Your Goal</h3>
 
         <ul class="menu-list">
 
             <li>
                 <a href="School.html">
-                    <i class="fa-solid fa-school"></i>
+                    <i class="fas fa-school"></i>
                     School
                 </a>
             </li>
 
             <li>
                 <a href="Jee.html">
-                    <i class="fa-solid fa-atom"></i>
-                    IIT JEE 
+                    <i class="fas fa-atom"></i>
+                    IIT JEE
                 </a>
             </li>
 
             <li>
                 <a href="Neet.html">
-                    <i class="fa-solid fa-stethoscope"></i>
-                    NEET <small>(Coming Soon)</small>
+                    <i class="fas fa-stethoscope"></i>
+                    NEET
+                    <small>(Coming Soon)</small>
                 </a>
             </li>
 
         </ul>
-<div class="footer">
-    <p><i class="fas fa-heart"></i> Made with Love by StudyWithOm</p>
-                </div>
+
+        <!-- ================= Footer ================= -->
+
+        <div class="footer">
+            <p>
+                <i class="fas fa-heart"></i>
+                Made with Love by StudyWithOm
+            </p>
+        </div>
+
     </div>
 
+    <!-- JavaScript -->
+    <script src="Slider.js"></script>
+
 </body>
+
 </html>
