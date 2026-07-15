@@ -88,7 +88,7 @@ a {
     color: #ff9800;
     margin-right: 10px;
 }
-.back-btn{
+back-btn{
     display:inline-block;
     margin-bottom:20px;
     padding:10px 18px;
@@ -102,4 +102,3 @@ a {
 .back-btn:hover{
     background:#0056b3;
     }
-
