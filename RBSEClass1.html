@@ -5,111 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RBSE Class 1 | StudyWithOm</title>
 
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial,sans-serif;
-        }
-
-        body{
-            background:linear-gradient(135deg,#0f172a,#1e40af);
-            min-height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            padding:20px;
-        }
-
-        .container{
-            width:100%;
-            max-width:700px;
-            background:#fff;
-            border-radius:20px;
-            padding:30px;
-            box-shadow:0 10px 30px rgba(0,0,0,.25);
-        }
-
-        .back-btn{
-            background:#2563eb;
-            color:#fff;
-            border:none;
-            padding:14px 22px;
-            border-radius:12px;
-            font-size:18px;
-            font-weight:bold;
-            cursor:pointer;
-            transition:.3s;
-        }
-
-        .back-btn:hover{
-            background:#1d4ed8;
-        }
-
-        .back-btn i{
-            margin-right:8px;
-        }
-
-        .hero{
-            text-align:center;
-            margin:25px 0;
-        }
-
-        .hero h1{
-            color:#1e40af;
-            font-size:36px;
-        }
-
-        .hero p{
-            color:#666;
-            margin-top:8px;
-        }
-
-        hr{
-            margin:20px 0;
-        }
-
-        .menu-list{
-            list-style:none;
-        }
-
-        .menu-list li{
-            margin:12px 0;
-        }
-
-        .menu-list a{
-            display:flex;
-            align-items:center;
-            gap:12px;
-            text-decoration:none;
-            background:#f4f7ff;
-            color:#1e40af;
-            padding:16px;
-            border-radius:12px;
-            font-size:18px;
-            font-weight:bold;
-            transition:.3s;
-        }
-
-        .menu-list a:hover{
-            background:#2563eb;
-            color:white;
-        }
-
-        .menu-list i{
-            width:25px;
-            text-align:center;
-        }
-    </style>
 </head>
-
 <body>
 
 <div class="container">
 
-<button class="back-btn" onclick="goBack()">
-<i class="
+    <!-- Back Button -->
+    <a href="rbse.html" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+
+    <!-- Heading -->
+    <div class="hero">
+        <h1><i class="fa-solid fa-book-open-reader"></i> RBSE Class 1</h1>
+        <p>Choose Your Subject</p>
+    </div>
+
+    <hr>
+
+    <!-- Subjects -->
+    <ul class="menu-list">
+
+        <li>
+            <a href="RBSEClass1Hindi.html">
+                <i class="fa-solid fa-language"></i>
+                Hindi
+            </a>
+        </li>
+
+        <li>
+            <a href="RBSEClass1English.html">
+                <i class="fa-solid fa-book-open"></i>
+                English
+            </a>
+        </li>
+
+        <li>
+            <a href="RBSEClass1Maths.html">
+                <i class="fa-solid fa-square-root-variable"></i>
+                Mathematics
+            </a>
+        </li>
+
+        <li>
+            <a href="RBSEClass1EVS.html">
+                <i class="fa-solid fa-earth-asia"></i>
+                EVS
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+</body>
+                                                      </html>
