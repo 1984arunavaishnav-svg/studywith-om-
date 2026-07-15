@@ -122,15 +122,21 @@ a {
     font-size:18px;
     color:#666;
 }
-.top-logo {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    width: 45px;
-    height: 45px;
+.hero h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 40px;
+    color: #1565c0;
+    margin-bottom: 8px;
+}
+
+.top-logo{
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    z-index: 1000;
+    border: 2px solid #1565c0;
+    background: white;
 }
