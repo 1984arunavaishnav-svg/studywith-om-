@@ -122,36 +122,16 @@ a {
     font-size:18px;
     color:#666;
 }
-/* Hero ko left align */
-.hero{
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
-    gap:18px;
-}
-
-/* Logo */
 .top-logo{
-    width:70px;
-    height:70px;
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:60px;
+    height:60px;
     border-radius:50%;
-    padding:4px;              /* Border aur image ke beech same gap */
     border:2px solid #1565c0;
-    background:#fff;
+    background:white;
+    padding:2px;
     object-fit:cover;
-    box-sizing:border-box;
-    box-shadow:0 3px 10px rgba(0,0,0,.15);
-    flex-shrink:0;
-}
-
-/* Heading */
-.hero h1{
-    margin:0;
-    font-size:42px;
-    color:#1565c0;
-}
-
-.hero p{
-    margin-top:6px;
-    color:#666;
+    z-index:1000;
 }
