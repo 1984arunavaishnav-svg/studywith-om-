@@ -4,35 +4,22 @@ const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 
 let index = 0;
-const totalSlides = slides.length;
-
-// Slider Update
 function updateSlider() {
-    track.style.transform = `translateX(-${index * 100}%)`;
+    track.style.transform = `translateX(-${index * (100 / slides.length)}%)`;
 }
 
-// Next Slide
 function nextSlide() {
-    index++;
-    if (index >= totalSlides) {
-        index = 0;
-    }
+    index = (index + 1) % slides.length;
     updateSlider();
 }
 
-// Previous Slide
 function prevSlide() {
-    index--;
-    if (index < 0) {
-        index = totalSlides - 1;
-    }
+    index = (index - 1 + slides.length) % slides.length;
     updateSlider();
 }
 
-// Auto Slide
 let autoSlide = setInterval(nextSlide, 5000);
 
-// Buttons
 next.addEventListener("click", () => {
     nextSlide();
     clearInterval(autoSlide);
