@@ -122,22 +122,36 @@ a {
     font-size:18px;
     color:#666;
 }
-.hero h1{
+/* Hero ko left align */
+.hero{
     display:flex;
     align-items:center;
-    justify-content:center;
-    gap:15px;
-    font-size:40px;
-    color:#1565c0;
-    margin:0;
+    justify-content:flex-start;
+    gap:18px;
 }
 
+/* Logo */
 .top-logo{
     width:70px;
     height:70px;
     border-radius:50%;
-    object-fit:cover;
-    margin-right:15px;
+    padding:4px;              /* Border aur image ke beech same gap */
     border:2px solid #1565c0;
-    box-shadow:0 2px 8px rgba(0,0,0,0.2);
+    background:#fff;
+    object-fit:cover;
+    box-sizing:border-box;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+    flex-shrink:0;
+}
+
+/* Heading */
+.hero h1{
+    margin:0;
+    font-size:42px;
+    color:#1565c0;
+}
+
+.hero p{
+    margin-top:6px;
+    color:#666;
 }
