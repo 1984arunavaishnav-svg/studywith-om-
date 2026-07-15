@@ -1,34 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RBSE Class 1 | StudyWithOm</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RBSE Class 1 | StudyWithOm</title>
 
-    <link rel="stylesheet" href="style.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:700px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.back-btn{
+    display:inline-block;
+    background:#ffffff;
+    color:#1e3a8a;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:bold;
+    padding:12px 22px;
+    border-radius:12px;
+    transition:.3s;
+    margin-bottom:25px;
+}
+
+.back-btn:hover{
+    transform:translateY(-3px);
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    color:white;
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:#dbeafe;
+    font-size:18px;
+}
+
+.menu-list{
+    list-style:none;
+}
+
+.menu-list li{
+    margin:15px 0;
+}
+
+.menu-list a{
+    display:block;
+    text-decoration:none;
+    background:white;
+    color:#1e3a8a;
+    padding:18px;
+    border-radius:15px;
+    font-size:20px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.menu-list a:hover{
+    background:#2563eb;
+    color:white;
+    transform:scale(1.03);
+}
+</style>
+
 </head>
 <body>
 
 <div class="container">
 
-    <!-- Back Button -->
-    <button class="back-btn" onclick="history.back()">⬅ Back</button>
+<a href="School.html" class="back-btn">⬅ Back</a>
 
-    <div class="hero">
-        <h1>📘 RBSE Class 1</h1>
-        <p>Select Your Subject</p>
-    </div>
+<div class="hero">
+<h1>📘 RBSE Class 1</h1>
+<p>Select Your Subject</p>
+</div>
 
-    <hr>
-
-    <ul class="menu-list">
-        <li><a href="RBSEClass1Hindi.html">Hindi</a></li>
-        <li><a href="RBSEClass1English.html">English</a></li>
-        <li><a href="RBSEClass1Maths.html">Mathematics</a></li>
-        <li><a href="RBSEClass1EVS.html">EVS</a></li>
-    </ul>
+<ul class="menu-list">
+<li><a href="RBSEClass1Hindi.html">Hindi</a></li>
+<li><a href="RBSEClass1English.html">English</a></li>
+<li><a href="RBSEClass1Maths.html">Mathematics</a></li>
+<li><a href="RBSEClass1EVS.html">EVS</a></li>
+</ul>
 
 </div>
 
 </body>
-</html>
+        </html>
