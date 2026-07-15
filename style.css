@@ -77,3 +77,14 @@ a {
     color: #333;
     font-size: 20px;
 }
+.menu-list i {
+    color: #007BFF;
+    margin-right: 10px;
+    width: 22px;
+    text-align: center;
+}
+
+.hero h1 i {
+    color: #ff9800;
+    margin-right: 10px;
+}
