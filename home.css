@@ -1,1 +1,282 @@
+/* =====================================
+   StudyWithOm - Home Page Premium CSS
+   PART 1
+====================================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#0f172a,#1d4ed8,#38bdf8);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+    min-height:100vh;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Main Container */
+
+.container{
+    width:92%;
+    max-width:950px;
+    margin:40px auto;
+    background:rgba(255,255,255,.95);
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+}
+
+/* Logo */
+
+.top-logo{
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    border:3px solid white;
+    background:white;
+    object-fit:cover;
+    box-shadow:0 0 20px rgba(255,255,255,.7);
+    transition:.4s;
+    z-index:999;
+}
+
+.top-logo:hover{
+    transform:rotate(360deg) scale(1.1);
+}
+
+/* Hero */
+
+.hero{
+    background:linear-gradient(135deg,#1565c0,#42a5f5);
+    border-radius:20px;
+    text-align:center;
+    color:white;
+    padding:55px 25px;
+}
+
+.hero h1{
+    font-size:48px;
+    color:white;
+    margin-bottom:15px;
+    border:none;
+}
+
+.hero h1 i{
+    color:#ffd54f;
+    margin-right:10px;
+}
+
+.hero p{
+    font-size:20px;
+    color:#eef5ff;
+}
+
+/* Divider */
+
+hr{
+    border:none;
+    height:2px;
+    background:#e5e7eb;
+    margin:30px 0;
+}
+
+/* Section Title */
+
+h3{
+    text-align:center;
+    color:#1565c0;
+    font-size:30px;
+    margin-bottom:25px;
+}
+
+/* Hero Buttons */
+
+.hero-buttons{
+    text-align:center;
+    margin:30px 0;
+}
+
+.btn-primary,
+.btn-secondary{
+
+display:inline-block;
+padding:14px 32px;
+margin:10px;
+border-radius:40px;
+text-decoration:none;
+font-weight:600;
+font-size:18px;
+transition:.3s;
+}
+
+.btn-primary{
+background:#1565c0;
+color:white;
+}
+
+.btn-secondary{
+background:#ff9800;
+color:white;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover{
+
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+  }
+/* =====================================
+   StudyWithOm - Home Page Premium CSS
+   PART 2
+====================================== */
+
+/* Menu Cards */
+
+.menu-list{
+    list-style:none;
+    padding:0;
+}
+
+.menu-list li{
+    background:#fff;
+    margin:18px 0;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    transition:.35s;
+    overflow:hidden;
+    border-left:6px solid #1565c0;
+}
+
+.menu-list li:nth-child(2){
+    border-left-color:#ff9800;
+}
+
+.menu-list li:nth-child(3){
+    border-left-color:#43a047;
+}
+
+.menu-list li:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(0,0,0,.20);
+}
+
+.menu-list li a{
+    display:flex;
+    align-items:center;
+    padding:20px;
+    color:#222;
+    text-decoration:none;
+    font-size:22px;
+    font-weight:600;
+}
+
+.menu-list li i{
+    font-size:30px;
+    width:45px;
+    color:#1565c0;
+    margin-right:15px;
+}
+
+/* Small Text */
+
+small{
+    color:#e53935;
+    font-weight:600;
+}
+
+/* Footer */
+
+.footer{
+    margin-top:40px;
+    text-align:center;
+    color:#666;
+    font-size:15px;
+    padding-top:20px;
+    border-top:1px solid #ddd;
+}
+
+/* Smooth Animation */
+
+.hero,
+.menu-list li{
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+
+@media(max-width:768px){
+
+.container{
+    width:95%;
+    padding:20px;
+}
+
+.hero{
+    padding:35px 15px;
+}
+
+.hero h1{
+    font-size:34px;
+}
+
+.hero p{
+    font-size:17px;
+}
+
+h3{
+    font-size:24px;
+}
+
+.menu-list li a{
+    font-size:18px;
+    padding:16px;
+}
+
+.menu-list li i{
+    font-size:24px;
+    width:35px;
+}
+
+.top-logo{
+    width:60px;
+    height:60px;
+}
+
+.btn-primary,
+.btn-secondary{
+    display:block;
+    margin:12px auto;
+    width:220px;
+}
+
+}
+
 
