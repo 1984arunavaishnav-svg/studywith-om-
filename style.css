@@ -122,3 +122,14 @@ a {
     font-size:18px;
     color:#666;
 }
+.top-logo {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    z-index: 1000;
+}
