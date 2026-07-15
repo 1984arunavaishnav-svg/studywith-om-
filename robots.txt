@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://1984arunavaishnav-svg.github.io/studywith-om-/sitemap.xml
