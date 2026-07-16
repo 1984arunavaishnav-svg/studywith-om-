@@ -19,8 +19,7 @@ classSelect.addEventListener("change", function () {
 
     subjectSelect.innerHTML = "<option value=''>Choose Subject</option>";
 
-    subjects.forEach(subject => {
-
+   Object.keys(subjects).forEach(subject => {
         subjectSelect.innerHTML += `
             <option>${subject}</option>
         `;
