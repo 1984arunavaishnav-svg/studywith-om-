@@ -37,3 +37,11 @@ body { font-family:'Poppins', sans-serif; background:linear-gradient(135deg,#0f1
 .menu-list li i { margin-right:15px; color:#1565c0; }
 
 @media(max-width:768px) { .slider { height:200px; } .hero h1 { font-size:28px; } }
+
+footer {
+    display:flex;
+    justify-content:centre;
+    align-items:centre;
+    hight:100px;
+    bacjkground-color:#ddd;
+}
