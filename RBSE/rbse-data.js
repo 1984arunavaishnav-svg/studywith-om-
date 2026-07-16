@@ -1,12 +1,28 @@
 const rbseData = {
-  "Class 1": {
-    subjects: [
-      "Hindi",
-      "English",
-      "Maths",
-      "EVS"
-    ]
-  },
+ "Class 1": {
+    subjects: {
+        "Hindi": [
+            "Chapter 1",
+            "Chapter 2",
+            "Chapter 3"
+        ],
+        "English": [
+            "Chapter 1",
+            "Chapter 2",
+            "Chapter 3"
+        ],
+        "Maths": [
+            "Chapter 1",
+            "Chapter 2",
+            "Chapter 3"
+        ],
+        "EVS": [
+            "Chapter 1",
+            "Chapter 2",
+            "Chapter 3"
+        ]
+    }
+},
 
   "Class 2": {
     subjects: [
