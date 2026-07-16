@@ -43,7 +43,7 @@ body { font-family:'Poppins', sans-serif; background:linear-gradient(135deg,#0f1
     display: flex;
     justify-content: center; /* spelling sahi ki */
     align-items: center;     /* spelling sahi ki */
-    height: 100px;           /* spelling sahi ki */
+    height: 90px;           /* spelling sahi ki */
     margin-top: 20px;
 }
 @media(max-width:768px) { .slider { height:200px; } .hero h1 { font-size:28px; } }
