@@ -52,3 +52,14 @@ subjectSelect.addEventListener("change", function () {
     });
 
 });
+const contentArea = document.getElementById("contentArea");
+
+chapterSelect.addEventListener("change", function(){
+
+    if(this.value===""){
+        contentArea.style.display="none";
+    }else{
+        contentArea.style.display="block";
+    }
+
+});
