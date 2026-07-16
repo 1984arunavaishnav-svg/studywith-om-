@@ -43,8 +43,7 @@ subjectSelect.addEventListener("change", function () {
 
     chapterSelect.disabled = false;
 
-    const chapters = rbseData[selectedClass].subjects[selectedSubject];
-
+   const chapters = Object.keys(rbseData[selectedClass].subjects[selectedSubject]);
     chapterSelect.innerHTML = "<option value=''>Choose Chapter</option>";
 
     chapters.forEach(chapter => {
