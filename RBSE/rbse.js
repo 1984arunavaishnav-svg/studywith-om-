@@ -1,9 +1,12 @@
 const classSelect = document.getElementById("classSelect");
 const subjectSelect = document.getElementById("subjectSelect");
+const chapterSelect = document.getElementById("chapterSelect");
 
 classSelect.addEventListener("change", function () {
 
     subjectSelect.innerHTML = "";
+    chapterSelect.innerHTML = "<option>Select Subject First</option>";
+    chapterSelect.disabled = true;
 
     const selectedClass = this.value;
 
@@ -19,15 +22,11 @@ classSelect.addEventListener("change", function () {
 
     subjectSelect.innerHTML = "<option value=''>Choose Subject</option>";
 
-   Object.keys(subjects).forEach(subject => {
-        subjectSelect.innerHTML += `
-            <option>${subject}</option>
-        `;
-
+    Object.keys(subjects).forEach(subject => {
+        subjectSelect.innerHTML += `<option>${subject}</option>`;
     });
 
 });
-const chapterSelect = document.getElementById("chapterSelect");
 
 subjectSelect.addEventListener("change", function () {
 
