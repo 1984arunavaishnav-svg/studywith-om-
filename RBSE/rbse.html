@@ -1,81 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RBSE | StudyWithOm</title>
+
+    <title>RBSE Study Material | StudyWithOm - Class 1 to 12 Notes & Chapters</title>
+
+    <meta name="description"
+        content="Access free RBSE study material for Class 1 to 12. Explore chapter-wise notes, PDFs, video lectures and quizzes on StudyWithOm.">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="icon" type="image/png" href="../assets/images/logo.png">
 
     <link rel="stylesheet" href="rbse.css">
 
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
+
 <body>
 
 <div class="container">
+
     <a href="../School.html" class="back-btn">
-    <i class="fa-solid fa-arrow-left"></i> Back
+        <i class="fa-solid fa-arrow-left"></i> Back
     </a>
 
     <div class="hero">
-        <h1><i class="fa-solid fa-book-open-reader"></i> RBSE</h1>
+
+        <h1>
+            <i class="fa-solid fa-book-open-reader"></i>
+            RBSE
+        </h1>
+
         <p>Choose Your Class</p>
+
     </div>
 
     <hr>
 
- <div class="study-panel">
+    <div class="study-panel">
 
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="🔍 Search Class, Subject or Chapter...">
-    </div>
+        <div class="search-box">
 
-    <div class="select-box">
-        <label>Select Class</label>
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search Class, Subject or Chapter...">
 
-        <select id="classSelect">
-            <option value="">Choose Class</option>
-            <option>Class 1</option>
-            <option>Class 2</option>
-            <option>Class 3</option>
-            <option>Class 4</option>
-            <option>Class 5</option>
-            <option>Class 6</option>
-            <option>Class 7</option>
-            <option>Class 8</option>
-            <option>Class 9</option>
-            <option>Class 10</option>
-            <option>Class 11</option>
-            <option>Class 12</option>
-        </select>
-    </div>
+        </div>
 
-    <div class="select-box">
-        <label>Select Subject</label>
 
-        <select id="subjectSelect" disabled>
-            <option>Select Class First</option>
-        </select>
-    </div>
+        <div class="select-box">
 
-    <div class="select-box">
-        <label>Select Chapter</label>
+            <label for="classSelect">Select Class</label>
 
-        <select id="chapterSelect" disabled>
-            <option>Select Subject First</option>
-        </select>
-    </div>
+            <select id="classSelect">
 
-    
+                <option value="">Choose Class</option>
+
+                <option>Class 1</option>
+                <option>Class 2</option>
+                <option>Class 3</option>
+                <option>Class 4</option>
+                <option>Class 5</option>
+                <option>Class 6</option>
+                <option>Class 7</option>
+                <option>Class 8</option>
+                <option>Class 9</option>
+                <option>Class 10</option>
+                <option>Class 11</option>
+                <option>Class 12</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="select-box">
+
+            <label for="subjectSelect">Select Subject</label>
+
+            <select id="subjectSelect" disabled>
+
+                <option>Select Class First</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="select-box">
+
+            <label for="chapterSelect">Select Chapter</label>
+
+            <select id="chapterSelect" disabled>
+
+                <option>Select Subject First</option>
+
+            </select>
+
+        </div>
 
     </div>
 
 </div>
 
-</div>
 
-</div>
 <script src="rbse-data.js"></script>
 <script src="rbse.js"></script>
+
 </body>
-          </html>
+</html>
