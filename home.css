@@ -39,7 +39,7 @@ body { font-family:'Poppins', sans-serif; background:linear-gradient(135deg,#0f1
 
 /* Footer Fix */
 .footer {
-    border-top: 1px solid #ddd; /* semicolon lagaya */
+    border-top: 1px solid #dddddd; /* semicolon lagaya */
     display: flex;
     justify-content: center; /* spelling sahi ki */
     align-items: center;     /* spelling sahi ki */
