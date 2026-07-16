@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Study Material | StudyWithOm</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<a href="rbse.html" class="back-btn">
+<i class="fa-solid fa-arrow-left"></i> Back
+</a>
+
+
+<div class="hero">
+
+<h1>
+<i class="fa-solid fa-graduation-cap"></i>
+Study Material
+</h1>
+
+<p id="chapterTitle">
+RBSE Chapter Material
+</p>
+
+</div>
+
+
+
+<hr>
+
+
+
+<div class="material-container">
+
+
+<div class="material-grid">
+
+
+
+<!-- Video Lecture -->
+
+<div class="material-card">
+
+<div class="icon">
+<i class="fa-solid fa-video"></i>
+</div>
+
+<h3>Video Lecture</h3>
+
+<p>
+Watch complete chapter explanation
+</p>
+
+<button id="lectureBtn">
+Open Lecture
+</button>
+
+</div>
+
+
+
+
+<!-- Notes -->
+
+<div class="material-card">
+
+<div class="icon">
+<i class="fa-solid fa-book"></i>
+</div>
+
+<h3>Notes</h3>
+
+<p>
+Read important notes and concepts
+</p>
+
+<button id="notesBtn">
+Open Notes
+</button>
+
+</div>
+
+
+
+
+<!-- PDF -->
+
+<div class="material-card">
+
+<div class="icon">
+<i class="fa-solid fa-file-pdf"></i>
+</div>
+
+<h3>PDF</h3>
+
+<p>
+Download chapter PDF
+</p>
+
+<button id="pdfBtn">
+Open PDF
+</button>
+
+</div>
+
+
+
+
+
+<!-- Quiz -->
+
+<div class="material-card">
+
+<div class="icon">
+<i class="fa-solid fa-circle-question"></i>
+</div>
+
+<h3>Quiz</h3>
+
+<p>
+Practice questions and test yourself
+</p>
+
+<button id="quizBtn">
+Start Quiz
+</button>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<script src="rbse-data.js"></script>
+
+
+<script>
+
+
+// Get data from URL
+
+const params = new URLSearchParams(window.location.search);
+
+
+const className = params.get("class");
+const subject = params.get("subject");
+const chapter = params.get("chapter");
+
+
+
+// Show chapter name
+
+document.getElementById("chapterTitle").innerHTML =
+`
+${className} | ${subject} | ${chapter}
+`;
+
+
+
+// Get chapter data
+
+const data =
+rbseData[className]
+.subjects[subject]
+[chapter];
+
+
+
+// Buttons links
+
+
+document.getElementById("lectureBtn").onclick=function(){
+
+window.open(data.lecture,"_blank");
+
+}
+
+
+
+document.getElementById("notesBtn").onclick=function(){
+
+window.open(data.notes,"_blank");
+
+}
+
+
+
+document.getElementById("pdfBtn").onclick=function(){
+
+window.open(data.pdf,"_blank");
+
+}
+
+
+
+document.getElementById("quizBtn").onclick=function(){
+
+window.open(data.quiz,"_blank");
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>

@@ -51,34 +51,19 @@ subjectSelect.addEventListener("change", function () {
     });
 
 });
-const contentArea = document.getElementById("contentArea");
-
 chapterSelect.addEventListener("change", function(){
 
     if(this.value===""){
-        contentArea.style.display="none";
-    }else{
-        contentArea.style.display="block";
+        return;
     }
 
-});
-const lectureCard = document.getElementById("lectureCard");
-const notesCard = document.getElementById("notesCard");
-const pdfCard = document.getElementById("pdfCard");
-const quizCard = document.getElementById("quizCard");
 
-chapterSelect.addEventListener("change", function () {
+    let cls = classSelect.value.replace(" ","");
+    let sub = subjectSelect.value;
+    let ch = this.value.replace(" ","");
 
-    if (this.value === "") return;
 
-    const data =
-        rbseData[classSelect.value]
-        .subjects[subjectSelect.value]
-        [this.value];
-
-    lectureCard.onclick = () => window.location.href = data.lecture;
-    notesCard.onclick   = () => window.location.href = data.notes;
-    pdfCard.onclick     = () => window.location.href = data.pdf;
-    quizCard.onclick    = () => window.location.href = data.quiz;
+    window.location.href =
+    `material.html?class=${cls}&subject=${sub}&chapter=${ch}`;
 
 });
