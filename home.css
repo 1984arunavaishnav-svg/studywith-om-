@@ -37,12 +37,14 @@ body { font-family:'Poppins', sans-serif; background:linear-gradient(135deg,#0f1
 .menu-list li i { margin-right:15px; color:#1565c0; }
 
 
+/* Footer Fix */
 .footer {
-    border-top:1px solid #0e0d0d:
-    display:flex;
-    justify-content:centre;
-    align-items:centre;
-    hight:100px;
-    bacjkground-color:#ddd;
+    border-top: 1px solid #f10505; /* semicolon lagaya */
+    display: flex;
+    justify-content: center; /* spelling sahi ki */
+    align-items: center;     /* spelling sahi ki */
+    height: 100px;           /* spelling sahi ki */
+    background-color: #ddd;  /* spelling sahi ki */
+    margin-top: 20px;
 }
 @media(max-width:768px) { .slider { height:200px; } .hero h1 { font-size:28px; } }
