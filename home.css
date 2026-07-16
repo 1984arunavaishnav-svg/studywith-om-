@@ -37,9 +37,8 @@ body { font-family:'Poppins', sans-serif; background:linear-gradient(135deg,#0f1
 .menu-list li i { margin-right:15px; color:#1565c0; }
 
 
-.footer-container{width:100%;}
 .footer {
-    border-top:1px solid #ddd:
+    border-top:1px solid #0e0d0d:
     display:flex;
     justify-content:centre;
     align-items:centre;
