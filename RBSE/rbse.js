@@ -28,3 +28,29 @@ classSelect.addEventListener("change", function () {
     });
 
 });
+const chapterSelect = document.getElementById("chapterSelect");
+
+subjectSelect.addEventListener("change", function () {
+
+    chapterSelect.innerHTML = "";
+
+    const selectedClass = classSelect.value;
+    const selectedSubject = this.value;
+
+    if (selectedSubject === "") {
+        chapterSelect.disabled = true;
+        chapterSelect.innerHTML = "<option>Select Subject First</option>";
+        return;
+    }
+
+    chapterSelect.disabled = false;
+
+    const chapters = rbseData[selectedClass].subjects[selectedSubject];
+
+    chapterSelect.innerHTML = "<option value=''>Choose Chapter</option>";
+
+    chapters.forEach(chapter => {
+        chapterSelect.innerHTML += `<option>${chapter}</option>`;
+    });
+
+});
