@@ -179,3 +179,55 @@ a {
     color:#1565c0;
     margin-bottom:15px;
 }
+/* ===== RBSE Dashboard ===== */
+
+.study-panel{
+    margin-top:30px;
+}
+
+.search-box input{
+    width:100%;
+    padding:15px;
+    font-size:17px;
+    border:2px solid #1565c0;
+    border-radius:12px;
+    outline:none;
+    box-sizing:border-box;
+    margin-bottom:20px;
+}
+
+.search-box input:focus{
+    box-shadow:0 0 10px rgba(21,101,192,.3);
+}
+
+.select-box{
+    margin-bottom:20px;
+}
+
+.select-box label{
+    display:block;
+    font-weight:bold;
+    color:#1565c0;
+    margin-bottom:8px;
+}
+
+.select-box select{
+    width:100%;
+    padding:15px;
+    font-size:17px;
+    border:2px solid #d6d6d6;
+    border-radius:12px;
+    background:white;
+    cursor:pointer;
+    transition:.3s;
+    box-sizing:border-box;
+}
+
+.select-box select:focus{
+    border-color:#1565c0;
+    outline:none;
+}
+
+#contentArea{
+    margin-top:30px;
+}
