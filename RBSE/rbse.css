@@ -1,41 +1,54 @@
 /* =====================================
-        STUDYWITHOM RBSE CSS
+        STUDY WITH OM - RBSE CSS
 ===================================== */
 
 
-/* ===== BODY ===== */
+/* ---------- Common Page ---------- */
 
-body{
-
-    font-family:Arial,sans-serif;
-    background:#f4f4f4;
-    margin:0;
-    padding:20px;
-    display:flex;
-    justify-content:center;
-    line-height:1.6;
-
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    line-height: 1.6;
+    font-size: 16px;
 }
 
 
-
-/* ===== MAIN CONTAINER ===== */
-
-
-.container{
+.container {
 
     background:white;
     width:100%;
     max-width:800px;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,.12);
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
 
 }
 
 
 
-/* ===== BACK BUTTON ===== */
+@media screen and (min-width:600px){
+
+body{
+
+    font-size:18px;
+
+}
+
+.container{
+
+    padding:40px;
+
+}
+
+}
+
+
+
+/* ---------- Back Button ---------- */
 
 
 .back-btn{
@@ -43,13 +56,14 @@ body{
     display:inline-block;
     background:linear-gradient(135deg,#2563eb,#1d4ed8);
     color:white;
-    padding:12px 25px;
+    padding:14px 28px;
     border-radius:14px;
-    font-size:18px;
+    font-size:22px;
     font-weight:bold;
     text-decoration:none;
     box-shadow:0 6px 15px rgba(0,0,0,.25);
     transition:.3s;
+    margin-bottom:25px;
 
 }
 
@@ -62,13 +76,13 @@ body{
 
 
 
-/* ===== HERO SECTION ===== */
+/* ---------- Hero ---------- */
 
 
 .hero{
 
     text-align:center;
-    padding:25px 0;
+    padding:20px 0;
 
 }
 
@@ -82,6 +96,7 @@ body{
 }
 
 
+
 .hero h1 i{
 
     color:#ff9800;
@@ -93,8 +108,8 @@ body{
 
 .hero p{
 
-    color:#666;
     font-size:18px;
+    color:#666;
 
 }
 
@@ -123,9 +138,6 @@ hr{
 
 
 
-/* Search */
-
-
 .search-box input{
 
     width:100%;
@@ -143,14 +155,11 @@ hr{
 
 .search-box input:focus{
 
-    box-shadow:0 0 10px rgba(21,101,192,.25);
+    box-shadow:0 0 10px rgba(21,101,192,.3);
 
 }
 
 
-
-
-/* Select */
 
 
 .select-box{
@@ -164,8 +173,8 @@ hr{
 .select-box label{
 
     display:block;
-    color:#1565c0;
     font-weight:bold;
+    color:#1565c0;
     margin-bottom:8px;
 
 }
@@ -177,10 +186,11 @@ hr{
     width:100%;
     padding:15px;
     font-size:17px;
-    border:2px solid #ddd;
+    border:2px solid #d6d6d6;
     border-radius:12px;
     background:white;
     cursor:pointer;
+    box-sizing:border-box;
 
 }
 
@@ -197,7 +207,7 @@ hr{
 
 
 /* =====================================
-        MATERIAL PAGE
+        MATERIAL PAGE CARDS
 ===================================== */
 
 
@@ -219,15 +229,14 @@ hr{
 
 
 
-
 .material-card{
 
-    background:white;
-    border-radius:20px;
-    padding:30px 20px;
+    background:#ffffff;
+    border:2px solid #e5e7eb;
+    border-radius:18px;
+    padding:25px;
     text-align:center;
-    border:1px solid #e5e7eb;
-    box-shadow:0 8px 25px rgba(0,0,0,.12);
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
     transition:.3s;
 
 }
@@ -237,14 +246,10 @@ hr{
 .material-card:hover{
 
     transform:translateY(-8px);
-    box-shadow:0 15px 35px rgba(21,101,192,.25);
+    box-shadow:0 15px 30px rgba(21,101,192,.25);
 
 }
 
-
-
-
-/* ICON */
 
 
 .material-card .icon{
@@ -253,16 +258,14 @@ hr{
     height:80px;
     margin:auto;
     border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
     background:#eef5ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     color:#1565c0;
     font-size:38px;
 
 }
-
-
 
 
 
@@ -285,22 +288,18 @@ hr{
 
 
 
-
-
-/* BUTTON */
-
-
 .material-card button{
 
-    margin-top:15px;
-    padding:12px 25px;
-    border:none;
-    border-radius:30px;
     background:linear-gradient(135deg,#2563eb,#1d4ed8);
     color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:30px;
     font-size:17px;
     font-weight:bold;
     cursor:pointer;
+    margin-top:15px;
+    transition:.3s;
 
 }
 
@@ -315,18 +314,10 @@ hr{
 
 
 
-
-/* ===== MOBILE ===== */
+/* ---------- Mobile ---------- */
 
 
 @media(max-width:600px){
-
-
-body{
-
-    padding:10px;
-
-}
 
 
 .container{
@@ -336,13 +327,11 @@ body{
 }
 
 
-
 .hero h1{
 
     font-size:30px;
 
 }
-
 
 
 .material-grid{
