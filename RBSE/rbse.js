@@ -62,3 +62,23 @@ chapterSelect.addEventListener("change", function(){
     }
 
 });
+const lectureCard = document.getElementById("lectureCard");
+const notesCard = document.getElementById("notesCard");
+const pdfCard = document.getElementById("pdfCard");
+const quizCard = document.getElementById("quizCard");
+
+chapterSelect.addEventListener("change", function () {
+
+    if (this.value === "") return;
+
+    const data =
+        rbseData[classSelect.value]
+        .subjects[subjectSelect.value]
+        [this.value];
+
+    lectureCard.onclick = () => window.location.href = data.lecture;
+    notesCard.onclick   = () => window.location.href = data.notes;
+    pdfCard.onclick     = () => window.location.href = data.pdf;
+    quizCard.onclick    = () => window.location.href = data.quiz;
+
+});
