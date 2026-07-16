@@ -1,13 +1,130 @@
+/* =====================================
+        STUDYWITHOM RBSE CSS
+===================================== */
 
 
-/* ===== RBSE Dashboard ===== */
+/* ===== BODY ===== */
 
-.study-panel{
-    margin-top:30px;
+body{
+
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    margin:0;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    line-height:1.6;
+
 }
 
 
+
+/* ===== MAIN CONTAINER ===== */
+
+
+.container{
+
+    background:white;
+    width:100%;
+    max-width:800px;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.12);
+
+}
+
+
+
+/* ===== BACK BUTTON ===== */
+
+
+.back-btn{
+
+    display:inline-block;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    padding:12px 25px;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:bold;
+    text-decoration:none;
+    box-shadow:0 6px 15px rgba(0,0,0,.25);
+    transition:.3s;
+
+}
+
+
+.back-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+
+/* ===== HERO SECTION ===== */
+
+
+.hero{
+
+    text-align:center;
+    padding:25px 0;
+
+}
+
+
+.hero h1{
+
+    color:#1565c0;
+    font-size:40px;
+    margin-bottom:8px;
+
+}
+
+
+.hero h1 i{
+
+    color:#ff9800;
+    margin-right:10px;
+
+}
+
+
+
+.hero p{
+
+    color:#666;
+    font-size:18px;
+
+}
+
+
+
+hr{
+
+    border:none;
+    border-top:1px solid #ddd;
+
+}
+
+
+
+
+/* =====================================
+        RBSE DROPDOWN SECTION
+===================================== */
+
+
+.study-panel{
+
+    margin-top:30px;
+
+}
+
+
+
 /* Search */
+
 
 .search-box input{
 
@@ -19,9 +136,9 @@
     outline:none;
     box-sizing:border-box;
     margin-bottom:20px;
-    background:white;
 
 }
+
 
 
 .search-box input:focus{
@@ -32,7 +149,9 @@
 
 
 
-/* Dropdown Box */
+
+/* Select */
+
 
 .select-box{
 
@@ -41,14 +160,16 @@
 }
 
 
+
 .select-box label{
 
     display:block;
-    font-weight:bold;
     color:#1565c0;
+    font-weight:bold;
     margin-bottom:8px;
 
 }
+
 
 
 .select-box select{
@@ -56,40 +177,33 @@
     width:100%;
     padding:15px;
     font-size:17px;
-    border:2px solid #d6d6d6;
+    border:2px solid #ddd;
     border-radius:12px;
     background:white;
     cursor:pointer;
-    transition:.3s;
 
 }
 
-
-.select-box select:hover{
-
-    border-color:#1565c0;
-
-}
 
 
 .select-box select:focus{
 
     outline:none;
     border-color:#1565c0;
-    box-shadow:0 0 8px rgba(21,101,192,.2);
 
 }
 
 
 
-/* ===================================
-        MATERIAL PAGE CARDS
-=================================== */
+
+/* =====================================
+        MATERIAL PAGE
+===================================== */
 
 
 .material-container{
 
-    margin-top:30px;
+    margin-top:35px;
 
 }
 
@@ -105,15 +219,16 @@
 
 
 
+
 .material-card{
 
-    background:#ffffff;
-    border-radius:18px;
-    padding:25px 20px;
+    background:white;
+    border-radius:20px;
+    padding:30px 20px;
     text-align:center;
     border:1px solid #e5e7eb;
-    box-shadow:0 6px 20px rgba(0,0,0,.10);
-    transition:.3s ease;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+    transition:.3s;
 
 }
 
@@ -121,35 +236,41 @@
 
 .material-card:hover{
 
-    transform:translateY(-6px);
-    box-shadow:0 12px 30px rgba(21,101,192,.20);
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(21,101,192,.25);
 
 }
 
+
+
+
+/* ICON */
 
 
 .material-card .icon{
 
-    width:75px;
-    height:75px;
+    width:80px;
+    height:80px;
     margin:auto;
     border-radius:50%;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     background:#eef5ff;
     color:#1565c0;
-    font-size:35px;
+    font-size:38px;
 
 }
+
+
 
 
 
 .material-card h3{
 
-    margin-top:18px;
     color:#1565c0;
-    font-size:22px;
+    font-size:24px;
+    margin-top:20px;
 
 }
 
@@ -164,18 +285,22 @@
 
 
 
+
+
+/* BUTTON */
+
+
 .material-card button{
 
     margin-top:15px;
-    padding:12px 24px;
+    padding:12px 25px;
     border:none;
     border-radius:30px;
     background:linear-gradient(135deg,#2563eb,#1d4ed8);
     color:white;
-    font-size:16px;
+    font-size:17px;
     font-weight:bold;
     cursor:pointer;
-    transition:.3s;
 
 }
 
@@ -184,27 +309,47 @@
 .material-card button:hover{
 
     transform:scale(1.05);
-    box-shadow:0 8px 18px rgba(21,101,192,.3);
 
 }
 
 
 
-/* Mobile */
+
+
+/* ===== MOBILE ===== */
+
 
 @media(max-width:600px){
 
-    .material-grid{
 
-        grid-template-columns:1fr;
+body{
 
-    }
+    padding:10px;
+
+}
 
 
-    .material-card h3{
+.container{
 
-        font-size:20px;
+    padding:20px;
 
-    }
+}
+
+
+
+.hero h1{
+
+    font-size:30px;
+
+}
+
+
+
+.material-grid{
+
+    grid-template-columns:1fr;
+
+}
+
 
 }
