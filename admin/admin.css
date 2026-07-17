@@ -226,3 +226,26 @@ select{
     display:inline-block;
     font-weight:bold;
 }
+.tree-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:6px;
+}
+
+
+.tree-icon{
+    width:25px;
+    display:inline-block;
+}
+
+
+.tree-item button{
+
+    margin-left:auto;
+
+    padding:4px 10px;
+
+    cursor:pointer;
+
+}
