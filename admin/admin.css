@@ -259,3 +259,52 @@ select{
     gap:5px;
 
 }
+.drop-area{
+
+    border:3px dashed #4e73df;
+
+    border-radius:15px;
+
+    padding:40px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    background:#f8f9fc;
+
+    transition:.3s;
+
+}
+
+.drop-area:hover{
+
+    background:#eef3ff;
+
+}
+
+.drop-area.dragover{
+
+    background:#dbe8ff;
+
+}
+
+.drop-area i{
+
+    font-size:55px;
+
+    color:#4e73df;
+
+    margin-bottom:10px;
+
+}
+
+#fileName{
+
+    margin-top:15px;
+
+    font-weight:bold;
+
+    color:#28a745;
+
+}

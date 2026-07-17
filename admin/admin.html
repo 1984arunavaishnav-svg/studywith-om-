@@ -385,20 +385,28 @@ placeholder="Enter Material Name">
 
 
 
-
 <div class="form-group">
 
+    <label>Upload File</label>
 
-<label>Link</label>
+    <div id="dropArea" class="drop-area">
 
+        <i class="fa-solid fa-cloud-arrow-up"></i>
 
-<input
+        <h3>Drag & Drop File Here</h3>
 
-id="materialURL"
+        <p>or Click to Select</p>
 
-type="text"
+        <input
+            type="file"
+            id="materialFile"
+            hidden>
 
-placeholder="PDF / Video URL">
+    </div>
+
+</div>
+
+<p id="fileName"></p>
 
 
 </div>
