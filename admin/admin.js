@@ -266,49 +266,74 @@ async function loadTree(){
 
 
 
-        snapshot.forEach((doc)=>{
+      let items = [];
+
+snapshot.forEach((doc)=>{
+
+    items.push({
+        id: doc.id,
+        ...doc.data()
+    });
+
+});
 
 
-            const item =
-            doc.data();
+// Order के हिसाब से sort
 
+items.sort((a,b)=>{
 
+    return (a.order || 0) - (b.order || 0);
 
-            tree.innerHTML += `
-
-            <div class="tree-item">
-
-                📄 ${item.name}
-
-                (${item.type})
-
-            </div>
-
-            `;
-
-
-        });
+});
 
 
 
-    }
-    catch(error){
+items.forEach((item)=>{
 
 
-        console.error(
-            "Tree Error:",
-            error
-        );
+    let icon = "";
 
 
-        tree.innerHTML =
-        "Error Loading Tree";
-
-
+    if(item.type === "Category"){
+        icon = "▣";
     }
 
+    else if(item.type === "Board"){
+        icon = "▤";
+    }
 
-}
+    else if(item.type === "Class"){
+        icon = "▦";
+    }
+
+    else if(item.type === "Subject"){
+        icon = "■";
+    }
+
+    else if(item.type === "Chapter"){
+        icon = "□";
+    }
+
+
+
+    tree.innerHTML += `
+
+    <div class="tree-item">
+
+        <span class="tree-icon">
+            ${icon}
+        </span>
+
+        ${item.name}
+
+        <small>(${item.type})</small>
+
+    </div>
+
+    `;
+
+
+});
 
 
 
