@@ -1,0 +1,218 @@
+/* ===========================
+   GOOGLE FONT
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#222;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+ul{
+    list-style:none;
+}
+
+button,
+input,
+select{
+    font-family:'Poppins',sans-serif;
+}
+
+/* ===========================
+   TOPBAR
+=========================== */
+
+.topbar{
+    height:70px;
+    background:#ffffff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 30px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:22px;
+    font-weight:600;
+    color:#1565c0;
+}
+
+.admin-profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:500;
+}
+
+/* ===========================
+   MAIN CONTAINER
+=========================== */
+
+.container{
+    display:flex;
+    margin-top:70px;
+}
+/* ===========================
+   SIDEBAR
+=========================== */
+
+.sidebar{
+    width:260px;
+    min-height:calc(100vh - 70px);
+    background:#1565c0;
+    color:#fff;
+    position:fixed;
+    left:0;
+    top:70px;
+    overflow-y:auto;
+}
+
+.sidebar ul{
+    padding:20px 0;
+}
+
+.sidebar li{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:16px 25px;
+    cursor:pointer;
+    transition:.3s;
+    font-size:16px;
+}
+
+.sidebar li:hover{
+    background:rgba(255,255,255,.15);
+}
+
+.sidebar li.active{
+    background:#0d47a1;
+}
+
+/* ===========================
+   MAIN CONTENT
+=========================== */
+
+.main-content{
+    margin-left:260px;
+    width:calc(100% - 260px);
+    padding:35px;
+}
+
+.page-title h2{
+    font-size:30px;
+    margin-bottom:8px;
+    color:#1565c0;
+}
+
+.page-title p{
+    color:#666;
+    margin-bottom:30px;
+}
+
+/* ===========================
+   CONTENT FORM
+=========================== */
+
+.content-form{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:30px;
+}
+
+.content-form h3{
+    margin-bottom:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:18px;
+}
+
+.form-group label{
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.form-group input,
+.form-group select{
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    outline:none;
+    border-color:#1565c0;
+}
+
+.content-form button{
+    background:#1565c0;
+    color:#fff;
+    border:none;
+    padding:14px 25px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.content-form button:hover{
+    background:#0d47a1;
+}
+
+/* ===========================
+   CONTENT TREE
+=========================== */
+
+.content-tree{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.content-tree h3{
+    margin-bottom:20px;
+}
+
+#treeContainer{
+    min-height:250px;
+    border:2px dashed #d0d0d0;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#888;
+}
