@@ -153,4 +153,11 @@ subjectSelect.addEventListener("change", async function () {
 
     });
 
+});chapterSelect.addEventListener("change", function () {
+
+    if (this.value === "") return;
+
+    window.location.href =
+        `material.html?chapterId=${this.value}`;
+
 });
