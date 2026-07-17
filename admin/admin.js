@@ -684,3 +684,73 @@ async function loadChapters(){
 
 
 loadChapters();
+
+
+// ===========================
+// SAVE MATERIAL
+// ===========================
+
+if(materialForm){
+
+    materialForm.addEventListener(
+    "submit",
+    async function(e){
+
+        e.preventDefault();
+
+        if(
+            chapterSelect.value === "" ||
+            materialTitle.value.trim() === ""
+        ){
+
+            alert("Please fill required fields");
+            return;
+
+        }
+
+
+        const materialData = {
+
+            chapterId: chapterSelect.value,
+
+            type: materialType.value,
+
+            title: materialTitle.value.trim(),
+
+            url: materialURL.value.trim(),
+
+            createdAt: serverTimestamp()
+
+        };
+
+
+        try{
+
+
+            await addDoc(
+                collection(db,"materials"),
+                materialData
+            );
+
+
+            alert(
+                "Material Saved Successfully"
+            );
+
+
+            materialForm.reset();
+
+
+        }
+        catch(error){
+
+            console.error(error);
+
+            alert(error.message);
+
+        }
+
+
+    });
+
+}
