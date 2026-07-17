@@ -153,6 +153,9 @@ subjectSelect.addEventListener("change", async function () {
 
     });
 
+});   // ⭐⭐⭐ यह line missing थी
+
+
 chapterSelect.addEventListener("change", function () {
 
     if (this.value === "") return;
@@ -160,4 +163,4 @@ chapterSelect.addEventListener("change", function () {
     window.location.href =
         `material.html?chapterId=${this.value}`;
 
-})
+});
