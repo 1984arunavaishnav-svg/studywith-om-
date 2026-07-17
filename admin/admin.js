@@ -149,5 +149,5 @@ async function loadTree(){
 
 }
 
-
+console.log("Loading Tree Started");
 loadTree();
