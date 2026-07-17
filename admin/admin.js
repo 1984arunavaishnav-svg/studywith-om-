@@ -362,6 +362,14 @@ async function loadTree(){
 
                     (${node.type})
 
+                    
+                    <button onclick="deleteNode('${node.id}')">
+                    Delete
+                    </button>
+
+
+                 
+
                 </div>
 
                 `;
