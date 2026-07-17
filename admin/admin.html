@@ -9,7 +9,7 @@
 <title>StudyWithOm Admin Panel</title>
 
 <link rel="stylesheet" href="admin.css">
-
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
@@ -345,9 +345,9 @@ Video
 </option>
 
 
-<option value="Question">
+<option value="Quiz">
 
-Question Paper
+Quiz
 
 </option>
 
@@ -427,6 +427,14 @@ Save Material
 
 </form>
 
+<div id="notesEditorContainer" style="display:none; margin-top:20px;">
+
+    <h3>Notes Editor</h3>
+
+    <div id="editor" style="height:400px;"></div>
+
+</div>
+
 
 
 </section>
@@ -448,7 +456,7 @@ Save Material
 
 <script type="module" src="admin.js"></script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 </body>
 
 </html>
