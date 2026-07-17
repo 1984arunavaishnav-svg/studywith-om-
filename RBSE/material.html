@@ -159,77 +159,7 @@ Start Quiz
 <script type="module" src="material.js"></script>
 
 
-<script>
-
-
-// Get data from URL
-
-const params = new URLSearchParams(window.location.search);
-
-
-const className = params.get("class");
-const subject = params.get("subject");
-const chapter = params.get("chapter");
 
 
 
-// Show chapter name
-
-document.getElementById("chapterTitle").innerHTML =
-`
-${className} | ${subject} | ${chapter}
-`;
-
-
-
-// Get chapter data
-
-const data =
-rbseData[className]
-.subjects[subject]
-[chapter];
-
-
-
-// Buttons links
-
-
-document.getElementById("lectureBtn").onclick=function(){
-
-window.open(data.lecture,"_blank");
-
-}
-
-
-
-document.getElementById("notesBtn").onclick=function(){
-
-window.open(data.notes,"_blank");
-
-}
-
-
-
-document.getElementById("pdfBtn").onclick=function(){
-
-window.open(data.pdf,"_blank");
-
-}
-
-
-
-document.getElementById("quizBtn").onclick=function(){
-
-window.open(data.quiz,"_blank");
-
-}
-
-
-
-</script>
-
-
-
-</body>
-
-</html>
+<script type="module" src="material.js"></script>
