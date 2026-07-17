@@ -12,9 +12,11 @@ import {
     addDoc,
     serverTimestamp,
     query,
-    where
-}
-from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+    where,
+    updateDoc,
+    deleteDoc,
+    doc
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 
 // ======================================
@@ -289,37 +291,149 @@ async function loadTree() {
 function renderTree(parentId, level, nodes) {
 
     nodes
-
     .filter(node => node.parentId === parentId)
 
     .forEach(node => {
 
         tree.innerHTML += `
 
-        <div
-        class="tree-item"
-        style="margin-left:${level * 25}px">
+        <div class="tree-item"
+             style="margin-left:${level * 25}px">
 
-            📁 ${node.name}
+            <span>
+                📁 ${node.name}
+                <small>(${node.type})</small>
+            </span>
 
-            <small>
-                (${node.type})
-            </small>
+            <span>
+
+                <button
+                    class="editBtn"
+                    data-id="${node.id}">
+                    ✏️
+                </button>
+
+                <button
+                    class="deleteBtn"
+                    data-id="${node.id}">
+                    🗑️
+                </button>
+
+            </span>
 
         </div>
 
         `;
 
-        renderTree(
+        renderTree(node.id, level + 1, nodes);
 
-            node.id,
+    });
 
-            level + 1,
+    bindTreeButtons(nodes);
 
-            nodes
+}
+function bindTreeButtons(nodes) {
+
+    document
+    .querySelectorAll(".editBtn")
+    .forEach(btn => {
+
+        btn.onclick = () => {
+
+            editNode(btn.dataset.id);
+
+        };
+
+    });
+
+    document
+    .querySelectorAll(".deleteBtn")
+    .forEach(btn => {
+
+        btn.onclick = () => {
+
+            deleteNode(btn.dataset.id, nodes);
+
+        };
+
+    });
+
+}
+async function editNode(id) {
+
+    const newName = prompt("Enter New Name");
+
+    if (!newName) return;
+
+    try {
+
+        await updateDoc(
+
+            doc(db, "nodes", id),
+
+            {
+
+                name: newName.trim()
+
+            }
 
         );
 
-    });
+        alert("Updated");
+
+        loadTree();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+async function deleteNode(id, nodes) {
+
+    const hasChild = nodes.some(
+
+        item => item.parentId === id
+
+    );
+
+    if (hasChild) {
+
+        alert(
+            "Delete child items first."
+        );
+
+        return;
+
+    }
+
+    if (!confirm("Delete this item?")) {
+
+        return;
+
+    }
+
+    try {
+
+        await deleteDoc(
+
+            doc(db, "nodes", id)
+
+        );
+
+        alert("Deleted");
+
+        loadTree();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+    }
 
 }
