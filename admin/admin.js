@@ -412,3 +412,49 @@ async function loadTree(){
 
 
 loadTree();
+// ===========================
+// DELETE NODE
+// ===========================
+
+window.deleteNode = async function(id){
+
+    let confirmDelete = confirm(
+        "Are you sure you want to delete?"
+    );
+
+
+    if(!confirmDelete){
+        return;
+    }
+
+
+    try{
+
+        await deleteDoc(
+            doc(db,"nodes",id)
+        );
+
+
+        alert(
+            "Deleted Successfully"
+        );
+
+
+        loadTree();
+
+
+    }
+    catch(error){
+
+        console.error(
+            "Delete Error:",
+            error
+        );
+
+        alert(
+            error.message
+        );
+
+    }
+
+};
