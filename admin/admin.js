@@ -424,23 +424,70 @@ loadTree();
 // DELETE NODE
 // ===========================
 
+// ===========================
+// SAFE DELETE NODE
+// ===========================
+
 window.deleteNode = async function(id){
-
-    let confirmDelete = confirm(
-        "Are you sure you want to delete?"
-    );
-
-
-    if(!confirmDelete){
-        return;
-    }
 
 
     try{
 
+
+        // Check children
+
+        const q = query(
+
+            collection(db,"nodes"),
+
+            where(
+                "parentId",
+                "==",
+                id
+            )
+
+        );
+
+
+        const childSnap =
+        await getDocs(q);
+
+
+
+        if(childSnap.size > 0){
+
+
+            alert(
+                "This item has child content. Delete children first."
+            );
+
+
+            return;
+
+        }
+
+
+
+
+        const confirmDelete = confirm(
+            "Delete this item?"
+        );
+
+
+
+        if(!confirmDelete){
+
+            return;
+
+        }
+
+
+
+
         await deleteDoc(
             doc(db,"nodes",id)
         );
+
 
 
         alert(
@@ -448,21 +495,27 @@ window.deleteNode = async function(id){
         );
 
 
+
         loadTree();
+
 
 
     }
     catch(error){
+
 
         console.error(
             "Delete Error:",
             error
         );
 
+
         alert(
             error.message
         );
 
+
     }
+
 
 };
