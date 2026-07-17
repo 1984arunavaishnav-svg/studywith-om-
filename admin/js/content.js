@@ -84,6 +84,10 @@ export function initContent() {
         loadParents
 
     );
+    form.addEventListener(
+    "submit",
+    saveContent
+);
 
 }
 // ======================================
@@ -147,6 +151,77 @@ async function loadParents() {
             error
 
         );
+
+    }
+
+}
+// ======================================
+// SAVE CONTENT
+// ======================================
+
+async function saveContent(e) {
+
+    e.preventDefault();
+
+    const name = nameInput.value.trim();
+
+    if (name === "") {
+
+        alert("Please enter name");
+
+        return;
+
+    }
+
+    const data = {
+
+        name: name,
+
+        type: typeSelect.value,
+
+        parentId: parentSelect.value || null,
+
+        order: Number(orderInput.value) || 1,
+
+        status: statusSelect.value === "Active",
+
+        createdAt: serverTimestamp()
+
+    };
+
+    console.log("Saving...", data);
+
+    try {
+
+        const docRef = await addDoc(
+
+            collection(db, "nodes"),
+
+            data
+
+        );
+
+        console.log(
+
+            "Saved Successfully:",
+
+            docRef.id
+
+        );
+
+        alert("Content Saved");
+
+        form.reset();
+
+        loadParents();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(error.message);
 
     }
 
