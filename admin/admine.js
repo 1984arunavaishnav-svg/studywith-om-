@@ -1,5 +1,5 @@
-import { db } from "../firebase/firebase-config.js";
+import { db, auth } from "../firebase/firebase-config.js";
 
-console.log("Firebase Connected Successfully");
-
+console.log("StudyWithOm CMS Started");
 console.log(db);
+console.log(auth);

@@ -1,6 +1,6 @@
-// Firebase SDK
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDwlHpTGv1NP93DxTNbMx09Nnz3YIFEAm8",
@@ -12,10 +12,9 @@ const firebaseConfig = {
   measurementId: "G-NV5MG0N25Y"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Firestore
 const db = getFirestore(app);
+const auth = getAuth(app);
 
-export { db };
+export { app, db, auth };
