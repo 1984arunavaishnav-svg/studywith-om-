@@ -754,3 +754,73 @@ if(materialForm){
     });
 
 }
+// ===========================
+// FILE UPLOAD ELEMENTS
+// ===========================
+
+const dropArea = document.getElementById("dropArea");
+const materialFile = document.getElementById("materialFile");
+const fileName = document.getElementById("fileName");
+
+let selectedFile = null;
+
+
+// Click → Open File Picker
+
+dropArea.addEventListener("click", () => {
+
+    materialFile.click();
+
+});
+
+
+// File Selected
+
+materialFile.addEventListener("change", () => {
+
+    if(materialFile.files.length > 0){
+
+        selectedFile = materialFile.files[0];
+
+        fileName.innerHTML =
+        "📄 " + selectedFile.name;
+
+    }
+
+});
+
+
+// Drag Over
+
+dropArea.addEventListener("dragover", (e) => {
+
+    e.preventDefault();
+
+    dropArea.classList.add("dragover");
+
+});
+
+
+// Drag Leave
+
+dropArea.addEventListener("dragleave", () => {
+
+    dropArea.classList.remove("dragover");
+
+});
+
+
+// Drop File
+
+dropArea.addEventListener("drop", (e) => {
+
+    e.preventDefault();
+
+    dropArea.classList.remove("dragover");
+
+    selectedFile = e.dataTransfer.files[0];
+
+    fileName.innerHTML =
+    "📄 " + selectedFile.name;
+
+});
