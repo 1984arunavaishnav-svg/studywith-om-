@@ -17,7 +17,8 @@ classSelect.addEventListener("change", function () {
     }
 
     subjectSelect.disabled = false;
-
+    console.log(selectedClass);
+    console.log(rbseData[selectedClass]);
     const subjects = rbseData[selectedClass].subjects;
 
     subjectSelect.innerHTML = "<option value=''>Choose Subject</option>";
