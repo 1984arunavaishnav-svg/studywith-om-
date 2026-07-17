@@ -114,4 +114,39 @@ async function loadParents() {
 
 }
 loadParents();
-type.addEventListener("change", loadParents);
+// ===========================
+// LOAD CONTENT TREE
+// ===========================
+
+const tree = document.getElementById("tree");
+
+
+async function loadTree(){
+
+    tree.innerHTML = "Loading...";
+
+
+    const snapshot = await getDocs(collection(db, "nodes"));
+
+
+    tree.innerHTML = "";
+
+
+    snapshot.forEach((doc)=>{
+
+        const item = doc.data();
+
+
+        tree.innerHTML += `
+            <div>
+                📄 ${item.name} 
+                (${item.type})
+            </div>
+        `;
+
+    });
+
+}
+
+
+loadTree();
