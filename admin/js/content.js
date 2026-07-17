@@ -98,7 +98,7 @@ export function initContent() {
 // ======================================
 // LOAD PARENTS
 // ======================================
-
+console.log("loadParents Running");
 async function loadParents() {
 
     parentSelect.innerHTML =
