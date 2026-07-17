@@ -115,3 +115,42 @@ classSelect.addEventListener("change", async function () {
     });
 
 });
+// ==========================
+// LOAD CHAPTERS
+// ==========================
+
+subjectSelect.addEventListener("change", async function () {
+
+    chapterSelect.innerHTML =
+        `<option value="">Choose Chapter</option>`;
+
+    if (this.value === "") {
+        chapterSelect.disabled = true;
+        return;
+    }
+
+    chapterSelect.disabled = false;
+
+    const q = query(
+        collection(db, "nodes"),
+        where("type", "==", "Chapter"),
+        where("parentId", "==", this.value)
+    );
+
+    const snap = await getDocs(q);
+
+    console.log("Chapters Loaded:", snap.size);
+
+    snap.forEach((doc) => {
+
+        const item = doc.data();
+
+        chapterSelect.innerHTML += `
+            <option value="${doc.id}">
+                ${item.name}
+            </option>
+        `;
+
+    });
+
+});
