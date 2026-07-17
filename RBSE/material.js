@@ -8,143 +8,123 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 
-// ===========================
-// GET CHAPTER FROM URL
-// ===========================
+// URL से chapter id लेना
 
-const params = new URLSearchParams(window.location.search);
-
-
-const chapterName = params.get("chapter");
-
-console.log("Chapter:", chapterName);
+const params = new URLSearchParams(
+    window.location.search
+);
 
 
-// ===========================
-// BUTTONS
-// ===========================
+const chapterId = params.get("chapterId");
+
+
+console.log(
+    "Chapter ID:",
+    chapterId
+);
+
+
 
 const lectureBtn =
 document.getElementById("lectureBtn");
 
-
 const notesBtn =
 document.getElementById("notesBtn");
-
 
 const pdfBtn =
 document.getElementById("pdfBtn");
 
 
 
-// ===========================
-// LOAD MATERIAL
-// ===========================
 
 async function loadMaterial(){
 
 
-    try{
+    if(!chapterId){
 
-
-        const q = query(
-
-            collection(db,"materials"),
-
-            where(
-                "title",
-                "==",
-                chapterName
-            )
-
+        console.log(
+            "Chapter ID Missing"
         );
 
+        return;
+
+    }
 
 
-        const snap =
-        await getDocs(q);
+
+    const q = query(
+
+        collection(db,"materials"),
+
+        where(
+            "chapterId",
+            "==",
+            chapterId
+        )
+
+    );
+
+
+
+    const snap =
+    await getDocs(q);
+
+
+
+    console.log(
+        "Materials Found:",
+        snap.size
+    );
+
+
+
+    snap.forEach((doc)=>{
+
+
+        const data =
+        doc.data();
 
 
 
         console.log(
-            "Materials Found:",
-            snap.size
+            data
         );
 
 
 
-        snap.forEach((doc)=>{
+        if(data.type==="PDF"){
 
 
-            const data = doc.data();
+            pdfBtn.onclick=function(){
 
+                window.open(
+                    data.url,
+                    "_blank"
+                );
 
+            };
 
-            console.log(
-                "Material:",
-                data
-            );
-
-
-
-            if(data.type === "PDF"){
-
-                pdfBtn.onclick = function(){
-
-                    window.open(
-                        data.url,
-                        "_blank"
-                    );
-
-                };
-
-            }
+        }
 
 
 
-            if(data.type === "Video"){
-
-                lectureBtn.onclick = function(){
-
-                    window.open(
-                        data.url,
-                        "_blank"
-                    );
-
-                };
-
-            }
+        if(data.type==="Video"){
 
 
+            lectureBtn.onclick=function(){
 
-            if(data.type === "Notes"){
+                window.open(
+                    data.url,
+                    "_blank"
+                );
 
-                notesBtn.onclick = function(){
+            };
 
-                    window.open(
-                        data.url,
-                        "_blank"
-                    );
-
-                };
-
-            }
+        }
 
 
 
-        });
-
-
-
-    }
-    catch(error){
-
-        console.error(
-            "Material Load Error:",
-            error
-        );
-
-    }
+    });
 
 
 }
