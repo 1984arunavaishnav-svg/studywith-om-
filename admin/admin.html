@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyWithOm Admin Panel</title>
+
+    <link rel="stylesheet" href="admin.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="topbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>StudyWithOm CMS</span>
+        </div>
+
+        <div class="admin-profile">
+            <i class="fa-solid fa-user-shield"></i>
+            Admin
+        </div>
+
+    </header>
+
+
+    <!-- ================= CONTAINER ================= -->
+
+    <div class="container">
+
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+
+            <ul>
+
+                <li class="active">
+                    <i class="fa-solid fa-layer-group"></i>
+                    Dashboard
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-folder-tree"></i>
+                    Content
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-file-pdf"></i>
+                    Materials
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-image"></i>
+                    Media
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </li>
+
+            </ul>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="main-content">
+
+            <!-- Page Heading -->
+
+            <div class="page-title">
+
+                <h2>Content Manager</h2>
+
+                <p>
+                    Manage Categories, Boards, Classes, Subjects,
+                    Chapters and Materials.
+                </p>
+
+            </div>
+
+
+            <!-- Content Form -->
+
+            <section class="content-form">
+
+                <h3>Add New Content</h3>
+
+                <form>
+
+                    <div class="form-group">
+
+                        <label>Parent</label>
+
+                        <select>
+
+                            <option>None (Root Category)</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Type</label>
+
+                        <select>
+
+                            <option>Category</option>
+                            <option>Board</option>
+                            <option>Class</option>
+                            <option>Subject</option>
+                            <option>Chapter</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Name</label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter Name">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Display Order</label>
+
+                        <input
+                            type="number"
+                            placeholder="1">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Status</label>
+
+                        <select>
+
+                            <option>Active</option>
+                            <option>Hidden</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button type="submit">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Save Content
+
+                    </button>
+
+                </form>
+
+            </section>
+
+
+
+            <!-- Content Tree -->
+
+            <section class="content-tree">
+
+                <h3>Website Structure</h3>
+
+                <div id="treeContainer">
+
+                    Content Tree will appear here...
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+<script src="admin.js"></script>
+
+</body>
+
+</html>
