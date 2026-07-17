@@ -283,153 +283,167 @@ Loading...
 
 <section class="material-form">
 
-
-<h3>Add Material</h3>
-
-
-
-
-<form id="materialForm">
-
-
-
-
+<h3>Material Manager</h3>
 
 <div class="form-group">
-
 
 <label>Chapter</label>
 
-
 <select id="chapterSelect">
-
-
-<option value="">
-
-Select Chapter
-
-</option>
-
-
+<option value="">Select Chapter</option>
 </select>
-
 
 </div>
 
-
-
-
-
-
-
 <div class="form-group">
-
 
 <label>Material Type</label>
 
-
 <select id="materialType">
 
-<option value="PDF">
-PDF
-</option>
+<option value="">Choose Material</option>
 
-<option value="Video">
-Video
-</option>
+<option value="PDF">PDF</option>
 
-<option value="Notes">
-Notes
-</option>
+<option value="Video">Video</option>
 
-<option value="Quiz">
-Quiz
-</option>
+<option value="Notes">Notes</option>
+
+<option value="Quiz">Quiz</option>
 
 </select>
 
-
 </div>
 
+<!-- ================= PDF ================= -->
 
-
-
-
-
+<div id="pdfSection" class="material-section">
 
 <div class="form-group">
 
-
-<label>Title</label>
-
+<label>PDF Title</label>
 
 <input
-
-id="materialTitle"
-
 type="text"
-
-placeholder="Enter Material Name">
-
+id="pdfTitle"
+placeholder="Enter PDF Title">
 
 </div>
 
+<div id="pdfDropArea" class="drop-area">
 
+<i class="fa-solid fa-file-pdf"></i>
 
+<h3>Drop PDF Here</h3>
 
+<p>Click or Drag PDF</p>
 
+<input
+type="file"
+id="pdfFile"
+accept=".pdf"
+hidden>
+
+</div>
+
+</div>
+
+<!-- ================= VIDEO ================= -->
+
+<div
+id="videoSection"
+class="material-section"
+style="display:none;">
 
 <div class="form-group">
 
-    <label>Upload File</label>
+<label>Video Title</label>
 
-    <div id="dropArea" class="drop-area">
-
-        <i class="fa-solid fa-cloud-arrow-up"></i>
-
-        <h3>Drag & Drop File Here</h3>
-
-        <p>or Click to Select</p>
-
-        <input
-            type="file"
-            id="materialFile"
-            hidden>
-
-    </div>
+<input
+type="text"
+id="videoTitle">
 
 </div>
 
-<p id="fileName"></p>
+<div
+id="videoDropArea"
+class="drop-area">
 
+<i class="fa-solid fa-video"></i>
+
+<h3>Drop Video Here</h3>
+
+<p>Click or Drag Video</p>
+
+<input
+type="file"
+id="videoFile"
+accept="video/*"
+hidden>
 
 </div>
 
+</div>
 
+<!-- ================= NOTES ================= -->
 
+<div
+id="notesSection"
+class="material-section"
+style="display:none;">
 
+<div class="form-group">
 
+<label>Notes Title</label>
 
-<button type="submit">
+<input
+type="text"
+id="notesTitle">
+
+</div>
+
+<div id="editor"></div>
+
+</div>
+
+<!-- ================= QUIZ ================= -->
+
+<div
+id="quizSection"
+class="material-section"
+style="display:none;">
+
+<div class="form-group">
+
+<label>Quiz Title</label>
+
+<input
+type="text"
+id="quizTitle">
+
+</div>
+
+<button
+type="button"
+id="addQuestion">
+
++ Add Question
+
+</button>
+
+<div id="questionsBox"></div>
+
+</div>
+
+<br>
+
+<button
+id="saveMaterial"
+type="button">
 
 Save Material
 
 </button>
-
-
-
-
-</form>
-
-<div id="notesEditorContainer" style="display:none; margin-top:20px;">
-
-    <h3>Notes Editor</h3>
-
-    <div id="editor" style="height:400px;"></div>
-
-</div>
-
-
 
 </section>
 

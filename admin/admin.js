@@ -876,3 +876,50 @@ materialType.addEventListener("change", () => {
     }
 
 });
+// =========================
+// MATERIAL UI CONTROLLER
+// =========================
+
+const materialType = document.getElementById("materialType");
+
+const pdfSection = document.getElementById("pdfSection");
+const videoSection = document.getElementById("videoSection");
+const notesSection = document.getElementById("notesSection");
+const quizSection = document.getElementById("quizSection");
+
+function hideAllMaterialSections() {
+
+    pdfSection.style.display = "none";
+    videoSection.style.display = "none";
+    notesSection.style.display = "none";
+    quizSection.style.display = "none";
+
+}
+
+materialType.addEventListener("change", () => {
+
+    hideAllMaterialSections();
+
+    switch (materialType.value) {
+
+        case "PDF":
+            pdfSection.style.display = "block";
+            break;
+
+        case "Video":
+            videoSection.style.display = "block";
+            break;
+
+        case "Notes":
+            notesSection.style.display = "block";
+            break;
+
+        case "Quiz":
+            quizSection.style.display = "block";
+            break;
+
+    }
+
+});
+
+hideAllMaterialSections();
