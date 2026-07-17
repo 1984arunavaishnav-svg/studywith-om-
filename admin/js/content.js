@@ -310,13 +310,13 @@ function renderTree(parentId, level, nodes) {
                 <button
                     class="editBtn"
                     data-id="${node.id}">
-                    ✏️
+                    ✏️ Edit
                 </button>
 
                 <button
                     class="deleteBtn"
                     data-id="${node.id}">
-                    🗑️
+                    🗑️ Delete
                 </button>
 
             </span>

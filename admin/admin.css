@@ -308,3 +308,21 @@ select{
     color:#28a745;
 
 }
+.tree-actions button{
+    padding:8px 14px;
+    margin-left:8px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    color:#fff;
+}
+
+.editBtn{
+    background:#0d6efd;
+}
+
+.deleteBtn{
+    background:#dc3545;
+}
