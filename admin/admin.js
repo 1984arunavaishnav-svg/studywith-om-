@@ -127,6 +127,7 @@ async function loadTree(){
 
 
     const snapshot = await getDocs(collection(db, "nodes"));
+    console.log("Tree Documents:", snapshot.size);
 
 
     tree.innerHTML = "";
