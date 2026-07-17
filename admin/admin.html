@@ -2,273 +2,444 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>StudyWithOm Admin Panel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="admin.css">
+<title>StudyWithOm Admin Panel</title>
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="admin.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 </head>
+
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
 
-    <header class="topbar">
+<header class="topbar">
 
-        <div class="logo">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <span>StudyWithOm CMS</span>
-        </div>
-
-        <div class="admin-profile">
-            <i class="fa-solid fa-user-shield"></i>
-            Admin
-        </div>
-
-    </header>
+    <div class="logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>StudyWithOm CMS</span>
+    </div>
 
 
-    <!-- ================= CONTAINER ================= -->
+    <div class="admin-profile">
 
-    <div class="container">
-
-        <!-- Sidebar -->
-
-        <aside class="sidebar">
-
-            <ul>
-
-                <li class="active">
-                    <i class="fa-solid fa-layer-group"></i>
-                    Dashboard
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-folder-tree"></i>
-                    Content
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-file-pdf"></i>
-                    Materials
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-image"></i>
-                    Media
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-gear"></i>
-                    Settings
-                </li>
-
-            </ul>
-
-        </aside>
-
-
-        <!-- MAIN -->
-
-        <main class="main-content">
-
-            <!-- Page Heading -->
-
-            <div class="page-title">
-
-                <h2>Content Manager</h2>
-
-                <p>
-                    Manage Categories, Boards, Classes, Subjects,
-                    Chapters and Materials.
-                </p>
-
-            </div>
-
-
-            <!-- Content Form -->
-
-            <section class="content-form">
-
-                <h3>Add New Content</h3>
-
-               <form id="contentForm">
-
-    <div class="form-group">
-
-        <label>Parent</label>
-
-        <select id="parent">
-
-            <option value="">None (Root Category)</option>
-
-        </select>
+        <i class="fa-solid fa-user-shield"></i>
+        Admin
 
     </div>
 
-    <div class="form-group">
+</header>
 
-        <label>Type</label>
 
-        <select id="type">
 
-            <option value="Category">Category</option>
-            <option value="Board">Board</option>
-            <option value="Class">Class</option>
-            <option value="Subject">Subject</option>
-            <option value="Chapter">Chapter</option>
+<div class="container">
 
-        </select>
 
-    </div>
+<aside class="sidebar">
 
-    <div class="form-group">
+<ul>
 
-        <label>Name</label>
+<li class="active">
 
-        <input
-            id="name"
-            type="text"
-            placeholder="Enter Name">
+<i class="fa-solid fa-layer-group"></i>
+Dashboard
 
-    </div>
+</li>
 
-    <div class="form-group">
 
-        <label>Display Order</label>
+<li>
 
-        <input
-            id="order"
-            type="number"
-            value="1">
+<i class="fa-solid fa-folder-tree"></i>
+Content
 
-    </div>
+</li>
 
-    <div class="form-group">
 
-        <label>Status</label>
+<li>
 
-        <select id="status">
+<i class="fa-solid fa-file-pdf"></i>
+Materials
 
-            <option value="Active">Active</option>
-            <option value="Hidden">Hidden</option>
+</li>
 
-        </select>
 
-    </div>
+<li>
 
-    <button type="submit" id="saveBtn">
+<i class="fa-solid fa-image"></i>
+Media
 
-        <i class="fa-solid fa-plus"></i>
+</li>
 
-        Save Content
 
-    </button>
+<li>
+
+<i class="fa-solid fa-gear"></i>
+Settings
+
+</li>
+
+
+</ul>
+
+</aside>
+
+
+
+
+
+<main class="main-content">
+
+
+
+<div class="page-title">
+
+<h2>Content Manager</h2>
+
+<p>
+Manage Categories, Boards, Classes, Subjects,
+Chapters and Materials.
+</p>
+
+</div>
+
+
+
+
+
+<!-- ================= CONTENT FORM ================= -->
+
+
+<section class="content-form">
+
+
+<h3>Add New Content</h3>
+
+
+
+<form id="contentForm">
+
+
+
+<div class="form-group">
+
+<label>Parent</label>
+
+<select id="parent">
+
+<option value="">
+None (Root Category)
+</option>
+
+</select>
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+<label>Type</label>
+
+<select id="type">
+
+<option value="Category">
+Category
+</option>
+
+<option value="Board">
+Board
+</option>
+
+<option value="Class">
+Class
+</option>
+
+<option value="Subject">
+Subject
+</option>
+
+<option value="Chapter">
+Chapter
+</option>
+
+
+</select>
+
+</div>
+
+
+
+
+
+
+<div class="form-group">
+
+<label>Name</label>
+
+<input
+id="name"
+type="text"
+placeholder="Enter Name">
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+<label>Display Order</label>
+
+<input
+id="order"
+type="number"
+value="1">
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+<label>Status</label>
+
+<select id="status">
+
+
+<option value="Active">
+Active
+</option>
+
+
+<option value="Hidden">
+Hidden
+</option>
+
+
+</select>
+
+</div>
+
+
+
+
+
+<button type="submit" id="saveBtn">
+
+<i class="fa-solid fa-plus"></i>
+
+Save Content
+
+</button>
+
+
 
 </form>
-<!-- ================= MATERIAL SYSTEM ================= -->
-
-<section class="material-form">
-
-    <h2>Add Material</h2>
-
-
-    <form id="materialForm">
-
-
-        <div class="form-group">
-
-            <label>Chapter</label>
-
-            <select id="chapterSelect">
-
-                <option value="">
-                    Select Chapter
-                </option>
-
-            </select>
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>Material Type</label>
-
-            <select id="materialType">
-
-                <option value="PDF">
-                    PDF Notes
-                </option>
-
-                <option value="Video">
-                    Video
-                </option>
-
-                <option value="Question">
-                    Question Paper
-                </option>
-
-            </select>
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>Title</label>
-
-            <input 
-            id="materialTitle"
-            type="text"
-            placeholder="Enter Material Name">
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>Link</label>
-
-            <input
-            id="materialURL"
-            type="text"
-            placeholder="PDF / Video URL">
-
-        </div>
-
-
-
-        <button type="submit">
-
-            Save Material
-
-        </button>
-
-
-    </form>
 
 
 </section>
 
+
+
+
+
+<!-- ================= CONTENT TREE ================= -->
+
+
+<section class="content-tree">
+
+
+<h3>Website Structure</h3>
+
+
+<div id="tree">
+
+Loading...
+
 </div>
-            </section>
+
+
+</section>
 
 
 
 
-        </main>
 
-    </div>
+
+
+<!-- ================= MATERIAL SYSTEM ================= -->
+
+
+<section class="material-form">
+
+
+<h3>Add Material</h3>
+
+
+
+
+<form id="materialForm">
+
+
+
+
+
+<div class="form-group">
+
+
+<label>Chapter</label>
+
+
+<select id="chapterSelect">
+
+
+<option value="">
+
+Select Chapter
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>Material Type</label>
+
+
+<select id="materialType">
+
+
+<option value="PDF">
+
+PDF Notes
+
+</option>
+
+
+<option value="Video">
+
+Video
+
+</option>
+
+
+<option value="Question">
+
+Question Paper
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>Title</label>
+
+
+<input
+
+id="materialTitle"
+
+type="text"
+
+placeholder="Enter Material Name">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>Link</label>
+
+
+<input
+
+id="materialURL"
+
+type="text"
+
+placeholder="PDF / Video URL">
+
+
+</div>
+
+
+
+
+
+
+<button type="submit">
+
+Save Material
+
+</button>
+
+
+
+
+</form>
+
+
+
+</section>
+
+
+
+
+
+
+</main>
+
+
+
+</div>
+
+
+
+
 
 <script type="module" src="admin.js"></script>
+
 
 </body>
 
