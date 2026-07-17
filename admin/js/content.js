@@ -52,7 +52,7 @@ const parentMap = {
 // ======================================
 // INIT
 // ======================================
-
+console.log("initContent Started");
 export function initContent() {
 
     console.log("Content Module Loaded");
