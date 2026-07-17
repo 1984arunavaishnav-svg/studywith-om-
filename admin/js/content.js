@@ -1,230 +1,354 @@
-// ======================================
+// ===========================================
 // StudyWithOm CMS
-// Content Manager
-// Part 1
-// ======================================
+// Content Module
+// ===========================================
 
 import { db } from "./firebase.js";
 
 import {
     collection,
-    getDocs,
     addDoc,
-    serverTimestamp,
+    getDocs,
     query,
     where,
+    serverTimestamp,
     updateDoc,
     deleteDoc,
     doc
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
-// ======================================
-// Elements
-// ======================================
+
+// ===========================================
+// EXPORT
+// ===========================================
+
+export function initContent(){
+
+    console.log("Content Module Loaded");
+
+    initializeElements();
+
+    bindEvents();
+
+    loadParents();
+
+}
+
+
+
+// ===========================================
+// ELEMENTS
+// ===========================================
 
 let form;
-let parentSelect;
-let typeSelect;
-let nameInput;
-let orderInput;
-let statusSelect;
-let tree;
+
+let parent;
+
+let type;
+
+let name;
+
+let order;
+
+let status;
+
+let saveButton;
 
 
-// Parent Type Mapping
 
-const parentMap = {
+// ===========================================
+// INITIALIZE ELEMENTS
+// ===========================================
 
-    Category: null,
+function initializeElements(){
 
-    Board: "Category",
+    form =
 
-    Class: "Board",
+    document.getElementById("contentForm");
 
-    Subject: "Class",
+    parent =
 
-    Chapter: "Subject"
+    document.getElementById("parent");
+
+    type =
+
+    document.getElementById("type");
+
+    name =
+
+    document.getElementById("name");
+
+    order =
+
+    document.getElementById("order");
+
+    status =
+
+    document.getElementById("status");
+
+    saveButton =
+
+    document.getElementById("saveBtn");
+
+}
+
+
+
+// ===========================================
+// EVENTS
+// ===========================================
+
+function bindEvents(){
+
+    if(type){
+
+        type.addEventListener(
+
+            "change",
+
+            loadParents
+
+        );
+
+    }
+
+    if(form){
+
+        form.addEventListener(
+
+            "submit",
+
+            saveContent
+
+        );
+
+    }
+
+}
+
+
+
+// ===========================================
+// PARENT MAP
+// ===========================================
+
+const parentMap={
+
+    Category:null,
+
+    Board:"Category",
+
+    Class:"Board",
+
+    Subject:"Class",
+
+    Chapter:"Subject"
 
 };
 
 
-// ======================================
-// INIT
-// ======================================
-console.log("initContent Started");
-export function initContent() {
 
-    console.log("Content Module Loaded");
+// ===========================================
+// LOAD PARENTS
+// ===========================================
 
-    form = document.getElementById("contentForm");
+async function loadParents(){
 
-    parentSelect = document.getElementById("parent");
+    parent.innerHTML=
 
-    typeSelect = document.getElementById("type");
+    `<option value="">
 
-    nameInput = document.getElementById("name");
+        None (Root)
 
-    orderInput = document.getElementById("order");
+    </option>`;
 
-    statusSelect = document.getElementById("status");
+    const parentType=
 
-    tree = document.getElementById("tree");
+    parentMap[type.value];
 
-
-    if (!form) {
-
-        console.error("Content Form Not Found");
+    if(!parentType){
 
         return;
 
     }
 
-    loadParents();
+    try{
 
-    typeSelect.addEventListener(
+        const q=
 
-        "change",
+        query(
 
-        loadParents
+            collection(db,"nodes"),
 
-    );
-    form.addEventListener(
-    "submit",
-    saveContent
-);
+            where(
 
-}
-// ======================================
-// LOAD PARENTS
-// ======================================
-console.log("loadParents Running");
-async function loadParents() {
+                "type",
 
-    parentSelect.innerHTML =
+                "==",
 
-        `<option value="">None (Root Category)</option>`;
+                parentType
 
-    const needParent = parentMap[typeSelect.value];
-
-    if (!needParent) return;
-
-    try {
-
-        const q = query(
-
-            collection(db, "nodes"),
-
-            where("type", "==", needParent)
+            )
 
         );
 
-        const snap = await getDocs(q);
+        const snap=
 
-        snap.forEach((doc) => {
+        await getDocs(q);
 
-            const item = doc.data();
+        snap.forEach(doc=>{
 
-            parentSelect.innerHTML += `
+            const data=
 
-            <option value="${doc.id}">
+            doc.data();
 
-                ${item.name}
+            parent.innerHTML+=`
 
-            </option>
+                <option value="${doc.id}">
+
+                    ${data.name}
+
+                </option>
 
             `;
 
         });
 
-        console.log(
-
-            "Parents Loaded:",
-
-            snap.size
-
-        );
-
     }
 
-    catch (error) {
+    catch(error){
 
-        console.error(
-
-            "Parent Load Error",
-
-            error
-
-        );
+        console.error(error);
 
     }
 
 }
-// ======================================
+// ===========================================
 // SAVE CONTENT
-// ======================================
+// ===========================================
 
-async function saveContent(e) {
+async function saveContent(event){
 
-    e.preventDefault();
+    event.preventDefault();
 
-    const name = nameInput.value.trim();
+    // -----------------------
+    // Validation
+    // -----------------------
 
-    if (name === "") {
+    if(name.value.trim()===""){
 
-        alert("Please enter name");
+        alert("Please Enter Name");
+
+        name.focus();
 
         return;
 
     }
 
-    const data = {
+    // -----------------------
+    // Disable Button
+    // -----------------------
 
-        name: name,
+    saveButton.disabled=true;
 
-        type: typeSelect.value,
+    saveButton.innerHTML="Saving...";
 
-        parentId: parentSelect.value || null,
+    // -----------------------
+    // Create Object
+    // -----------------------
 
-        order: Number(orderInput.value) || 1,
+    const contentData={
 
-        status: statusSelect.value === "Active",
+        name:name.value.trim(),
 
-        createdAt: serverTimestamp()
+        type:type.value,
+
+        parentId:parent.value || null,
+
+        order:Number(order.value)||1,
+
+        status:status.value==="Active",
+
+        createdAt:serverTimestamp()
 
     };
 
-    console.log("Saving...", data);
+    console.log(contentData);
 
-    try {
+    // -----------------------
+    // Save Firestore
+    // -----------------------
 
-        const docRef = await addDoc(
+    try{
 
-            collection(db, "nodes"),
+        await addDoc(
 
-            data
+            collection(db,"nodes"),
 
-        );
-
-        console.log(
-
-            "Saved Successfully:",
-
-            docRef.id
+            contentData
 
         );
 
-        alert("Content Saved");
+        console.log("Content Saved");
+
+        alert("Content Saved Successfully");
+
+        // -----------------------
+        // Reset Form
+        // -----------------------
 
         form.reset();
 
+        order.value=1;
+
+        parent.innerHTML=`
+        <option value="">
+        None (Root)
+        </option>
+        `;
+
+        // -----------------------
+        // Reload Parent
+        // -----------------------
+
         loadParents();
 
-        loadTree();
+        // -----------------------
+        // Reload Tree
+        // -----------------------
+
+        if(window.loadTree){
+
+            window.loadTree();
+
+        }
+
+        // -----------------------
+        // Unlock Materials
+        // -----------------------
+
+        if(contentData.type==="Chapter"){
+
+            localStorage.setItem(
+
+                "contentReady",
+
+                "true"
+
+            );
+
+            if(window.unlockMaterials){
+
+                window.unlockMaterials();
+
+            }
+
+        }
 
     }
 
-    catch (error) {
+    catch(error){
 
         console.error(error);
 
@@ -232,46 +356,125 @@ async function saveContent(e) {
 
     }
 
+    finally{
+
+        saveButton.disabled=false;
+
+        saveButton.innerHTML=`
+        <i class="fa-solid fa-plus"></i>
+        Save Content
+        `;
+
+    }
+
 }
-// ======================================
-// LOAD TREE
-// ======================================
 
-async function loadTree() {
 
-    if (!tree) return;
 
-    tree.innerHTML = "Loading...";
+// ===========================================
+// CHECK CONTENT STATUS
+// ===========================================
+
+window.checkContentStatus=function(){
+
+    const ready=
+
+    localStorage.getItem(
+
+        "contentReady"
+
+    );
+
+    console.log(
+
+        "Content Ready :",
+
+        ready
+
+    );
+
+};
+
+
+
+// ===========================================
+// REFRESH CONTENT
+// ===========================================
+
+window.refreshContent=function(){
+
+    loadParents();
+
+    if(window.loadTree){
+
+        window.loadTree();
+
+    }
+
+};
+
+
+
+// ===========================================
+// PART-2 COMPLETE
+// ===========================================
+
+console.log("Content.js Part-2 Loaded");
+// ===========================================
+// DUPLICATE CONTENT CHECK
+// ===========================================
+
+async function isDuplicateContent() {
 
     try {
 
-        const snap = await getDocs(
-            collection(db, "nodes")
+        const q = query(
+
+            collection(db, "nodes"),
+
+            where("name", "==", name.value.trim()),
+
+            where("type", "==", type.value)
+
         );
 
-        let nodes = [];
+        const snap = await getDocs(q);
 
-        snap.forEach((doc) => {
+        return !snap.empty;
 
-            nodes.push({
+    }
 
-                id: doc.id,
+    catch (error) {
 
-                ...doc.data()
+        console.error("Duplicate Check Error", error);
 
-            });
+        return false;
 
-        });
+    }
 
-        nodes.sort((a, b) => {
+}
 
-            return (a.order || 0) - (b.order || 0);
 
-        });
 
-        tree.innerHTML = "";
+// ===========================================
+// AUTO ORDER
+// ===========================================
 
-        renderTree(null, 0, nodes);
+async function autoOrder() {
+
+    try {
+
+        const q = query(
+
+            collection(db, "nodes"),
+
+            where("parentId", "==", (parent.value || null))
+
+        );
+
+        const snap = await getDocs(q);
+
+        order.value = snap.size + 1;
 
     }
 
@@ -279,93 +482,144 @@ async function loadTree() {
 
         console.error(error);
 
-        tree.innerHTML = "Tree Load Error";
+    }
+
+}
+
+
+
+// ===========================================
+// TYPE CHANGE
+// ===========================================
+
+type.addEventListener("change", async () => {
+
+    await loadParents();
+
+    await autoOrder();
+
+});
+
+
+
+// ===========================================
+// PARENT CHANGE
+// ===========================================
+
+parent.addEventListener("change", async () => {
+
+    await autoOrder();
+
+});
+
+
+
+// ===========================================
+// FORM VALIDATION
+// ===========================================
+
+function validateContent() {
+
+    if (name.value.trim() === "") {
+
+        alert("Please Enter Name");
+
+        return false;
+
+    }
+
+    if (type.value === "") {
+
+        alert("Please Select Type");
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+
+
+// ===========================================
+// CLEAR FORM
+// ===========================================
+
+function clearContentForm() {
+
+    form.reset();
+
+    order.value = 1;
+
+    parent.innerHTML = `
+
+        <option value="">
+
+            None (Root)
+
+        </option>
+
+    `;
+
+}
+
+
+
+// ===========================================
+// REFRESH TREE
+// ===========================================
+
+function refreshTree() {
+
+    if (window.loadTree) {
+
+        window.loadTree();
 
     }
 
 }
-// ======================================
-// RENDER TREE
-// ======================================
 
-function renderTree(parentId, level, nodes) {
 
-    nodes
-    .filter(node => node.parentId === parentId)
 
-    .forEach(node => {
+// ===========================================
+// CONTENT STATISTICS
+// ===========================================
 
-        tree.innerHTML += `
+window.contentStats = async function () {
 
-        <div class="tree-item"
-             style="margin-left:${level * 25}px">
+    const snap = await getDocs(
 
-            <span>
-                📁 ${node.name}
-                <small>(${node.type})</small>
-            </span>
+        collection(db, "nodes")
 
-            <span>
+    );
 
-                <button
-                    class="editBtn"
-                    data-id="${node.id}">
-                    ✏️ Edit
-                </button>
+    console.log("Total Contents :", snap.size);
 
-                <button
-                    class="deleteBtn"
-                    data-id="${node.id}">
-                    🗑️ Delete
-                </button>
+};
 
-            </span>
 
-        </div>
 
-        `;
+// ===========================================
+// PART 3 LOADED
+// ===========================================
 
-        renderTree(node.id, level + 1, nodes);
+console.log("Content.js Part-3 Loaded");
+// ===========================================
+// EDIT CONTENT
+// ===========================================
 
-    });
-
-    bindTreeButtons(nodes);
-
-}
-function bindTreeButtons(nodes) {
-
-    document
-    .querySelectorAll(".editBtn")
-    .forEach(btn => {
-
-        btn.onclick = () => {
-
-            editNode(btn.dataset.id);
-
-        };
-
-    });
-
-    document
-    .querySelectorAll(".deleteBtn")
-    .forEach(btn => {
-
-        btn.onclick = () => {
-
-            deleteNode(btn.dataset.id, nodes);
-
-        };
-
-    });
-
-}
-async function editNode(id) {
-
-    const newName = prompt("Enter New Name");
-
-    if (!newName) return;
+window.editNode = async function (id) {
 
     try {
+
+        const newName = prompt("Enter New Name");
+
+        if (!newName || newName.trim() === "") {
+
+            return;
+
+        }
 
         await updateDoc(
 
@@ -379,9 +633,11 @@ async function editNode(id) {
 
         );
 
-        alert("Updated");
+        alert("Content Updated Successfully");
 
-        loadTree();
+        refreshTree();
+
+        loadParents();
 
     }
 
@@ -389,34 +645,55 @@ async function editNode(id) {
 
         console.error(error);
 
-    }
-
-}
-async function deleteNode(id, nodes) {
-
-    const hasChild = nodes.some(
-
-        item => item.parentId === id
-
-    );
-
-    if (hasChild) {
-
-        alert(
-            "Delete child items first."
-        );
-
-        return;
+        alert(error.message);
 
     }
 
-    if (!confirm("Delete this item?")) {
+};
 
-        return;
 
-    }
+
+// ===========================================
+// DELETE CONTENT
+// ===========================================
+
+window.deleteNode = async function (id) {
 
     try {
+
+        // Check Child
+
+        const q = query(
+
+            collection(db, "nodes"),
+
+            where("parentId", "==", id)
+
+        );
+
+        const childSnap = await getDocs(q);
+
+        if (!childSnap.empty) {
+
+            alert(
+
+                "Delete Child Items First"
+
+            );
+
+            return;
+
+        }
+
+        if (!confirm(
+
+            "Delete this Content ?"
+
+        )) {
+
+            return;
+
+        }
 
         await deleteDoc(
 
@@ -424,9 +701,151 @@ async function deleteNode(id, nodes) {
 
         );
 
-        alert("Deleted");
+        alert(
 
-        loadTree();
+            "Deleted Successfully"
+
+        );
+
+        refreshTree();
+
+        loadParents();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(error.message);
+
+    }
+
+};
+
+
+
+// ===========================================
+// COUNT CONTENT
+// ===========================================
+
+window.totalContent = async function () {
+
+    try {
+
+        const snap = await getDocs(
+
+            collection(db, "nodes")
+
+        );
+
+        return snap.size;
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        return 0;
+
+    }
+
+};
+
+
+
+// ===========================================
+// LAST CONTENT
+// ===========================================
+
+window.lastContent = async function () {
+
+    try {
+
+        const snap = await getDocs(
+
+            collection(db, "nodes")
+
+        );
+
+        let last = "";
+
+        snap.forEach(doc => {
+
+            last = doc.data().name;
+
+        });
+
+        console.log("Last :", last);
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+    }
+
+};
+
+
+
+// ===========================================
+// REFRESH ALL
+// ===========================================
+
+window.refreshAllContent = function () {
+
+    loadParents();
+
+    refreshTree();
+
+};
+
+
+
+// ===========================================
+// PART 4 LOADED
+// ===========================================
+
+console.log("Content.js Part-4 Loaded");
+// ===========================================
+// MATERIAL UNLOCK SYSTEM
+// ===========================================
+
+async function checkChapterAvailable() {
+
+    try {
+
+        const q = query(
+
+            collection(db, "nodes"),
+
+            where("type", "==", "Chapter")
+
+        );
+
+        const snap = await getDocs(q);
+
+        if (!snap.empty) {
+
+            localStorage.setItem(
+                "contentReady",
+                "true"
+            );
+
+            if (window.unlockMaterials) {
+
+                window.unlockMaterials();
+
+            }
+
+            console.log(
+                "Materials Unlocked"
+            );
+
+        }
 
     }
 
@@ -437,3 +856,320 @@ async function deleteNode(id, nodes) {
     }
 
 }
+
+
+
+// ===========================================
+// CONTENT COUNTER
+// ===========================================
+
+async function updateContentCounter() {
+
+    try {
+
+        const snap = await getDocs(
+
+            collection(db, "nodes")
+
+        );
+
+        const counter = document.getElementById(
+
+            "contentCount"
+
+        );
+
+        if (counter) {
+
+            counter.innerHTML = snap.size;
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+
+
+// ===========================================
+// DASHBOARD REFRESH
+// ===========================================
+
+window.refreshDashboard = function () {
+
+    updateContentCounter();
+
+    checkChapterAvailable();
+
+};
+
+
+
+// ===========================================
+// AFTER SAVE
+// ===========================================
+
+window.afterContentSaved = async function () {
+
+    await loadParents();
+
+    refreshTree();
+
+    updateContentCounter();
+
+    checkChapterAvailable();
+
+};
+
+
+
+// ===========================================
+// AUTO LOAD
+// ===========================================
+
+window.addEventListener(
+
+    "DOMContentLoaded",
+
+    () => {
+
+        updateContentCounter();
+
+        checkChapterAvailable();
+
+    }
+
+);
+
+
+
+// ===========================================
+// CONTENT SEARCH
+// ===========================================
+
+window.searchContent = function (keyword) {
+
+    keyword = keyword.toLowerCase();
+
+    const items =
+
+    document.querySelectorAll(".tree-item");
+
+    items.forEach(item => {
+
+        if (
+
+            item.innerText
+
+            .toLowerCase()
+
+            .includes(keyword)
+
+        ) {
+
+            item.style.display = "flex";
+
+        }
+
+        else {
+
+            item.style.display = "none";
+
+        }
+
+    });
+
+};
+
+
+
+// ===========================================
+// CONTENT EXPORT
+// ===========================================
+
+window.exportContent = async function () {
+
+    try {
+
+        const snap = await getDocs(
+
+            collection(db, "nodes")
+
+        );
+
+        const data = [];
+
+        snap.forEach(doc => {
+
+            data.push({
+
+                id: doc.id,
+
+                ...doc.data()
+
+            });
+
+        });
+
+        console.log(data);
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+    }
+
+};
+
+
+
+// ===========================================
+// PART 5 LOADED
+// ===========================================
+
+console.log("Content.js Part-5 Loaded");
+// ===========================================
+// FINAL INITIALIZATION
+// ===========================================
+
+async function initializeContentModule() {
+
+    try {
+
+        console.log("Initializing Content Module...");
+
+        await loadParents();
+
+        await checkChapterAvailable();
+
+        await updateContentCounter();
+
+        if (window.loadTree) {
+
+            await window.loadTree();
+
+        }
+
+        console.log("Content Module Ready");
+
+    }
+
+    catch (error) {
+
+        console.error("Initialization Error :", error);
+
+    }
+
+}
+
+
+
+// ===========================================
+// AUTO REFRESH
+// ===========================================
+
+window.reloadContentModule = async function () {
+
+    await initializeContentModule();
+
+};
+
+
+
+// ===========================================
+// RESET FORM
+// ===========================================
+
+window.resetContentForm = function () {
+
+    if (form) {
+
+        form.reset();
+
+    }
+
+    if (order) {
+
+        order.value = 1;
+
+    }
+
+    loadParents();
+
+};
+
+
+
+// ===========================================
+// CONTENT HEALTH CHECK
+// ===========================================
+
+window.contentHealth = async function () {
+
+    try {
+
+        const snap = await getDocs(
+
+            collection(db, "nodes")
+
+        );
+
+        console.table({
+
+            "Total Nodes": snap.size,
+
+            "Material Unlock":
+
+                localStorage.getItem("contentReady"),
+
+            "Module": "Working"
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+    }
+
+};
+
+
+
+// ===========================================
+// MODULE READY
+// ===========================================
+
+initializeContentModule();
+
+console.log("====================================");
+console.log("StudyWithOm Content Module Ready");
+console.log("====================================");
+
+
+
+// ===========================================
+// EXPORT PUBLIC FUNCTIONS
+// ===========================================
+
+export {
+
+    loadParents,
+
+    refreshTree,
+
+    updateContentCounter,
+
+    checkChapterAvailable
+
+};
