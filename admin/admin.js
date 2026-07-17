@@ -34,42 +34,45 @@ const status = document.getElementById("status");
 const tree = document.getElementById("tree");
 
 
+
 // ===========================
 // SAVE CONTENT
 // ===========================
 
-form.addEventListener("submit", async (e)=>{
+form.addEventListener("submit", async function(e){
 
     e.preventDefault();
 
 
     if(nameInput.value.trim() === ""){
 
-        alert("Please enter name");
+        alert("Enter name");
 
         return;
 
     }
 
 
+
     const data = {
 
-        name:nameInput.value.trim(),
+        name: nameInput.value.trim(),
 
-        type:type.value,
+        type: type.value,
 
         parentId: parent.value || null,
 
-        order:Number(order.value) || 1,
+        order: Number(order.value) || 1,
 
-        status:status.value === "Active",
+        status: status.value === "Active",
 
-        createdAt:serverTimestamp()
+        createdAt: serverTimestamp()
 
     };
 
 
-    console.log("Saving...",data);
+
+    console.log("Saving...", data);
 
 
 
@@ -89,7 +92,7 @@ form.addEventListener("submit", async (e)=>{
 
 
         alert(
-            "Content Saved Successfully ✅"
+            "Content Saved Successfully"
         );
 
 
@@ -104,14 +107,14 @@ form.addEventListener("submit", async (e)=>{
     }
     catch(error){
 
-
         console.error(
-            "Save Error:",
             error
         );
 
 
-        alert(error.message);
+        alert(
+            error.message
+        );
 
     }
 
@@ -150,16 +153,16 @@ async function loadParents(){
 
 
     parent.innerHTML =
-    `<option value="">None (Root Category)</option>`;
+    '<option value="">None (Root Category)</option>';
 
 
 
-    const requiredType =
+    const need =
     parentMap[type.value];
 
 
 
-    if(!requiredType){
+    if(!need){
 
         return;
 
@@ -177,38 +180,38 @@ async function loadParents(){
             where(
                 "type",
                 "==",
-                requiredType
+                need
             )
 
         );
 
 
 
-        const snapshot =
+        const snap =
         await getDocs(q);
 
 
 
         console.log(
             "Parents Found:",
-            snapshot.size
+            snap.size
         );
 
 
 
-        snapshot.forEach((doc)=>{
+        snap.forEach(function(doc){
 
 
             const item = doc.data();
 
 
 
-            parent.innerHTML += `
+            parent.innerHTML +=
 
+            `
             <option value="${doc.id}">
                 ${item.name}
             </option>
-
             `;
 
 
@@ -219,9 +222,8 @@ async function loadParents(){
     }
     catch(error){
 
-
         console.error(
-            "Parent Error:",
+            "Parent Error",
             error
         );
 
@@ -232,15 +234,14 @@ async function loadParents(){
 
 
 
-loadParents();
-
-
 type.addEventListener(
     "change",
     loadParents
 );
 
 
+
+loadParents();
 
 
 
@@ -265,7 +266,7 @@ async function loadTree(){
     try{
 
 
-        const snapshot =
+        const snap =
         await getDocs(
             collection(db,"nodes")
         );
@@ -276,7 +277,7 @@ async function loadTree(){
 
 
 
-        snapshot.forEach((doc)=>{
+        snap.forEach(function(doc){
 
 
             nodes.push({
@@ -299,79 +300,74 @@ async function loadTree(){
 
 
 
-        function buildTree(parentId=null, level=0){
+        function makeTree(parentId, level){
 
 
-            let html="";
+            let html = "";
 
 
 
             nodes
 
-            .filter(node =>
-                node.parentId === parentId
-            )
+            .filter(function(node){
 
-            .sort((a,b)=>
-                (a.order||0)-(b.order||0)
-            )
+                return node.parentId === parentId;
 
+            })
 
-            .forEach(node=>{
+            .sort(function(a,b){
 
+                return (a.order || 0) - (b.order || 0);
 
+            })
 
-                let icon="□";
-
+            .forEach(function(node){
 
 
-                if(node.type==="Category")
-                    icon="▣";
+
+                let icon = "□";
 
 
-                else if(node.type==="Board")
-                    icon="▤";
+
+                if(node.type === "Category")
+                    icon = "▣";
 
 
-                else if(node.type==="Class")
-                    icon="▦";
+                if(node.type === "Board")
+                    icon = "▤";
 
 
-                else if(node.type==="Subject")
-                    icon="■";
+                if(node.type === "Class")
+                    icon = "▦";
+
+
+                if(node.type === "Subject")
+                    icon = "■";
 
 
 
                 html += `
 
-
                 <div class="tree-item"
-                style="margin-left:${level*25}px">
-
+                style="margin-left:${level * 25}px">
 
                     <span class="tree-icon">
-                        ${icon}
+                    ${icon}
                     </span>
-
 
                     ${node.name}
 
-
-                    <small>
                     (${node.type})
-                    </small>
-
 
                 </div>
-
 
                 `;
 
 
 
-                html += buildTree(
+                html += makeTree(
                     node.id,
-                    level+1
+                    level + 1
                 );
 
 
@@ -387,7 +383,7 @@ async function loadTree(){
 
 
         tree.innerHTML =
-        buildTree();
+        makeTree(null,0);
 
 
 
@@ -402,7 +398,7 @@ async function loadTree(){
 
 
         tree.innerHTML =
-        "Error Loading Tree";
+        "Tree Load Error";
 
 
     }
@@ -411,7 +407,5 @@ async function loadTree(){
 }
 
 
-
-// Load tree when page opens
 
 loadTree();
