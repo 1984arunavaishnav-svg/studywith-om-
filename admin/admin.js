@@ -1,11 +1,14 @@
+
 import { db, auth } from "../firebase/firebase-config.js";
 
 import {
   collection,
   addDoc,
-  serverTimestamp
+  serverTimestamp,
+  getDocs,
+  query,
+  where
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
-
 // ===========================
 // START
 // ===========================
@@ -76,3 +79,40 @@ form.addEventListener("submit", async (e) => {
     }
 
 });
+const parentMap = {
+    Category: null,
+    Board: "Category",
+    Class: "Board",
+    Subject: "Class",
+    Chapter: "Subject"
+};
+async function loadParents() {
+
+    parent.innerHTML = `<option value="">None (Root Category)</option>`;
+
+    const requiredType = parentMap[type.value];
+
+    if (!requiredType) return;
+
+    const q = query(
+        collection(db, "nodes"),
+        where("type", "==", requiredType)
+    );
+
+    const snapshot = await getDocs(q);
+
+    snapshot.forEach((doc) => {
+
+        const item = doc.data();
+
+        parent.innerHTML += `
+            <option value="${doc.id}">
+                ${item.name}
+            </option>
+        `;
+
+    });
+
+}
+loadParents();
+type.addEventListener("change", loadParents);
