@@ -1,3 +1,4 @@
+alert("NEW RBSE JS LOADED");
 import { db } from "../firebase/firebase-config.js";
 
 import {
