@@ -112,13 +112,14 @@ async function loadMaterials() {
 
             case "PDF":
 
-                pdfBtn.onclick = () => {
+    pdfBtn.onclick = () => {
 
-                    window.open(data.url, "_blank");
+        window.location.href =
+        `../pdf-viewer.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
 
-                };
+    };
 
-                break;
+break;
 
             case "Quiz":
 
