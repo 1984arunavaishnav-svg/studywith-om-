@@ -1,3 +1,9 @@
+import { db } from "../firebase/firebase-config.js";
+
+import {
+    collection,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 const classSelect = document.getElementById("classSelect");
 const subjectSelect = document.getElementById("subjectSelect");
 const chapterSelect = document.getElementById("chapterSelect");
