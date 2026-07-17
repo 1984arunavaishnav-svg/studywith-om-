@@ -1,13 +1,15 @@
 import { db, auth } from "../firebase/firebase-config.js";
 
 import {
-  collection,
-  addDoc,
-  serverTimestamp,
-  getDocs,
-  query,
-  where
+    collection,
+    addDoc,
+    serverTimestamp,
+    getDocs,
+    query,
+    where
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+
 // ===========================
 // START
 // ===========================
@@ -15,6 +17,7 @@ import {
 console.log("StudyWithOm CMS Started");
 console.log(db);
 console.log(auth);
+
 
 // ===========================
 // ELEMENTS
@@ -28,6 +31,9 @@ const nameInput = document.getElementById("name");
 const order = document.getElementById("order");
 const status = document.getElementById("status");
 
+const tree = document.getElementById("tree");
+
+
 // ===========================
 // SAVE CONTENT
 // ===========================
@@ -36,10 +42,14 @@ form.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    if (nameInput.value.trim() === "") {
-        alert("Please enter a name.");
+
+    if(nameInput.value.trim() === ""){
+
+        alert("Please enter name");
+
         return;
     }
+
 
     const data = {
 
@@ -57,97 +67,249 @@ form.addEventListener("submit", async (e) => {
 
     };
 
+
     console.log("Saving...", data);
 
-    try {
 
-        const docRef = await addDoc(collection(db, "nodes"), data);
+    try{
 
-        console.log("Saved ID:", docRef.id);
+        const docRef = await addDoc(
+            collection(db,"nodes"),
+            data
+        );
+
+
+        console.log("Saved ID:",docRef.id);
+
 
         alert("Content Saved Successfully ✅");
 
+
         form.reset();
 
-    } catch (error) {
 
-        console.error(error);
+        loadParents();
+
+        loadTree();
+
+
+    }
+    catch(error){
+
+        console.error(
+            "Save Error:",
+            error
+        );
+
 
         alert(error.message);
 
     }
 
 });
+
+
+
+// ===========================
+// PARENT SYSTEM
+// ===========================
+
+
 const parentMap = {
-    Category: null,
-    Board: "Category",
-    Class: "Board",
-    Subject: "Class",
-    Chapter: "Subject"
+
+    Category:null,
+
+    Board:"Category",
+
+    Class:"Board",
+
+    Subject:"Class",
+
+    Chapter:"Subject"
+
 };
-async function loadParents() {
 
-    parent.innerHTML = `<option value="">None (Root Category)</option>`;
 
-    const requiredType = parentMap[type.value];
 
-    if (!requiredType) return;
+async function loadParents(){
 
-    const q = query(
-        collection(db, "nodes"),
-        where("type", "==", requiredType)
-    );
 
-    const snapshot = await getDocs(q);
+    if(!parent) return;
 
-    snapshot.forEach((doc) => {
 
-        const item = doc.data();
+    parent.innerHTML =
+    `<option value="">None (Root Category)</option>`;
 
-        parent.innerHTML += `
+
+    const requiredType =
+    parentMap[type.value];
+
+
+    if(!requiredType){
+
+        return;
+
+    }
+
+
+
+    try{
+
+
+        const q = query(
+
+            collection(db,"nodes"),
+
+            where(
+                "type",
+                "==",
+                requiredType
+            )
+
+        );
+
+
+
+        const snapshot =
+        await getDocs(q);
+
+
+
+        console.log(
+            "Parents Found:",
+            snapshot.size
+        );
+
+
+
+        snapshot.forEach((doc)=>{
+
+
+            const item =
+            doc.data();
+
+
+
+            parent.innerHTML += `
+
             <option value="${doc.id}">
                 ${item.name}
             </option>
-        `;
 
-    });
+            `;
+
+
+        });
+
+
+    }
+    catch(error){
+
+        console.error(
+            "Parent Load Error:",
+            error
+        );
+
+    }
+
 
 }
-loadParents();
-// ===========================
-// LOAD CONTENT TREE
-// ===========================
 
-const tree = document.getElementById("tree");
+
+
+loadParents();
+
+
+type.addEventListener(
+    "change",
+    loadParents
+);
+
+
+
+
+// ===========================
+// CONTENT TREE
+// ===========================
 
 
 async function loadTree(){
 
-    tree.innerHTML = "Loading...";
+
+    if(!tree) return;
 
 
-    const snapshot = await getDocs(collection(db, "nodes"));
-    console.log("Tree Documents:", snapshot.size);
+
+    tree.innerHTML =
+    "Loading...";
 
 
-    tree.innerHTML = "";
+
+    try{
 
 
-    snapshot.forEach((doc)=>{
+        const snapshot =
+        await getDocs(
+            collection(db,"nodes")
+        );
 
-        const item = doc.data();
 
 
-        tree.innerHTML += `
-            <div>
-                📄 ${item.name} 
+        console.log(
+            "Tree Documents:",
+            snapshot.size
+        );
+
+
+
+        tree.innerHTML = "";
+
+
+
+        snapshot.forEach((doc)=>{
+
+
+            const item =
+            doc.data();
+
+
+
+            tree.innerHTML += `
+
+            <div class="tree-item">
+
+                📄 ${item.name}
+
                 (${item.type})
-            </div>
-        `;
 
-    });
+            </div>
+
+            `;
+
+
+        });
+
+
+
+    }
+    catch(error){
+
+
+        console.error(
+            "Tree Error:",
+            error
+        );
+
+
+        tree.innerHTML =
+        "Error Loading Tree";
+
+
+    }
+
 
 }
 
-console.log("Loading Tree Started");
+
+
 loadTree();
