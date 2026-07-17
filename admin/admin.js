@@ -839,3 +839,40 @@ const quill = new Quill("#editor", {
         ]
     }
 });
+const materialType = document.getElementById("materialType");
+
+const notesEditorContainer =
+document.getElementById("notesEditorContainer");
+
+materialType.addEventListener("change", () => {
+
+    if (materialType.value === "Notes") {
+
+        notesEditorContainer.style.display = "block";
+
+    } else {
+
+        notesEditorContainer.style.display = "none";
+
+    }
+
+});
+const materialType = document.getElementById("materialType");
+const notesEditorContainer = document.getElementById("notesEditorContainer");
+const dropArea = document.getElementById("dropArea");
+
+materialType.addEventListener("change", () => {
+
+    if (materialType.value === "Notes") {
+
+        notesEditorContainer.style.display = "block";
+        dropArea.style.display = "none";
+
+    } else {
+
+        notesEditorContainer.style.display = "none";
+        dropArea.style.display = "block";
+
+    }
+
+});
