@@ -362,7 +362,10 @@ async function loadTree(){
 
                     (${node.type})
 
-                    
+                    <button onclick="editNode('${node.id}')">
+                    Edit
+                    </button>
+
                     <button onclick="deleteNode('${node.id}')">
                     Delete
                     </button>
@@ -514,6 +517,60 @@ window.deleteNode = async function(id){
             error.message
         );
 
+
+    }
+
+
+};
+// ===========================
+// EDIT NODE
+// ===========================
+
+window.editNode = async function(id){
+
+
+    const newName = prompt(
+        "Enter new name:"
+    );
+
+
+    if(!newName || newName.trim()===""){
+        return;
+    }
+
+
+    try{
+
+
+        await updateDoc(
+            doc(db,"nodes",id),
+            {
+                name:newName.trim()
+            }
+        );
+
+
+        alert(
+            "Updated Successfully"
+        );
+
+
+        loadTree();
+
+
+    }
+    catch(error){
+
+
+        console.error(
+            "Edit Error:",
+            error
+        );
+
+
+        alert(
+            error.message
+        );
 
     }
 
