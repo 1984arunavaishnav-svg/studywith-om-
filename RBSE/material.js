@@ -90,16 +90,16 @@ async function loadMaterials() {
 
         switch (data.type) {
 
-            case "Video":
+           case "Video":
 
-                lectureBtn.onclick = () => {
+    lectureBtn.onclick = () => {
 
-                    window.open(data.url, "_blank");
+        window.location.href =
+        `viewer/video-player.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
 
-                };
+    };
 
-                break;
-
+break;
             case "Notes":
 
                 notesBtn.onclick = () => {
