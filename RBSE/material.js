@@ -4,133 +4,401 @@ import {
     collection,
     getDocs,
     query,
-    where,
-    doc,
-    getdoc
+    where
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 
-// URL से chapter id लेना
+// ===============================
+// ELEMENTS
+// ===============================
 
-const params = new URLSearchParams(
-    window.location.search
-);
-
-
-const chapterId = params.get("chapterId");
-
-
-console.log(
-    "Chapter ID:",
-    chapterId
-);
+const classSelect = document.getElementById("classSelect");
+const subjectSelect = document.getElementById("subjectSelect");
+const chapterSelect = document.getElementById("chapterSelect");
 
 
+// ===============================
+// LOAD CLASSES
+// ===============================
 
-const lectureBtn =
-document.getElementById("lectureBtn");
+async function loadClasses() {
 
-const notesBtn =
-document.getElementById("notesBtn");
+    classSelect.innerHTML =
+    `<option value="">Choose Class</option>`;
 
-const pdfBtn =
-document.getElementById("pdfBtn");
+    subjectSelect.innerHTML =
+    `<option>Select Class First</option>`;
+
+    chapterSelect.innerHTML =
+    `<option>Select Subject First</option>`;
+
+    subjectSelect.disabled = true;
+    chapterSelect.disabled = true;
+
+    try {
+
+        // Find RBSE Board
+
+        const boardQuery = query(
+
+            collection(db, "nodes"),
+
+            where("type", "==", "Board"),
+
+            where("name", "==", "RBSE")
+
+        );
+
+        const boardSnap =
+        await getDocs(boardQuery);
 
 
+        if (boardSnap.empty) {
+
+            alert("RBSE Board not found");
+
+            return;
+
+        }
 
 
-async function loadMaterial(){
+        const boardId =
+        boardSnap.docs[0].id;
 
 
-    if(!chapterId){
+        // Load Classes
+
+        const classQuery = query(
+
+            collection(db, "nodes"),
+
+            where("type", "==", "Class"),
+
+            where("parentId", "==", boardId)
+
+        );
+
+
+        const classSnap =
+        await getDocs(classQuery);
+
+
+        let classes = [];
+
+
+        classSnap.forEach((doc)=>{
+
+            classes.push({
+
+                id:doc.id,
+
+                ...doc.data()
+
+            });
+
+        });
+
+
+        classes.sort((a,b)=>{
+
+            return (a.order || 0) - (b.order || 0);
+
+        });
+
+
+        classes.forEach((item)=>{
+
+            classSelect.innerHTML += `
+
+            <option value="${item.id}">
+
+                ${item.name}
+
+            </option>
+
+            `;
+
+        });
+
 
         console.log(
-            "Chapter ID Missing"
+            "Classes Loaded:",
+            classes.length
         );
+
+    }
+
+    catch(error){
+
+        console.error(
+            error
+        );
+
+    }
+
+}
+
+loadClasses();
+
+
+// ===============================
+// LOAD SUBJECTS
+// ===============================
+
+classSelect.addEventListener(
+"change",
+
+async function(){
+
+    subjectSelect.innerHTML =
+    `<option value="">Choose Subject</option>`;
+
+    chapterSelect.innerHTML =
+    `<option>Select Subject First</option>`;
+
+    chapterSelect.disabled = true;
+
+
+    if(this.value===""){
+
+        subjectSelect.disabled = true;
 
         return;
 
     }
 
 
+    subjectSelect.disabled = false;
+
 
     const q = query(
 
-        collection(db,"materials"),
+        collection(db,"nodes"),
 
         where(
-            "chapterId",
+            "type",
             "==",
-            chapterId
+            "Subject"
+        ),
+
+        where(
+            "parentId",
+            "==",
+            this.value
         )
 
     );
-
 
 
     const snap =
     await getDocs(q);
 
 
-
-    console.log(
-        "Materials Found:",
-        snap.size
-    );
-
+    let subjects = [];
 
 
     snap.forEach((doc)=>{
 
+        subjects.push({
 
-        const data =
-        doc.data();
+            id:doc.id,
 
+            ...doc.data()
 
-
-        console.log(
-            data
-        );
-
-
-
-        if(data.type==="PDF"){
-
-
-            pdfBtn.onclick=function(){
-
-                window.open(
-                    data.url,
-                    "_blank"
-                );
-
-            };
-
-        }
-
-
-
-        if(data.type==="Video"){
-
-
-            lectureBtn.onclick=function(){
-
-                window.open(
-                    data.url,
-                    "_blank"
-                );
-
-            };
-
-        }
-
-
+        });
 
     });
 
 
+    subjects.sort((a,b)=>{
+
+        return (a.order || 0) - (b.order || 0);
+
+    });
+
+
+    subjects.forEach((item)=>{
+
+        subjectSelect.innerHTML += `
+
+        <option value="${item.id}">
+
+            ${item.name}
+
+        </option>
+
+        `;
+
+    });
+
+
+    console.log(
+        "Subjects Loaded:",
+        subjects.length
+    );
+
+});
+// ===============================
+// LOAD CHAPTERS
+// ===============================
+
+subjectSelect.addEventListener(
+"change",
+
+async function(){
+
+    chapterSelect.innerHTML =
+    `<option value="">Choose Chapter</option>`;
+
+
+    if(this.value===""){
+
+        chapterSelect.disabled = true;
+
+        return;
+
+    }
+
+
+    chapterSelect.disabled = false;
+
+
+    try{
+
+        const q = query(
+
+            collection(db,"nodes"),
+
+            where(
+                "type",
+                "==",
+                "Chapter"
+            ),
+
+            where(
+                "parentId",
+                "==",
+                this.value
+            )
+
+        );
+
+
+        const snap =
+        await getDocs(q);
+
+
+        let chapters = [];
+
+
+        snap.forEach((doc)=>{
+
+            chapters.push({
+
+                id:doc.id,
+
+                ...doc.data()
+
+            });
+
+        });
+
+
+        chapters.sort((a,b)=>{
+
+            return (a.order || 0) - (b.order || 0);
+
+        });
+
+
+        chapters.forEach((item)=>{
+
+            chapterSelect.innerHTML += `
+
+            <option value="${item.id}">
+
+                ${item.name}
+
+            </option>
+
+            `;
+
+        });
+
+
+        console.log(
+            "Chapters Loaded:",
+            chapters.length
+        );
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Chapter Load Error:",
+            error
+        );
+
+    }
+
+});
+
+
+// ===============================
+// OPEN MATERIAL PAGE
+// ===============================
+
+chapterSelect.addEventListener(
+"change",
+
+function(){
+
+    if(this.value===""){
+
+        return;
+
+    }
+
+
+    window.location.href =
+
+    `material.html?chapterId=${this.value}`;
+
+});
+
+
+// ===============================
+// SEARCH (Coming Soon)
+// ===============================
+
+const searchInput =
+document.getElementById("searchInput");
+
+if(searchInput){
+
+    searchInput.addEventListener(
+
+        "input",
+
+        function(){
+
+            console.log(
+                "Search:",
+                this.value
+            );
+
+        }
+
+    );
+
 }
 
 
+// ===============================
+// READY
+// ===============================
 
-loadMaterial();
+console.log(
+    "RBSE Firebase System Ready ✅"
+);
