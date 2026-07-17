@@ -128,7 +128,7 @@ lecture:"#",
 notes:"#",
 pdf:"#",
 quiz:"#"
-},
+}
 },
 
 "English": {
@@ -194,7 +194,7 @@ lecture:"#",
 notes:"#",
 pdf:"#",
 quiz:"#"
-},
+}
 },
 
 "Maths": {
@@ -288,7 +288,7 @@ lecture:"#",
 notes:"#",
 pdf:"#",
 quiz:"#"
-},
+}
 },
 
 
