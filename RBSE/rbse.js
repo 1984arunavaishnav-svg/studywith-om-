@@ -71,3 +71,47 @@ async function loadClasses() {
 }
 
 loadClasses();
+// ==========================
+// LOAD SUBJECTS
+// ==========================
+
+classSelect.addEventListener("change", async function () {
+
+    subjectSelect.innerHTML =
+        `<option value="">Choose Subject</option>`;
+
+    chapterSelect.innerHTML =
+        `<option value="">Choose Chapter</option>`;
+
+    chapterSelect.disabled = true;
+
+    if (this.value === "") {
+        subjectSelect.disabled = true;
+        return;
+    }
+
+    subjectSelect.disabled = false;
+
+    const q = query(
+        collection(db, "nodes"),
+        where("type", "==", "Subject"),
+        where("parentId", "==", this.value)
+    );
+
+    const snap = await getDocs(q);
+
+    console.log("Subjects Loaded:", snap.size);
+
+    snap.forEach((doc) => {
+
+        const item = doc.data();
+
+        subjectSelect.innerHTML += `
+            <option value="${doc.id}">
+                ${item.name}
+            </option>
+        `;
+
+    });
+
+});
