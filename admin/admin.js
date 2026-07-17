@@ -35,6 +35,28 @@ const order = document.getElementById("order");
 const status = document.getElementById("status");
 
 const tree = document.getElementById("tree");
+// ===========================
+// MATERIAL ELEMENTS
+// ===========================
+
+const materialForm =
+document.getElementById("materialForm");
+
+
+const chapterSelect =
+document.getElementById("chapterSelect");
+
+
+const materialType =
+document.getElementById("materialType");
+
+
+const materialTitle =
+document.getElementById("materialTitle");
+
+
+const materialURL =
+document.getElementById("materialURL");
 
 
 
@@ -580,3 +602,85 @@ window.editNode = async function(id){
 
 
 };
+// ===========================
+// LOAD CHAPTERS FOR MATERIAL
+// ===========================
+
+async function loadChapters(){
+
+
+    if(!chapterSelect) return;
+
+
+    chapterSelect.innerHTML =
+    `<option value="">
+    Select Chapter
+    </option>`;
+
+
+    try{
+
+
+        const q = query(
+
+            collection(db,"nodes"),
+
+            where(
+                "type",
+                "==",
+                "Chapter"
+            )
+
+        );
+
+
+        const snap =
+        await getDocs(q);
+
+
+
+        console.log(
+            "Chapters Found:",
+            snap.size
+        );
+
+
+
+        snap.forEach(function(doc){
+
+
+            const item = doc.data();
+
+
+
+            chapterSelect.innerHTML += `
+
+            <option value="${doc.id}">
+                ${item.name}
+            </option>
+
+            `;
+
+
+        });
+
+
+
+    }
+    catch(error){
+
+
+        console.error(
+            "Chapter Load Error:",
+            error
+        );
+
+
+    }
+
+
+}
+
+
+
+loadChapters();
