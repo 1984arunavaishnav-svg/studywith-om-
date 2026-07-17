@@ -1,404 +1,145 @@
-
 import { db } from "../firebase/firebase-config.js";
 
 import {
     collection,
     getDocs,
     query,
-    where
+    where,
+    getDoc,
+    doc
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
-// ===============================
+
+// ===========================
+// GET URL PARAMS
+// ===========================
+
+const params = new URLSearchParams(window.location.search);
+
+const chapterId = params.get("chapterId");
+
+console.log("Chapter ID:", chapterId);
+
+
+// ===========================
 // ELEMENTS
-// ===============================
+// ===========================
 
-const classSelect = document.getElementById("classSelect");
-const subjectSelect = document.getElementById("subjectSelect");
-const chapterSelect = document.getElementById("chapterSelect");
+const chapterTitle = document.getElementById("chapterTitle");
+
+const lectureBtn = document.getElementById("lectureBtn");
+const notesBtn = document.getElementById("notesBtn");
+const pdfBtn = document.getElementById("pdfBtn");
+const quizBtn = document.getElementById("quizBtn");
 
 
-// ===============================
-// LOAD CLASSES
-// ===============================
+// ===========================
+// LOAD CHAPTER NAME
+// ===========================
 
-async function loadClasses() {
+async function loadChapter() {
 
-    classSelect.innerHTML =
-    `<option value="">Choose Class</option>`;
-
-    subjectSelect.innerHTML =
-    `<option>Select Class First</option>`;
-
-    chapterSelect.innerHTML =
-    `<option>Select Subject First</option>`;
-
-    subjectSelect.disabled = true;
-    chapterSelect.disabled = true;
+    if (!chapterId) return;
 
     try {
 
-        // Find RBSE Board
+        const chapterRef = doc(db, "nodes", chapterId);
 
-        const boardQuery = query(
+        const snap = await getDoc(chapterRef);
 
-            collection(db, "nodes"),
+        if (snap.exists()) {
 
-            where("type", "==", "Board"),
-
-            where("name", "==", "RBSE")
-
-        );
-
-        const boardSnap =
-        await getDocs(boardQuery);
-
-
-        if (boardSnap.empty) {
-
-            alert("RBSE Board not found");
-
-            return;
+            chapterTitle.innerHTML = snap.data().name;
 
         }
 
+    } catch (error) {
 
-        const boardId =
-        boardSnap.docs[0].id;
-
-
-        // Load Classes
-
-        const classQuery = query(
-
-            collection(db, "nodes"),
-
-            where("type", "==", "Class"),
-
-            where("parentId", "==", boardId)
-
-        );
-
-
-        const classSnap =
-        await getDocs(classQuery);
-
-
-        let classes = [];
-
-
-        classSnap.forEach((doc)=>{
-
-            classes.push({
-
-                id:doc.id,
-
-                ...doc.data()
-
-            });
-
-        });
-
-
-        classes.sort((a,b)=>{
-
-            return (a.order || 0) - (b.order || 0);
-
-        });
-
-
-        classes.forEach((item)=>{
-
-            classSelect.innerHTML += `
-
-            <option value="${item.id}">
-
-                ${item.name}
-
-            </option>
-
-            `;
-
-        });
-
-
-        console.log(
-            "Classes Loaded:",
-            classes.length
-        );
-
-    }
-
-    catch(error){
-
-        console.error(
-            error
-        );
+        console.error(error);
 
     }
 
 }
 
-loadClasses();
 
+// ===========================
+// LOAD MATERIALS
+// ===========================
 
-// ===============================
-// LOAD SUBJECTS
-// ===============================
+async function loadMaterials() {
 
-classSelect.addEventListener(
-"change",
-
-async function(){
-
-    subjectSelect.innerHTML =
-    `<option value="">Choose Subject</option>`;
-
-    chapterSelect.innerHTML =
-    `<option>Select Subject First</option>`;
-
-    chapterSelect.disabled = true;
-
-
-    if(this.value===""){
-
-        subjectSelect.disabled = true;
-
-        return;
-
-    }
-
-
-    subjectSelect.disabled = false;
-
+    if (!chapterId) return;
 
     const q = query(
 
-        collection(db,"nodes"),
+        collection(db, "materials"),
 
-        where(
-            "type",
-            "==",
-            "Subject"
-        ),
-
-        where(
-            "parentId",
-            "==",
-            this.value
-        )
+        where("chapterId", "==", chapterId)
 
     );
 
+    const snap = await getDocs(q);
 
-    const snap =
-    await getDocs(q);
+    console.log("Materials Found:", snap.size);
 
+    snap.forEach((docSnap) => {
 
-    let subjects = [];
+        const data = docSnap.data();
 
+        console.log(data);
 
-    snap.forEach((doc)=>{
+        switch (data.type) {
 
-        subjects.push({
+            case "Video":
 
-            id:doc.id,
+                lectureBtn.onclick = () => {
 
-            ...doc.data()
+                    window.open(data.url, "_blank");
 
-        });
+                };
 
-    });
+                break;
 
+            case "Notes":
 
-    subjects.sort((a,b)=>{
+                notesBtn.onclick = () => {
 
-        return (a.order || 0) - (b.order || 0);
+                    window.open(data.url, "_blank");
 
-    });
+                };
 
+                break;
 
-    subjects.forEach((item)=>{
+            case "PDF":
 
-        subjectSelect.innerHTML += `
+                pdfBtn.onclick = () => {
 
-        <option value="${item.id}">
+                    window.open(data.url, "_blank");
 
-            ${item.name}
+                };
 
-        </option>
+                break;
 
-        `;
+            case "Quiz":
 
-    });
+                quizBtn.onclick = () => {
 
+                    window.open(data.url, "_blank");
 
-    console.log(
-        "Subjects Loaded:",
-        subjects.length
-    );
+                };
 
-});
-// ===============================
-// LOAD CHAPTERS
-// ===============================
-
-subjectSelect.addEventListener(
-"change",
-
-async function(){
-
-    chapterSelect.innerHTML =
-    `<option value="">Choose Chapter</option>`;
-
-
-    if(this.value===""){
-
-        chapterSelect.disabled = true;
-
-        return;
-
-    }
-
-
-    chapterSelect.disabled = false;
-
-
-    try{
-
-        const q = query(
-
-            collection(db,"nodes"),
-
-            where(
-                "type",
-                "==",
-                "Chapter"
-            ),
-
-            where(
-                "parentId",
-                "==",
-                this.value
-            )
-
-        );
-
-
-        const snap =
-        await getDocs(q);
-
-
-        let chapters = [];
-
-
-        snap.forEach((doc)=>{
-
-            chapters.push({
-
-                id:doc.id,
-
-                ...doc.data()
-
-            });
-
-        });
-
-
-        chapters.sort((a,b)=>{
-
-            return (a.order || 0) - (b.order || 0);
-
-        });
-
-
-        chapters.forEach((item)=>{
-
-            chapterSelect.innerHTML += `
-
-            <option value="${item.id}">
-
-                ${item.name}
-
-            </option>
-
-            `;
-
-        });
-
-
-        console.log(
-            "Chapters Loaded:",
-            chapters.length
-        );
-
-    }
-
-    catch(error){
-
-        console.error(
-            "Chapter Load Error:",
-            error
-        );
-
-    }
-
-});
-
-
-// ===============================
-// OPEN MATERIAL PAGE
-// ===============================
-
-chapterSelect.addEventListener(
-"change",
-
-function(){
-
-    if(this.value===""){
-
-        return;
-
-    }
-
-
-    window.location.href =
-
-    `material.html?chapterId=${this.value}`;
-
-});
-
-
-// ===============================
-// SEARCH (Coming Soon)
-// ===============================
-
-const searchInput =
-document.getElementById("searchInput");
-
-if(searchInput){
-
-    searchInput.addEventListener(
-
-        "input",
-
-        function(){
-
-            console.log(
-                "Search:",
-                this.value
-            );
+                break;
 
         }
 
-    );
+    });
 
 }
 
 
-// ===============================
-// READY
-// ===============================
+// ===========================
+// START
+// ===========================
 
-console.log(
-    "RBSE Firebase System Ready ✅"
-);
+loadChapter();
+loadMaterials();
