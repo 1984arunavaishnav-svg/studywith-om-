@@ -27,6 +27,7 @@ let typeSelect;
 let nameInput;
 let orderInput;
 let statusSelect;
+let tree;
 
 
 // Parent Type Mapping
@@ -65,6 +66,8 @@ export function initContent() {
     orderInput = document.getElementById("order");
 
     statusSelect = document.getElementById("status");
+
+    tree = document.getElementById("tree");
 
 
     if (!form) {
@@ -215,6 +218,8 @@ async function saveContent(e) {
 
         loadParents();
 
+        loadTree();
+
     }
 
     catch (error) {
@@ -224,5 +229,97 @@ async function saveContent(e) {
         alert(error.message);
 
     }
+
+}
+// ======================================
+// LOAD TREE
+// ======================================
+
+async function loadTree() {
+
+    if (!tree) return;
+
+    tree.innerHTML = "Loading...";
+
+    try {
+
+        const snap = await getDocs(
+            collection(db, "nodes")
+        );
+
+        let nodes = [];
+
+        snap.forEach((doc) => {
+
+            nodes.push({
+
+                id: doc.id,
+
+                ...doc.data()
+
+            });
+
+        });
+
+        nodes.sort((a, b) => {
+
+            return (a.order || 0) - (b.order || 0);
+
+        });
+
+        tree.innerHTML = "";
+
+        renderTree(null, 0, nodes);
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        tree.innerHTML = "Tree Load Error";
+
+    }
+
+}
+// ======================================
+// RENDER TREE
+// ======================================
+
+function renderTree(parentId, level, nodes) {
+
+    nodes
+
+    .filter(node => node.parentId === parentId)
+
+    .forEach(node => {
+
+        tree.innerHTML += `
+
+        <div
+        class="tree-item"
+        style="margin-left:${level * 25}px">
+
+            📁 ${node.name}
+
+            <small>
+                (${node.type})
+            </small>
+
+        </div>
+
+        `;
+
+        renderTree(
+
+            node.id,
+
+            level + 1,
+
+            nodes
+
+        );
+
+    });
 
 }
