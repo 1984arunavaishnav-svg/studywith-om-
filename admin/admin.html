@@ -170,13 +170,93 @@
     </button>
 
 </form>
-<div class="content-tree">
+<!-- ================= MATERIAL SYSTEM ================= -->
 
-    <h2>Content Tree</h2>
+<section class="material-form">
 
-    <div id="tree">
-        Loading...
-    </div>
+    <h2>Add Material</h2>
+
+
+    <form id="materialForm">
+
+
+        <div class="form-group">
+
+            <label>Chapter</label>
+
+            <select id="chapterSelect">
+
+                <option value="">
+                    Select Chapter
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>Material Type</label>
+
+            <select id="materialType">
+
+                <option value="PDF">
+                    PDF Notes
+                </option>
+
+                <option value="Video">
+                    Video
+                </option>
+
+                <option value="Question">
+                    Question Paper
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>Title</label>
+
+            <input 
+            id="materialTitle"
+            type="text"
+            placeholder="Enter Material Name">
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>Link</label>
+
+            <input
+            id="materialURL"
+            type="text"
+            placeholder="PDF / Video URL">
+
+        </div>
+
+
+
+        <button type="submit">
+
+            Save Material
+
+        </button>
+
+
+    </form>
+
+
+</section>
 
 </div>
             </section>
