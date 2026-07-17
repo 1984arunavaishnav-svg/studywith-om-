@@ -1,495 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>StudyWithOm Admin Panel</title>
-
 <link rel="stylesheet" href="admin.css">
 <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-
-
 <body>
 
-
 <header class="topbar">
-
-    <div class="logo">
-        <i class="fa-solid fa-graduation-cap"></i>
-        <span>StudyWithOm CMS</span>
-    </div>
-
-
-    <div class="admin-profile">
-
-        <i class="fa-solid fa-user-shield"></i>
-        Admin
-
-    </div>
-
+  <div class="logo"><i class="fa-solid fa-graduation-cap"></i> <span>StudyWithOm CMS</span></div>
+  <div class="admin-profile"><i class="fa-solid fa-user-shield"></i> Admin</div>
 </header>
 
-
-
 <div class="container">
-
-
 <aside class="sidebar">
-
 <ul>
-
-<li class="active">
-
-<i class="fa-solid fa-layer-group"></i>
-Dashboard
-
-</li>
-
-
-<li>
-
-<i class="fa-solid fa-folder-tree"></i>
-Content
-
-</li>
-
-
-<li>
-
-<i class="fa-solid fa-file-pdf"></i>
-Materials
-
-</li>
-
-
-<li>
-
-<i class="fa-solid fa-image"></i>
-Media
-
-</li>
-
-
-<li>
-
-<i class="fa-solid fa-gear"></i>
-Settings
-
-</li>
-
-
+<li id="menuDashboard" class="active"><i class="fa-solid fa-layer-group"></i> Dashboard</li>
+<li id="menuContent"><i class="fa-solid fa-folder-tree"></i> Content</li>
+<li id="menuMaterials"><i class="fa-solid fa-file-pdf"></i> Materials</li>
+<li id="menuMedia"><i class="fa-solid fa-image"></i> Media</li>
+<li id="menuSettings"><i class="fa-solid fa-gear"></i> Settings</li>
 </ul>
-
 </aside>
 
-
-
-
-
 <main class="main-content">
-    <div id="dashboardPage" class="page">
 
+<div id="dashboardPage" class="page">
 <h2>Dashboard</h2>
-
 <p>Welcome to StudyWithOm CMS</p>
-
+<div class="dashboard-grid">
+<div class="dashboard-card"><h3>Total Categories</h3><h1 id="totalCategories">0</h1></div>
+<div class="dashboard-card"><h3>Total Boards</h3><h1 id="totalBoards">0</h1></div>
+<div class="dashboard-card"><h3>Total Classes</h3><h1 id="totalClasses">0</h1></div>
+<div class="dashboard-card"><h3>Total Subjects</h3><h1 id="totalSubjects">0</h1></div>
+<div class="dashboard-card"><h3>Total Chapters</h3><h1 id="totalChapters">0</h1></div>
+<div class="dashboard-card"><h3>Total Materials</h3><h1 id="totalMaterials">0</h1></div>
+</div>
 </div>
 
 <div id="contentPage" class="page" style="display:none;">
-
-
-
-<div class="page-title">
-
 <h2>Content Manager</h2>
-
-<p>
-Manage Categories, Boards, Classes, Subjects,
-Chapters and Materials.
-</p>
-
-</div>
-
-
-
-
-
-<!-- ================= CONTENT FORM ================= -->
-
-
-<section class="content-form">
-
-
-<h3>Add New Content</h3>
-
-
-
 <form id="contentForm">
-
-
-
-<div class="form-group">
-
-<label>Parent</label>
-
-<select id="parent">
-
-<option value="">
-None (Root Category)
-</option>
-
-</select>
-
-</div>
-
-
-
-
-
-<div class="form-group">
-
-<label>Type</label>
-
+<select id="parent"><option value="">None (Root)</option></select>
 <select id="type">
-
-<option value="Category">
-Category
-</option>
-
-<option value="Board">
-Board
-</option>
-
-<option value="Class">
-Class
-</option>
-
-<option value="Subject">
-Subject
-</option>
-
-<option value="Chapter">
-Chapter
-</option>
-
-
+<option>Category</option><option>Board</option><option>Class</option><option>Subject</option><option>Chapter</option>
 </select>
-
-</div>
-
-
-
-
-
-
-<div class="form-group">
-
-<label>Name</label>
-
-<input
-id="name"
-type="text"
-placeholder="Enter Name">
-
-</div>
-
-
-
-
-
-<div class="form-group">
-
-<label>Display Order</label>
-
-<input
-id="order"
-type="number"
-value="1">
-
-</div>
-
-
-
-
-
-<div class="form-group">
-
-<label>Status</label>
-
-<select id="status">
-
-
-<option value="Active">
-Active
-</option>
-
-
-<option value="Hidden">
-Hidden
-</option>
-
-
-</select>
-
-</div>
-
-
-
-
-
-<button type="submit" id="saveBtn">
-
-<i class="fa-solid fa-plus"></i>
-
-Save Content
-
-</button>
-
-
-
+<input id="name" placeholder="Name">
+<input id="order" type="number" value="1">
+<select id="status"><option>Active</option><option>Hidden</option></select>
+<button id="saveBtn" type="submit">Save Content</button>
 </form>
-
-
-</section>
-
-
-
-
-
-<!-- ================= CONTENT TREE ================= -->
-
-
-<section class="content-tree">
-
-
-<h3>Website Structure</h3>
-
-
-<div id="tree">
-
-Loading...
-
-</div>
-
-
-</section>
-
+<div id="tree">Loading...</div>
 </div>
 
 <div id="materialsPage" class="page" style="display:none;">
-
-
-
-
-
-
-<!-- ================= MATERIAL SYSTEM ================= -->
-
-
-<section class="material-form">
-
-<h3>Material Manager</h3>
-
-<div class="form-group">
-
-<label>Chapter</label>
-
-<select id="chapterSelect">
-<option value="">Select Chapter</option>
-</select>
-
-</div>
-
-<div class="form-group">
-
-<label>Material Type</label>
-
-<select id="materialType">
-
-<option value="">Choose Material</option>
-
-<option value="PDF">PDF</option>
-
-<option value="Video">Video</option>
-
-<option value="Notes">Notes</option>
-
-<option value="Quiz">Quiz</option>
-
-</select>
-
-</div>
-
-<!-- ================= PDF ================= -->
-
-<div id="pdfSection" class="material-section">
-
-<div class="form-group">
-
-<label>PDF Title</label>
-
-<input
-type="text"
-id="pdfTitle"
-placeholder="Enter PDF Title">
-
-</div>
-
-<div id="pdfDropArea" class="drop-area">
-
-<i class="fa-solid fa-file-pdf"></i>
-
-<h3>Drop PDF Here</h3>
-
-<p>Click or Drag PDF</p>
-
-<input
-type="file"
-id="pdfFile"
-accept=".pdf"
-hidden>
-
-</div>
-
-</div>
-
-<!-- ================= VIDEO ================= -->
-
-<div
-id="videoSection"
-class="material-section"
-style="display:none;">
-
-<div class="form-group">
-
-<label>Video Title</label>
-
-<input
-type="text"
-id="videoTitle">
-
-</div>
-
-<div
-id="videoDropArea"
-class="drop-area">
-
-<i class="fa-solid fa-video"></i>
-
-<h3>Drop Video Here</h3>
-
-<p>Click or Drag Video</p>
-
-<input
-type="file"
-id="videoFile"
-accept="video/*"
-hidden>
-
-</div>
-
-</div>
-
-<!-- ================= NOTES ================= -->
-
-<div
-id="notesSection"
-class="material-section"
-style="display:none;">
-
-<div class="form-group">
-
-<label>Notes Title</label>
-
-<input
-type="text"
-id="notesTitle">
-
-</div>
-
-<div id="editor"></div>
-
-</div>
-
-<!-- ================= QUIZ ================= -->
-
-<div
-id="quizSection"
-class="material-section"
-style="display:none;">
-
-<div class="form-group">
-
-<label>Quiz Title</label>
-
-<input
-type="text"
-id="quizTitle">
-
-</div>
-
-<button
-type="button"
-id="addQuestion">
-
-+ Add Question
-
-</button>
-
-<div id="questionsBox"></div>
-
-</div>
-
-<br>
-
-<button
-id="saveMaterial"
-type="button">
-
-Save Material
-
-</button>
-
-</section>
+<h2>Material Manager</h2>
+<p>Material UI will be added in next version.</p>
 </div>
 
 <div id="mediaPage" class="page" style="display:none;">
-
 <h2>Media Library</h2>
-
 </div>
 
 <div id="settingsPage" class="page" style="display:none;">
-
 <h2>Settings</h2>
-
 </div>
-
-
-
-
-
 
 </main>
-
-
-
 </div>
 
-
-
-
-
 <script type="module" src="js/admin.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 </body>
-
 </html>
