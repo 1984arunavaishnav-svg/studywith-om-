@@ -115,7 +115,7 @@ async function loadMaterials() {
     pdfBtn.onclick = () => {
 
         window.location.href =
-        `../pdf-viewer.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
+        `viewer/pdf-viewer.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
 
     };
 
