@@ -824,3 +824,18 @@ dropArea.addEventListener("drop", (e) => {
     "📄 " + selectedFile.name;
 
 });
+const quill = new Quill("#editor", {
+    theme: "snow",
+
+    placeholder: "Write Study Notes Here...",
+
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ["bold", "italic", "underline"],
+            [{ list: "ordered" }, { list: "bullet" }],
+            ["link", "image"],
+            ["clean"]
+        ]
+    }
+});
