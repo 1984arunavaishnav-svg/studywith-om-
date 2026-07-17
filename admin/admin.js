@@ -362,6 +362,8 @@ async function loadTree(){
 
                     (${node.type})
 
+                    <div class="tree-actions">
+
                     <button onclick="editNode('${node.id}')">
                     Edit
                     </button>
@@ -369,6 +371,8 @@ async function loadTree(){
                     <button onclick="deleteNode('${node.id}')">
                     Delete
                     </button>
+
+                    </div>
 
 
                  

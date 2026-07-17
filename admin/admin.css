@@ -239,13 +239,23 @@ select{
     display:inline-block;
 }
 
-
 .tree-item button{
-
-    margin-left:auto;
 
     padding:4px 10px;
 
     cursor:pointer;
+
+    margin-left:5px;
+
+}
+
+
+.tree-actions{
+
+    margin-left:auto;
+
+    display:flex;
+
+    gap:5px;
 
 }
