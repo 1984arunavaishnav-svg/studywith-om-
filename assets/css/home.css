@@ -22,25 +22,37 @@ body { font-family:'Poppins', sans-serif; background:linear-gradient(135deg,#0f1
 .hero { background:#1565c0; border-radius:20px; text-align:center; color:white; padding:40px; }
 .hero h1 { font-size:40px; margin-bottom:10px; }
 /* Hero Buttons को सेंटर में लाने के लिए अपडेटेड कोड */
+/* Hero Buttons के लिए सही CSS */
 .hero-buttons {
     margin-top: 20px;
-    display: flex;          /* यह कंटेनर को फ्लेक्स बॉक्स बना देगा */
-    justify-content: center; /* यह बटन्स को हॉरिजॉन्टल सेंटर में ले आएगा */
-    gap: 15px;              /* दोनों बटन्स के बीच में थोड़ी जगह बना देगा */
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
-/* अगर आप बटन्स पर थोड़ा और अच्छा लुक चाहते हैं */
-.btn-primary, .btn-secondary {
+.btn-primary {
+    background-color: #ff9800; /* ऑरेंज बैकग्राउंड */
+    color: #ffffff;           /* सफेद टेक्स्ट */
     padding: 12px 30px;
     border-radius: 40px;
     text-decoration: none;
-    color: #000000;
     font-weight: 600;
-    transition: transform 0.3s ease; /* क्लिक करने या होवर पर स्मूथ इफेक्ट */
+    transition: transform 0.3s ease;
 }
 
+.btn-secondary {
+    background-color: #2602f2; /* नीला बैकग्राउंड */
+    color: #ffffff;           /* सफेद टेक्स्ट */
+    padding: 12px 30px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+/* बटन पर होवर (Hover) इफेक्ट */
 .btn-primary:hover, .btn-secondary:hover {
-    transform: scale(1.05); /* होवर करने पर बटन्स थोड़े बड़े होंगे */
+    transform: scale(1.05);
 }
 /* Stats */
 .stats { display:flex; justify-content:space-around; margin:30px 0; padding:20px; border-top:1px solid #ddd; border-bottom:1px solid #ddd; }
