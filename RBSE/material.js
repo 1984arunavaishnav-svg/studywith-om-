@@ -95,41 +95,37 @@ async function loadMaterials() {
     lectureBtn.onclick = () => {
 
         window.location.href =
-        `viewer/video-player.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
+        `/viewer/video-player.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
 
     };
 
 break;
-            case "Notes":
-
-                notesBtn.onclick = () => {
-
-                    window.open(data.url, "_blank");
-
-                };
-
-                break;
+            // material.js में यह बदलाव करें
+case "Notes":
+    notesBtn.onclick = () => {
+        window.location.href = 
+        `/viewer/notes-viewer.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
+    };
+    break;
 
             case "PDF":
 
     pdfBtn.onclick = () => {
 
         window.location.href =
-        `viewer/pdf-viewer.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
+        `/viewer/pdf-viewer.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
 
     };
 
 break;
 
             case "Quiz":
-
-                quizBtn.onclick = () => {
-
-                    window.open(data.url, "_blank");
-
-                };
-
-                break;
+    // पुरानी लाइन को हटाकर इसे लिखें
+    quizBtn.onclick = () => {
+        window.location.href = 
+        `/viewer/quiz.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
+    };
+    break;
 
         }
 
