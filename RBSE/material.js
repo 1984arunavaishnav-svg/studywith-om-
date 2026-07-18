@@ -104,7 +104,7 @@ break;
 case "Notes":
     notesBtn.onclick = () => {
         window.location.href = 
-        `/viewer/notes-viewer.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
+        `/viewer/notes.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
     };
     break;
 
