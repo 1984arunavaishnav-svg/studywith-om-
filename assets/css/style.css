@@ -139,21 +139,24 @@ a {
    Professional Board Cards
 =========================== */
 
-.board-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
-    margin-top:30px;
+.board-container {
+    display: flex;             /* Grid की जगह Flex का उपयोग */
+    flex-wrap: wrap;           /* ताकि स्क्रीन छोटी होने पर कार्ड्स नीचे आ जाएं */
+    justify-content: center;   /* यह कार्ड्स को हॉरिजॉन्टल सेंटर में लाएगा */
+    gap: 20px;
+    margin-top: 30px;
 }
 
-.board-card{
-    background:#ffffff;
-    border:2px solid #e5e7eb;
-    border-radius:18px;
-    padding:22px;
-    cursor:pointer;
-    transition:all .3s ease;
-    box-shadow:0 6px 20px rgba(0,0,0,.08);
+.board-card {
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 22px;
+    cursor: pointer;
+    transition: all .3s ease;
+    box-shadow: 0 6px 20px rgba(0,0,0,.08);
+    width: 250px;              /* कार्ड्स की एक निश्चित चौड़ाई */
+    text-align: center;        /* कार्ड के अंदर का कंटेंट सेंटर करने के लिए */
 }
 
 .board-card:hover{
