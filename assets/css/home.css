@@ -21,11 +21,27 @@ body { font-family:'Poppins', sans-serif; background:linear-gradient(135deg,#0f1
 /* Hero */
 .hero { background:#1565c0; border-radius:20px; text-align:center; color:white; padding:40px; }
 .hero h1 { font-size:40px; margin-bottom:10px; }
-.hero-buttons { margin-top:20px; }
-.btn-primary, .btn-secondary { display:inline-block; padding:12px 30px; margin:5px; border-radius:40px; text-decoration:none; color:white; font-weight:600; }
-.btn-primary { background:#ff9800; }
-.btn-secondary { background: #2602f2;}
+/* Hero Buttons को सेंटर में लाने के लिए अपडेटेड कोड */
+.hero-buttons {
+    margin-top: 20px;
+    display: flex;          /* यह कंटेनर को फ्लेक्स बॉक्स बना देगा */
+    justify-content: center; /* यह बटन्स को हॉरिजॉन्टल सेंटर में ले आएगा */
+    gap: 15px;              /* दोनों बटन्स के बीच में थोड़ी जगह बना देगा */
+}
 
+/* अगर आप बटन्स पर थोड़ा और अच्छा लुक चाहते हैं */
+.btn-primary, .btn-secondary {
+    padding: 12px 30px;
+    border-radius: 40px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: transform 0.3s ease; /* क्लिक करने या होवर पर स्मूथ इफेक्ट */
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    transform: scale(1.05); /* होवर करने पर बटन्स थोड़े बड़े होंगे */
+}
 /* Stats */
 .stats { display:flex; justify-content:space-around; margin:30px 0; padding:20px; border-top:1px solid #ddd; border-bottom:1px solid #ddd; }
 .stat-box { text-align:center; }
