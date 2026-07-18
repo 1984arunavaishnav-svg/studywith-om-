@@ -342,3 +342,5 @@ hr{
 
 
 }
+.top-logo { position:fixed; top:30px; right:30px; width:70px; height:70px; border-radius:50%; border:3px#fff;background: #fff;object-fit: contain;
+    padding: 5px;box-sizing: border-box;z-index: 9999; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
