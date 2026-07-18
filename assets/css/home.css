@@ -34,7 +34,7 @@ body { font-family:'Poppins', sans-serif; background:linear-gradient(135deg,#0f1
     padding: 12px 30px;
     border-radius: 40px;
     text-decoration: none;
-    color: white;
+    color: #000000;
     font-weight: 600;
     transition: transform 0.3s ease; /* क्लिक करने या होवर पर स्मूथ इफेक्ट */
 }
