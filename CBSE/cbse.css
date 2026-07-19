@@ -1,0 +1,346 @@
+/* =====================================
+        STUDY WITH OM - RBSE CSS
+===================================== */
+
+
+/* ---------- Common Page ---------- */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+
+.container {
+
+    background:white;
+    width:100%;
+    max-width:800px;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+
+}
+
+
+
+@media screen and (min-width:600px){
+
+body{
+
+    font-size:18px;
+
+}
+
+.container{
+
+    padding:40px;
+
+}
+
+}
+
+
+
+/* ---------- Back Button ---------- */
+
+
+.back-btn{
+
+    display:inline-block;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    padding:14px 28px;
+    border-radius:14px;
+    font-size:22px;
+    font-weight:bold;
+    text-decoration:none;
+    box-shadow:0 6px 15px rgba(0,0,0,.25);
+    transition:.3s;
+    margin-bottom:25px;
+
+}
+
+
+.back-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+
+/* ---------- Hero ---------- */
+
+
+.hero{
+
+    text-align:center;
+    padding:20px 0;
+
+}
+
+
+.hero h1{
+
+    color:#1565c0;
+    font-size:40px;
+    margin-bottom:8px;
+
+}
+
+
+
+.hero h1 i{
+
+    color:#ff9800;
+    margin-right:10px;
+
+}
+
+
+
+.hero p{
+
+    font-size:18px;
+    color:#666;
+
+}
+
+
+
+hr{
+
+    border:none;
+    border-top:1px solid #ddd;
+
+}
+
+
+
+
+/* =====================================
+        RBSE DROPDOWN SECTION
+===================================== */
+
+
+.study-panel{
+
+    margin-top:30px;
+
+}
+
+
+
+.search-box input{
+
+    width:100%;
+    padding:15px;
+    font-size:17px;
+    border:2px solid #1565c0;
+    border-radius:12px;
+    outline:none;
+    box-sizing:border-box;
+    margin-bottom:20px;
+
+}
+
+
+
+.search-box input:focus{
+
+    box-shadow:0 0 10px rgba(21,101,192,.3);
+
+}
+
+
+
+
+.select-box{
+
+    margin-bottom:20px;
+
+}
+
+
+
+.select-box label{
+
+    display:block;
+    font-weight:bold;
+    color:#1565c0;
+    margin-bottom:8px;
+
+}
+
+
+
+.select-box select{
+
+    width:100%;
+    padding:15px;
+    font-size:17px;
+    border:2px solid #d6d6d6;
+    border-radius:12px;
+    background:white;
+    cursor:pointer;
+    box-sizing:border-box;
+
+}
+
+
+
+.select-box select:focus{
+
+    outline:none;
+    border-color:#1565c0;
+
+}
+
+
+
+
+/* =====================================
+        MATERIAL PAGE CARDS
+===================================== */
+
+
+.material-container{
+
+    margin-top:35px;
+
+}
+
+
+
+.material-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+
+}
+
+
+
+.material-card{
+
+    background:#ffffff;
+    border:2px solid #e5e7eb;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+    transition:.3s;
+
+}
+
+
+
+.material-card:hover{
+
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(21,101,192,.25);
+
+}
+
+
+
+.material-card .icon{
+
+    width:80px;
+    height:80px;
+    margin:auto;
+    border-radius:50%;
+    background:#eef5ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#1565c0;
+    font-size:38px;
+
+}
+
+
+
+.material-card h3{
+
+    color:#1565c0;
+    font-size:24px;
+    margin-top:20px;
+
+}
+
+
+
+.material-card p{
+
+    color:#666;
+    font-size:16px;
+
+}
+
+
+
+.material-card button{
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:30px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:15px;
+    transition:.3s;
+
+}
+
+
+
+.material-card button:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+
+
+/* ---------- Mobile ---------- */
+
+
+@media(max-width:600px){
+
+
+.container{
+
+    padding:20px;
+
+}
+
+
+.hero h1{
+
+    font-size:30px;
+
+}
+
+
+.material-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+
+}
+.top-logo { position:fixed; top:30px; right:30px; width:70px; height:70px; border-radius:50%; border:3px#fff;background: #fff;object-fit: contain;
+    padding: 5px;box-sizing: border-box;z-index: 9999; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
