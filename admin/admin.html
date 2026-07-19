@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>StudyWithOm CMS</title>
+
+<meta name="theme-color" content="#1565C0">
+
+<meta name="description"
+content="StudyWithOm Professional Content Management System">
+
+<link rel="icon"
+type="image/png"
+href="../assets/images/logo.png">
+
+<link rel="stylesheet"
+href="admin.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+<!-- =======================================
+TOPBAR
+======================================= -->
+
+<header class="topbar">
+
+<div class="logo">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+<div>
+
+<h2>StudyWithOm CMS</h2>
+
+<p>Professional Admin Panel</p>
+
+</div>
+
+</div>
+
+
+
+<div class="topbar-right">
+
+<button class="notificationBtn">
+
+<i class="fa-solid fa-bell"></i>
+
+<span class="badge">
+0
+</span>
+
+</button>
+
+
+
+<div class="adminBox">
+
+<img
+src="../assets/images/logo.png"
+alt="Admin">
+
+<div>
+
+<h4>Administrator</h4>
+
+<p>StudyWithOm</p>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- =======================================
+MAIN LAYOUT
+======================================= -->
+
+<div class="container">
+
+
+
+<!-- =======================================
+SIDEBAR
+======================================= -->
+
+<aside class="sidebar">
+
+<ul>
+
+
+
+<li class="menu active"
+
+data-page="dashboardPage">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<span>
+
+Dashboard
+
+</span>
+
+</li>
+
+
+
+<li class="menu"
+
+data-page="contentPage">
+
+<i class="fa-solid fa-folder-tree"></i>
+
+<span>
+
+Content Manager
+
+</span>
+
+</li>
+
+
+
+<li class="menu"
+
+data-page="materialsPage">
+
+<i class="fa-solid fa-book-open"></i>
+
+<span>
+
+Material Manager
+
+</span>
+
+</li>
+
+
+
+<li class="menu"
+
+data-page="mediaPage">
+
+<i class="fa-solid fa-photo-film"></i>
+
+<span>
+
+Media Library
+
+</span>
+
+</li>
+
+
+
+<li class="menu"
+
+data-page="settingsPage">
+
+<i class="fa-solid fa-gear"></i>
+
+<span>
+
+Settings
+
+</span>
+
+</li>
+
+
+
+</ul>
+
+</aside>
+
+
+
+<!-- =======================================
+CONTENT AREA
+======================================= -->
+
+<main class="main-content">
+  <!-- =======================================
+DASHBOARD PAGE
+======================================= -->
+
+<section
+id="dashboardPage"
+class="page">
+
+<div class="page-header">
+
+<h1>
+
+Dashboard
+
+</h1>
+
+<p>
+
+Welcome to StudyWithOm CMS
+
+</p>
+
+</div>
+
+
+
+<div class="dashboard-grid">
+
+<div class="dashboard-card">
+
+<div class="card-icon blue">
+
+<i class="fa-solid fa-layer-group"></i>
+
+</div>
+
+<div class="card-info">
+
+<h5>
+
+Categories
+
+</h5>
+
+<h2 id="totalCategories">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+
+
+<div class="dashboard-card">
+
+<div class="card-icon green">
+
+<i class="fa-solid fa-building-columns"></i>
+
+</div>
+
+<div class="card-info">
+
+<h5>
+
+Boards
+
+</h5>
+
+<h2 id="totalBoards">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+
+
+<div class="dashboard-card">
+
+<div class="card-icon orange">
+
+<i class="fa-solid fa-school"></i>
+
+</div>
+
+<div class="card-info">
+
+<h5>
+
+Classes
+
+</h5>
+
+<h2 id="totalClasses">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+
+
+<div class="dashboard-card">
+
+<div class="card-icon purple">
+
+<i class="fa-solid fa-book"></i>
+
+</div>
+
+<div class="card-info">
+
+<h5>
+
+Subjects
+
+</h5>
+
+<h2 id="totalSubjects">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+
+
+<div class="dashboard-card">
+
+<div class="card-icon red">
+
+<i class="fa-solid fa-book-open-reader"></i>
+
+</div>
+
+<div class="card-info">
+
+<h5>
+
+Chapters
+
+</h5>
+
+<h2 id="totalChapters">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+
+
+<div class="dashboard-card">
+
+<div class="card-icon cyan">
+
+<i class="fa-solid fa-file-lines"></i>
+
+</div>
+
+<div class="card-info">
+
+<h5>
+
+Materials
+
+</h5>
+
+<h2 id="totalMaterials">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =======================================
+RECENT ACTIVITY
+======================================= -->
+
+<div class="dashboard-panel">
+
+<div class="panel-header">
+
+<h3>
+
+Recent Activity
+
+</h3>
+
+</div>
+
+<div
+id="recentActivity"
+class="panel-body">
+
+<p class="empty">
+
+No Recent Activity
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- =======================================
+SYSTEM STATUS
+======================================= -->
+
+<div class="dashboard-panel">
+
+<div class="panel-header">
+
+<h3>
+
+System Status
+
+</h3>
+
+</div>
+
+<div class="status-grid">
+
+<div class="status-item">
+
+<span>
+
+Firestore
+
+</span>
+
+<span
+id="firestoreStatus">
+
+🟢 Connected
+
+</span>
+
+</div>
+
+
+
+<div class="status-item">
+
+<span>
+
+Cloudinary
+
+</span>
+
+<span
+id="cloudinaryStatus">
+
+🟢 Connected
+
+</span>
+
+</div>
+
+
+
+<div class="status-item">
+
+<span>
+
+Storage Used
+
+</span>
+
+<span
+id="storageStatus">
+
+0 MB
+
+</span>
+
+</div>
+
+
+
+<div class="status-item">
+
+<span>
+
+Last Backup
+
+</span>
+
+<span
+id="lastBackup">
+
+Not Available
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- =======================================
+CONTENT MANAGER
+======================================= -->
+
+<section
+id="contentPage"
+class="page"
+style="display:none;">
+
+<div class="page-header">
+
+<h1>
+
+Content Manager
+
+</h1>
+
+<p>
+
+Create Category, Board, Class, Subject and Chapter
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>
+
+Add New Content
+
+</h3>
+
+</div>
+
+
+
+<div class="card-body">
+
+<form
+id="contentForm">
+
+
+
+<div class="form-grid">
+
+
+
+<div class="form-group">
+
+<label>
+
+Parent
+
+</label>
+
+<select
+id="parent">
+
+<option value="">
+
+None (Root)
+
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Content Type
+
+</label>
+
+<select
+id="type">
+
+<option value="Category">
+
+Category
+
+</option>
+
+<option value="Board">
+
+Board
+
+</option>
+
+<option value="Class">
+
+Class
+
+</option>
+
+<option value="Subject">
+
+Subject
+
+</option>
+
+<option value="Chapter">
+
+Chapter
+
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Name
+
+</label>
+
+<input
+id="name"
+type="text"
+placeholder="Enter Name"
+required>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Display Order
+
+</label>
+
+<input
+id="order"
+type="number"
+value="1"
+min="1">
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Status
+
+</label>
+
+<select
+id="status">
+
+<option value="Active">
+
+Active
+
+</option>
+
+<option value="Hidden">
+
+Hidden
+
+</option>
+
+</select>
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="form-actions">
+
+<button
+id="saveBtn"
+type="submit"
+class="primary-btn">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Save Content
+
+</button>
+
+
+
+<button
+type="reset"
+class="secondary-btn">
+
+<i class="fa-solid fa-rotate-left"></i>
+
+Reset
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+
+
+<!-- =======================================
+CONTENT TREE
+======================================= -->
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>
+
+Content Tree
+
+</h3>
+
+</div>
+
+
+
+<div
+id="tree"
+class="tree-container">
+
+Loading...
+
+</div>
+
+</div>
+
+</section>
+<!-- =======================================
+MATERIAL MANAGER
+======================================= -->
+
+<section
+id="materialsPage"
+class="page"
+style="display:none;">
+
+<div class="page-header">
+
+<h1>
+
+Material Manager
+
+</h1>
+
+<p>
+
+Upload PDF, Videos, Notes and Quiz
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>
+
+Material Details
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<form
+id="materialForm">
+
+
+
+<div class="form-grid">
+
+
+
+<!-- Chapter -->
+
+<div class="form-group">
+
+<label>
+
+Chapter
+
+</label>
+
+<select
+id="chapterSelect">
+
+<option value="">
+
+Select Chapter
+
+</option>
+
+</select>
+
+</div>
+
+
+
+<!-- Material Type -->
+
+<div class="form-group">
+
+<label>
+
+Material Type
+
+</label>
+
+<select
+id="materialType">
+
+<option value="">
+
+Select Type
+
+</option>
+
+<option value="PDF">
+
+PDF Notes
+
+</option>
+
+<option value="Video">
+
+Video Lecture
+
+</option>
+
+<option value="Notes">
+
+Rich Notes
+
+</option>
+
+<option value="Quiz">
+
+Quiz
+
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+
+<!-- ===========================
+PDF SECTION
+=========================== -->
+
+<div
+id="pdfSection"
+style="display:none;">
+
+<div class="form-group">
+
+<label>
+
+PDF Title
+
+</label>
+
+<input
+type="text"
+id="pdfTitle"
+placeholder="Enter PDF Title">
+
+</div>
+
+
+
+<div
+id="pdfDropArea"
+class="drop-area">
+
+<i class="fa-solid fa-file-pdf"></i>
+
+<p>
+
+Click or Drag PDF Here
+
+</p>
+
+<input
+type="file"
+id="pdfFile"
+accept=".pdf"
+hidden>
+
+</div>
+
+</div>
+
+
+
+<!-- ===========================
+VIDEO SECTION
+=========================== -->
+
+<div
+id="videoSection"
+style="display:none;">
+
+<div class="form-group">
+
+<label>
+
+Video Title
+
+</label>
+
+<input
+type="text"
+id="videoTitle"
+placeholder="Enter Video Title">
+
+</div>
+
+
+
+<div
+id="videoDropArea"
+class="drop-area">
+
+<i class="fa-solid fa-video"></i>
+
+<p>
+
+Click or Drag Video Here
+
+</p>
+
+<input
+type="file"
+id="videoFile"
+accept="video/*"
+hidden>
+
+</div>
+
+</div>
+
+
+
+<!-- ===========================
+UPLOAD PREVIEW
+=========================== -->
+
+<div
+id="uploadPreview">
+
+</div>
+
+
+
+<!-- ===========================
+UPLOAD PROGRESS
+=========================== -->
+
+<div
+id="uploadProgress"
+style="display:none;">
+
+<div
+id="progressBar">
+
+</div>
+
+<div
+id="progressText">
+
+0%
+
+</div>
+
+</div>
+
+
+
+<!-- ===========================
+BUTTONS
+=========================== -->
+
+<div class="form-actions">
+
+<button
+type="button"
+id="saveMaterial"
+class="primary-btn">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Save Material
+
+</button>
+
+
+
+<button
+type="reset"
+class="secondary-btn">
+
+<i class="fa-solid fa-rotate-left"></i>
+
+Reset
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+<!-- ===========================
+NOTES SECTION
+=========================== -->
+
+<div
+id="notesSection"
+style="display:none;">
+
+<div class="form-group">
+
+<label>
+
+Notes Title
+
+</label>
+
+<input
+type="text"
+id="notesTitle"
+placeholder="Enter Notes Title">
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Rich Text Editor
+
+</label>
+
+<div
+id="editor"
+style="height:350px;">
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ===========================
+QUIZ SECTION
+=========================== -->
+
+<div
+id="quizSection"
+style="display:none;">
+
+<div class="form-group">
+
+<label>
+
+Quiz Title
+
+</label>
+
+<input
+type="text"
+id="quizTitle"
+placeholder="Enter Quiz Title">
+
+</div>
+
+
+
+<div
+id="questionsBox">
+
+<!-- Questions will load here -->
+
+</div>
+
+
+
+<div class="form-actions">
+
+<button
+type="button"
+id="addQuestion"
+class="secondary-btn">
+
+<i class="fa-solid fa-plus"></i>
+
+Add Question
+
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+
+
+<!-- =======================================
+MATERIAL LIST
+======================================= -->
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>
+
+Uploaded Materials
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<div
+id="materialCounter">
+
+Total Materials : 0
+
+</div>
+
+
+
+<input
+
+type="text"
+
+id="materialSearch"
+
+placeholder="Search Material..."
+
+class="search-box">
+
+
+
+<div
+id="materialsList">
+
+Loading Materials...
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- =======================================
+MEDIA LIBRARY
+======================================= -->
+
+<section
+id="mediaPage"
+class="page"
+style="display:none;">
+
+<div class="page-header">
+
+<h1>
+
+Media Library
+
+</h1>
+
+<p>
+
+Manage Uploaded Files
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>
+
+Upload Media
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<div class="form-group">
+
+<label>
+
+Select Image
+
+</label>
+
+<input
+type="file"
+id="mediaImage"
+accept="image/*">
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Select Video
+
+</label>
+
+<input
+type="file"
+id="mediaVideo"
+accept="video/*">
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Select PDF
+
+</label>
+
+<input
+type="file"
+id="mediaPdf"
+accept=".pdf">
+
+</div>
+
+
+
+<div class="form-actions">
+
+<button
+type="button"
+id="uploadMedia"
+class="primary-btn">
+
+<i class="fa-solid fa-cloud-arrow-up"></i>
+
+Upload Media
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>
+
+Media Files
+
+</h3>
+
+</div>
+
+<div
+id="mediaList"
+class="media-grid">
+
+<p>
+
+No Media Uploaded
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================
+SETTINGS
+======================================= -->
+
+<section
+id="settingsPage"
+class="page"
+style="display:none;">
+
+<div class="page-header">
+
+<h1>
+
+Settings
+
+</h1>
+
+<p>
+
+StudyWithOm CMS Configuration
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>
+
+Website Settings
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<div class="form-group">
+
+<label>
+
+Website Name
+
+</label>
+
+<input
+type="text"
+id="siteName"
+value="StudyWithOm">
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Website Logo
+
+</label>
+
+<input
+type="text"
+id="siteLogo"
+placeholder="Logo URL">
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Primary Color
+
+</label>
+
+<input
+type="color"
+id="primaryColor"
+value="#1565C0">
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Accent Color
+
+</label>
+
+<input
+type="color"
+id="accentColor"
+value="#FF9800">
+
+</div>
+
+
+
+<div class="form-actions">
+
+<button
+type="button"
+id="saveSettings"
+class="primary-btn">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Save Settings
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- =======================================
+ADVANCED SETTINGS
+======================================= -->
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>
+
+Backup & Restore
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<div class="form-actions">
+
+<button
+type="button"
+id="exportData"
+class="primary-btn">
+
+<i class="fa-solid fa-download"></i>
+
+Export Database
+
+</button>
+
+<button
+type="button"
+id="importData"
+class="secondary-btn">
+
+<i class="fa-solid fa-upload"></i>
+
+Import Database
+
+</button>
+
+<input
+type="file"
+id="importFile"
+accept=".json"
+hidden>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>
+
+Cloudinary Settings
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>
+
+Cloud Name
+
+</label>
+
+<input
+type="text"
+id="cloudName"
+value="abzhlo3h"
+readonly>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Upload Preset
+
+</label>
+
+<input
+type="text"
+id="uploadPreset"
+value="studywithom"
+readonly>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>
+
+System Information
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<table class="system-table">
+
+<tr>
+
+<th>CMS Version</th>
+
+<td>StudyWithOm CMS v1.0</td>
+
+</tr>
+
+<tr>
+
+<th>Database</th>
+
+<td>Firebase Firestore</td>
+
+</tr>
+
+<tr>
+
+<th>Storage</th>
+
+<td>Cloudinary</td>
+
+</tr>
+
+<tr>
+
+<th>Status</th>
+
+<td>
+
+<span class="status-online">
+
+🟢 Online
+
+</span>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>
+
+Danger Zone
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<p>
+
+These actions cannot be undone.
+
+</p>
+
+<div class="form-actions">
+
+<button
+type="button"
+id="clearMaterials"
+class="danger-btn">
+
+<i class="fa-solid fa-trash"></i>
+
+Delete All Materials
+
+</button>
+
+<button
+type="button"
+id="clearContent"
+class="danger-btn">
+
+<i class="fa-solid fa-trash-can"></i>
+
+Delete All Content
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+<!-- =======================================
+MODALS
+======================================= -->
+
+<!-- Preview Modal -->
+
+<div
+id="previewModal"
+class="modal">
+
+<div class="modal-content large">
+
+<div class="modal-header">
+
+<h2>
+
+Material Preview
+
+</h2>
+
+<button
+id="closePreview"
+class="close-btn">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+<div
+id="previewContent"
+class="modal-body">
+
+Loading...
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- Edit Modal -->
+
+<div
+id="editModal"
+class="modal">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h2>
+
+Edit Material
+
+</h2>
+
+<button
+id="closeEdit"
+class="close-btn">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+<div
+id="editContent"
+class="modal-body">
+
+Loading...
+
+</div>
+
+<div class="modal-footer">
+
+<button
+type="button"
+id="updateMaterialBtn"
+class="primary-btn">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Update Material
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- Delete Confirmation -->
+
+<div
+id="deleteModal"
+class="modal">
+
+<div class="modal-content small">
+
+<div class="modal-header">
+
+<h2>
+
+Delete Material
+
+</h2>
+
+</div>
+
+<div class="modal-body">
+
+<p>
+
+Are you sure you want to delete this material?
+
+</p>
+
+</div>
+
+<div class="modal-footer">
+
+<button
+id="confirmDelete"
+class="danger-btn">
+
+<i class="fa-solid fa-trash"></i>
+
+Delete
+
+</button>
+
+<button
+id="cancelDelete"
+class="secondary-btn">
+
+Cancel
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- Loading Overlay -->
+
+<div
+id="loadingOverlay"
+class="loading-overlay"
+style="display:none;">
+
+<div class="loader">
+
+<i class="fa-solid fa-spinner fa-spin"></i>
+
+<p>
+
+Please Wait...
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Toast Notification -->
+
+<div
+id="toast"
+class="toast">
+
+<span
+id="toastMessage">
+
+Success
+
+</span>
+
+</div>
+<!-- =======================================
+MODALS
+======================================= -->
+
+<!-- Preview Modal -->
+
+<div
+id="previewModal"
+class="modal">
+
+<div class="modal-content large">
+
+<div class="modal-header">
+
+<h2>
+
+Material Preview
+
+</h2>
+
+<button
+id="closePreview"
+class="close-btn">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+<div
+id="previewContent"
+class="modal-body">
+
+Loading...
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- Edit Modal -->
+
+<div
+id="editModal"
+class="modal">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h2>
+
+Edit Material
+
+</h2>
+
+<button
+id="closeEdit"
+class="close-btn">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+<div
+id="editContent"
+class="modal-body">
+
+Loading...
+
+</div>
+
+<div class="modal-footer">
+
+<button
+type="button"
+id="updateMaterialBtn"
+class="primary-btn">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Update Material
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- Delete Confirmation -->
+
+<div
+id="deleteModal"
+class="modal">
+
+<div class="modal-content small">
+
+<div class="modal-header">
+
+<h2>
+
+Delete Material
+
+</h2>
+
+</div>
+
+<div class="modal-body">
+
+<p>
+
+Are you sure you want to delete this material?
+
+</p>
+
+</div>
+
+<div class="modal-footer">
+
+<button
+id="confirmDelete"
+class="danger-btn">
+
+<i class="fa-solid fa-trash"></i>
+
+Delete
+
+</button>
+
+<button
+id="cancelDelete"
+class="secondary-btn">
+
+Cancel
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- Loading Overlay -->
+
+<div
+id="loadingOverlay"
+class="loading-overlay"
+style="display:none;">
+
+<div class="loader">
+
+<i class="fa-solid fa-spinner fa-spin"></i>
+
+<p>
+
+Please Wait...
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Toast Notification -->
+
+<div
+id="toast"
+class="toast">
+
+<span
+id="toastMessage">
+
+Success
+
+</span>
+
+</div>
+<!-- =======================================
+JAVASCRIPT LIBRARIES
+======================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+
+
+<!-- =======================================
+FIREBASE MODULES
+======================================= -->
+
+<script type="module" src="js/firebase.js"></script>
+
+<script type="module" src="js/navigation.js"></script>
+
+<script type="module" src="js/tree.js"></script>
+
+<script type="module" src="js/content.js"></script>
+
+<script type="module" src="js/upload.js"></script>
+
+<script type="module" src="js/materials.js"></script>
+
+<script type="module" src="js/admin.js"></script>
+
+
+
+<!-- =======================================
+QUILL INITIALIZATION
+======================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const editor = document.getElementById("editor");
+
+    if (editor) {
+
+        window.editor = new Quill("#editor", {
+
+            theme: "snow",
+
+            placeholder: "Write study notes here...",
+
+            modules: {
+
+                toolbar: [
+
+                    [{ header: [1, 2, 3, false] }],
+
+                    ["bold", "italic", "underline"],
+
+                    [{ color: [] }, { background: [] }],
+
+                    [{ list: "ordered" }, { list: "bullet" }],
+
+                    ["blockquote", "code-block"],
+
+                    ["link", "image"],
+
+                    ["clean"]
+
+                ]
+
+            }
+
+        });
+
+    }
+
+});
+
+</script>
+
+
+
+<!-- =======================================
+CMS STARTUP
+======================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    console.log("================================");
+
+    console.log(" StudyWithOm CMS Loaded ");
+
+    console.log(" Version : 1.0.0 ");
+
+    console.log("================================");
+
+});
+
+</script>
+
+</body>
+
+</html>
