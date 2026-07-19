@@ -22,23 +22,23 @@ async function loadClasses() {
 
     try {
 
-        // Find Board = RBSE
+        // Find Board = CBSE
         const boardQuery = query(
             collection(db, "nodes"),
             where("type", "==", "Board"),
-            where("name", "==", "RBSE")
+            where("name", "==", "CBSE")
         );
 
         const boardSnap = await getDocs(boardQuery);
 
         if (boardSnap.empty) {
-            alert("RBSE Board not found.");
+            alert("CBSE Board not found.");
             return;
         }
 
         const boardId = boardSnap.docs[0].id;
 
-        // Find Classes under RBSE
+        // Find Classes under CBSE
         const classQuery = query(
             collection(db, "nodes"),
             where("type", "==", "Class"),
