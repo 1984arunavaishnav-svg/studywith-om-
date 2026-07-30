@@ -144,54 +144,64 @@ body {
     background-color: aqua;
 }
 
-/* Stats */
+/* Stats Container */
 .stats {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap; /* Mobile par cards ko niche line me lane ke liye */
+    gap: 20px; /* Cards ke beech me gap */
     margin: 30px 0;
     padding: 20px;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-    height: autosdasd;
 }
 
-#student{
+/* Common Card Styling */
+.stat-card {
     height: 265px;
     width: 265px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Individual Card Colors */
+#student {
     background-color: #FFF3E3;
-    border-radius: 10px;
     border: 3px solid #FFF3E3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
-#notes{
-    height: 265px;
-    width: 265px;
-     background-color: #FFEEEE;
-     border: 3px solid #FFEEEE;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
+#notes {
+    background-color: #FFEEEE;
+    border: 3px solid #FFEEEE;
 }
-#tests{
-    height: 265px;
-    width: 265px;
-     background-color: #E4FAFF;
-     border: 3px solid #E4FAFF ;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
+#tests {
+    background-color: #E4FAFF;
+    border: 3px solid #E4FAFF;
 }
-.number{
+
+/* Number Styling */
+.number {
     font-size: 50px;
+}
+
+/* Responsive Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .stats {
+        flex-direction: column; /* Choti screen par cards ek ke niche ek aayenge */
+        align-items: center;
+    }
+    
+    .stat-card {
+        width: 100%; /* Mobile par full width le lega */
+        max-width: 300px; /* Par max limit rahegi */
+        height: 200px; /* Mobile ke liye height thodi kam ki hai */
+    }
 }
 
 
