@@ -161,6 +161,7 @@ body {
     text-align: center;
     background-color: #FFF3E3;
     display: inline-block;
+    border-radius: 3px;
 }
 #notes{
     height: 265px;
@@ -168,6 +169,7 @@ body {
     text-align: center;
     background-color: #FFEEEE;
     display: inline-block;
+    border-radius: 3px;
 }
 #tests{
     height: 265px;
@@ -175,6 +177,10 @@ body {
     text-align: center;
     background-color: #E4FAFF;
     display: inline-block;
+    border-radius: 3px;
+}
+.number{
+    font-size: 30px;
 }
 
 
