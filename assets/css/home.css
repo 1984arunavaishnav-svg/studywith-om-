@@ -40,6 +40,11 @@ body {
     z-index: 9999;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+#logo {
+    height: 55px;
+    position: relative;
+    top: 15px;
+}
 
 /* Slider */
 .slider {
