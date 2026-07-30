@@ -101,9 +101,10 @@ body {
 /* Hero Buttons को सेंटर में लाने के लिए अपडेटेड कोड */
 /* Hero Buttons के लिए सही CSS */
 .hero-buttons {
-    margin-top: 20px;
+    height: 50px;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 15px;
 }
 
