@@ -169,21 +169,25 @@ body {
 #notes{
     height: 265px;
     width: 265px;
-    text-align: center;
-    background-color: #FFEEEE;
-    display: inline-block;
-    border: 3px solid #FFEEEE;
+     background-color: #FFEEEE;
+     border: 3px solid #FFEEEE;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 #tests{
     height: 265px;
     width: 265px;
-    text-align: center;
-    background-color: #E4FAFF;
-    display: inline-block;
-    border: 3px solid #E4FAFF ;
+     background-color: #E4FAFF;
+     border: 3px solid #E4FAFF ;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 .number{
