@@ -192,15 +192,12 @@ body {
 
 /* Responsive Media Query for Mobile Devices */
 @media (max-width: 768px) {
-    .stats {
-        flex-direction: column; /* Choti screen par cards ek ke niche ek aayenge */
-        align-items: center;
-    }
+    
     
     .stat-card {
-        width: 100%; /* Mobile par full width le lega */
-        max-width: 300px; /* Par max limit rahegi */
-        height: 200px; /* Mobile ke liye height thodi kam ki hai */
+        width:100px; 
+        max-width: 300px; 
+        height: 100px; 
     }
 }
 
