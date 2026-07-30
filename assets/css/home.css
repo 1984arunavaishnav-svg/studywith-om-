@@ -158,11 +158,12 @@ body {
 #student{
     height: 265px;
     width: 265px;
-    text-align: center;
     background-color: #FFF3E3;
     border-radius: 10px;
     border: 3px solid #FFF3E3;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #notes{
     height: 265px;
