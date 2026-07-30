@@ -182,19 +182,13 @@ body {
 }
 
 
-/* Footer Fix */
+/* Footer */
 .footer {
-    border-top: 1px solid #dddddd;
-    /* semicolon lagaya */
+    height: 90px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
-    /* spelling sahi ki */
-    align-items: center;
-    /* spelling sahi ki */
-    height: 90px;
-    /* spelling sahi ki */
-    margin-top: 20px;
-}
+    align-items: center;}
 
 @media(max-width:768px) {
     .slider {
