@@ -163,7 +163,7 @@ body {
     display: inline-block;
     text-wrap: wrap;
     border: 3px solid #FFF3E3;
-    border-radius: 3px;
+    border-radius: 10px;
 }
 #notes{
     height: 265px;
@@ -172,7 +172,7 @@ body {
     background-color: #FFEEEE;
     display: inline-block;
     border: 3px solid #FFEEEE;
-    border-radius: 3px;
+    border-radius: 10px;
 
 }
 #tests{
@@ -182,7 +182,7 @@ body {
     background-color: #E4FAFF;
     display: inline-block;
     border: 3px solid #E4FAFF ;
-    border-radius: 3px;
+    border-radius: 10px;
 
 }
 .number{
