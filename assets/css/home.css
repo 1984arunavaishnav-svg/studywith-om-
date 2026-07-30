@@ -156,8 +156,8 @@ body {
 }
 
 #student{
-    height: 200px;
-    width: 200px;
+    height: 265px;
+    width: 265px;
     text-align: center;
     background-color: #FFF3E3;
     display: inline-block;
@@ -166,8 +166,8 @@ body {
     border-radius: 10px;
 }
 #notes{
-    height: 200px;
-    width: 200px;
+    height: 265px;
+    width: 265px;
     text-align: center;
     background-color: #FFEEEE;
     display: inline-block;
@@ -176,10 +176,9 @@ body {
 
 }
 #tests{
-    height: 200px;
-    width: 200px;
+    height: 265px;
+    width: 265px;
     text-align: center;
-    
     background-color: #E4FAFF;
     display: inline-block;
     border: 3px solid #E4FAFF ;
