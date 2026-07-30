@@ -1,25 +1,103 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-*{ margin:0; padding:0; box-sizing:border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-body { font-family:'Poppins'}
-@keyframes bgMove { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+body {
+    font-family: 'Poppins'
+}
+
+@keyframes bgMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 
 
-.top-logo { position:fixed; top:30px; right:30px; width:70px; height:70px; border-radius:50%; border:3px#fff;background: #fff;object-fit: contain;
-    ;box-sizing: border-box;z-index: 9999; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+.top-logo {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px#fff;
+    background: #fff;
+    object-fit: contain;
+    box-sizing: border-box;
+    z-index: 9999;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
 
 /* Slider */
-.slider { width:100%; height:350px; overflow:hidden; position:relative; border-radius:20px; margin-bottom:30px; }
-.slider-track { display:flex; width:300%; height:100%; transition:transform .8s ease-in-out; }
-.slider-track img { width:100%; height:100%; object-fit:cover; }
-.prev, .next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,.4); color:white; border:none; padding:15px; cursor:pointer; }
-.prev { left:10px; } .next { right:10px; }
+.slider {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.slider-track {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform .8s ease-in-out;
+}
+
+.slider-track img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, .4);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
 
 /* Hero */
-.hero { background:#1565c0; border-radius:20px; text-align:center; color:white; padding:40px; }
-.hero h1 { font-size:40px; margin-bottom:10px; }
+.hero {
+    background: #1565c0;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    padding: 40px;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
 /* Hero Buttons को सेंटर में लाने के लिए अपडेटेड कोड */
 /* Hero Buttons के लिए सही CSS */
 .hero-buttons {
@@ -30,8 +108,10 @@ body { font-family:'Poppins'}
 }
 
 .btn-primary {
-    background-color: #ff9800; /* ऑरेंज बैकग्राउंड */
-    color: #ffffff;           /* सफेद टेक्स्ट */
+    background-color: #ff9800;
+    /* ऑरेंज बैकग्राउंड */
+    color: #ffffff;
+    /* सफेद टेक्स्ट */
     padding: 12px 30px;
     border-radius: 40px;
     text-decoration: none;
@@ -40,8 +120,10 @@ body { font-family:'Poppins'}
 }
 
 .btn-secondary {
-    background-color: #2602f2; /* नीला बैकग्राउंड */
-    color: #ffffff;           /* सफेद टेक्स्ट */
+    background-color: #2602f2;
+    /* नीला बैकग्राउंड */
+    color: #ffffff;
+    /* सफेद टेक्स्ट */
     padding: 12px 30px;
     border-radius: 40px;
     text-decoration: none;
@@ -50,27 +132,76 @@ body { font-family:'Poppins'}
 }
 
 /* बटन पर होवर (Hover) इफेक्ट */
-.btn-primary:hover, .btn-secondary:hover {
+.btn-primary:hover,
+.btn-secondary:hover {
     transform: scale(1.05);
+    background-color: aqua;
 }
+
 /* Stats */
-.stats { display:flex; justify-content:space-around; margin:30px 0; padding:20px; border-top:1px solid #ddd; border-bottom:1px solid #ddd; }
-.stat-box { text-align:center; }
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.stat-box {
+    text-align: center;
+}
 
 /* Menu */
-.menu-list { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; list-style:none; }
-.menu-list li { background:#fff; padding:20px; border-radius:15px; border-left:5px solid #1565c0; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
-.menu-list li a { text-decoration:none; color:#333; font-weight:600; display:flex; align-items:center; }
-.menu-list li i { margin-right:15px; color:#1565c0; }
+.menu-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    list-style: none;
+}
+
+.menu-list li {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 5px solid #1565c0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu-list li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.menu-list li i {
+    margin-right: 15px;
+    color: #1565c0;
+}
 
 
 /* Footer Fix */
 .footer {
-    border-top: 1px solid #dddddd; /* semicolon lagaya */
+    border-top: 1px solid #dddddd;
+    /* semicolon lagaya */
     display: flex;
-    justify-content: center; /* spelling sahi ki */
-    align-items: center;     /* spelling sahi ki */
-    height: 90px;           /* spelling sahi ki */
+    justify-content: center;
+    /* spelling sahi ki */
+    align-items: center;
+    /* spelling sahi ki */
+    height: 90px;
+    /* spelling sahi ki */
     margin-top: 20px;
 }
-@media(max-width:768px) { .slider { height:200px; } .hero h1 { font-size:28px; } }
+
+@media(max-width:768px) {
+    .slider {
+        height: 200px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+}
