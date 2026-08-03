@@ -67,8 +67,11 @@ lectureBtn.onclick = () => {
         alert("Lecture Coming Soon");
         return;
     }
-window.location.href =
-`/studywith-om-/viewer/video-player.html?url=${encodeURIComponent(data.lecture)}&title=${encodeURIComponent(chapterName)}`;
+    
+    // Yaha relative path use karein aur bracket close karna na bhoolein
+    window.location.href = `../viewer/video-player.html?url=${encodeURIComponent(data.lecture)}&title=${encodeURIComponent(chapterName)}`;
+
+}; // Yeh aakhiri bracket bahut zaroori hai!
 
 
 //
