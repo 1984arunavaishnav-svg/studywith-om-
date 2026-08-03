@@ -67,13 +67,8 @@ lectureBtn.onclick = () => {
         alert("Lecture Coming Soon");
         return;
     }
-
-const videoUrl =
-    `${window.location.origin}/studywith-om-/RBSE/${data.lecture}`;
-
 window.location.href =
-`/studywith-om-/viewer/video-player.html?url=${encodeURIComponent(videoUrl)}&title=${encodeURIComponent(chapterName)}`;
-
+`/studywith-om-/viewer/video-player.html?url=${encodeURIComponent(data.lecture)}&title=${encodeURIComponent(chapterName)}`;
 
 
 //
