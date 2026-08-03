@@ -1,4 +1,4 @@
-const rbseData = {
+export const rbseData = {
 
 "Class 1": {
 
@@ -315,4 +315,4 @@ quiz:"#"
 }
 
 };
-export { rbseData };
+
