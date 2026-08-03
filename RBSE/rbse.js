@@ -1,62 +1,66 @@
 import { rbseData } from "./rbse-data.js";
 
+const searchInput = document.getElementById("searchInput");
 const classSelect = document.getElementById("classSelect");
 const subjectSelect = document.getElementById("subjectSelect");
 const chapterSelect = document.getElementById("chapterSelect");
 
+// =======================
 // Load Classes
+// =======================
 function loadClasses() {
     classSelect.innerHTML = '<option value="">Choose Class</option>';
 
-    Object.keys(rbseData).forEach(cls => {
+    Object.keys(rbseData).forEach(className => {
         const option = document.createElement("option");
-        option.value = cls;
-        option.textContent = cls;
+        option.value = className;
+        option.textContent = className;
         classSelect.appendChild(option);
     });
 }
 
-// Load Subjects
+// =======================
+// Class Change
+// =======================
 classSelect.addEventListener("change", () => {
 
     subjectSelect.innerHTML = '<option value="">Choose Subject</option>';
-    chapterSelect.innerHTML = '<option>Select Subject First</option>';
+    chapterSelect.innerHTML = '<option value="">Select Subject First</option>';
+
+    subjectSelect.disabled = true;
     chapterSelect.disabled = true;
 
     const selectedClass = classSelect.value;
 
-    if (!selectedClass) {
-        subjectSelect.disabled = true;
-        return;
-    }
-
-    subjectSelect.disabled = false;
+    if (!selectedClass) return;
 
     Object.keys(rbseData[selectedClass].subjects).forEach(subject => {
+
         const option = document.createElement("option");
         option.value = subject;
         option.textContent = subject;
         subjectSelect.appendChild(option);
+
     });
 
+    subjectSelect.disabled = false;
 });
 
-// Load Chapters
+// =======================
+// Subject Change
+// =======================
 subjectSelect.addEventListener("change", () => {
 
     chapterSelect.innerHTML = '<option value="">Choose Chapter</option>';
 
-    const cls = classSelect.value;
-    const sub = subjectSelect.value;
+    chapterSelect.disabled = true;
 
-    if (!sub) {
-        chapterSelect.disabled = true;
-        return;
-    }
+    const selectedClass = classSelect.value;
+    const selectedSubject = subjectSelect.value;
 
-    chapterSelect.disabled = false;
+    if (!selectedSubject) return;
 
-    Object.keys(rbseData[cls].subjects[sub]).forEach(chapter => {
+    Object.keys(rbseData[selectedClass].subjects[selectedSubject]).forEach(chapter => {
 
         const option = document.createElement("option");
         option.value = chapter;
@@ -65,26 +69,11 @@ subjectSelect.addEventListener("change", () => {
 
     });
 
-});
-
-// Open Lecture
-chapterSelect.addEventListener("change", () => {
-
-    const cls = classSelect.value;
-    const sub = subjectSelect.value;
-    const ch = chapterSelect.value;
-
-    if (!ch) return;
-
-    const data = rbseData[cls].subjects[sub][ch];
-
-    console.log(data);
-
-    // Example
-    if (data.lecture !== "#") {
-        window.location.href = data.lecture;
-    }
+    chapterSelect.disabled = false;
 
 });
 
-loadClasses();
+// =======================
+// Chapter Change
+// =======================
+chapterSelect.addEventListener("change", () =>
