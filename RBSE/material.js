@@ -1,14 +1,4 @@
-import { db } from "../firebase/firebase-config.js";
-
-import {
-    collection,
-    getDocs,
-    query,
-    where,
-    getDoc,
-    doc
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
-
+import { rbseData } from "./rbse-data.js";
 
 // ===========================
 // GET URL PARAMS
@@ -16,10 +6,9 @@ import {
 
 const params = new URLSearchParams(window.location.search);
 
-const chapterId = params.get("chapterId");
-
-console.log("Chapter ID:", chapterId);
-
+const className = params.get("class");
+const subjectName = params.get("subject");
+const chapterName = params.get("chapter");
 
 // ===========================
 // ELEMENTS
@@ -32,111 +21,56 @@ const notesBtn = document.getElementById("notesBtn");
 const pdfBtn = document.getElementById("pdfBtn");
 const quizBtn = document.getElementById("quizBtn");
 
+// ===========================
+// LOAD DATA
+// ===========================
+
+if (
+    !className ||
+    !subjectName ||
+    !chapterName ||
+    !rbseData[className] ||
+    !rbseData[className].subjects[subjectName] ||
+    !rbseData[className].subjects[subjectName][chapterName]
+) {
+
+    chapterTitle.textContent = "Chapter Not Found";
+
+    lectureBtn.disabled = true;
+    notesBtn.disabled = true;
+    pdfBtn.disabled = true;
+    quizBtn.disabled = true;
+
+    throw new Error("Invalid Chapter");
+
+}
+
+const data =
+    rbseData[className]
+    .subjects[subjectName]
+    [chapterName];
 
 // ===========================
-// LOAD CHAPTER NAME
+// TITLE
 // ===========================
 
-async function loadChapter() {
+chapterTitle.textContent = chapterName;
 
-    if (!chapterId) return;
+// ===========================
+// BUTTONS
+// ===========================
 
-    try {
+// VIDEO
+lectureBtn.onclick = () => {
 
-        const chapterRef = doc(db, "nodes", chapterId);
-
-        const snap = await getDoc(chapterRef);
-
-        if (snap.exists()) {
-
-            chapterTitle.innerHTML = snap.data().name;
-
-        }
-
-    } catch (error) {
-
-        console.error(error);
-
+    if (!data.lecture || data.lecture === "#") {
+        alert("Lecture Coming Soon");
+        return;
     }
 
-}
+    window.location.href =
+        `/viewer/video-player.html?url=${encodeURIComponent(data.lecture)}&title=${encodeURIComponent(chapterName)}`;
 
+};
 
-// ===========================
-// LOAD MATERIALS
-// ===========================
-
-async function loadMaterials() {
-
-    if (!chapterId) return;
-
-    const q = query(
-
-        collection(db, "materials"),
-
-        where("chapterId", "==", chapterId)
-
-    );
-
-    const snap = await getDocs(q);
-
-    console.log("Materials Found:", snap.size);
-
-    snap.forEach((docSnap) => {
-
-        const data = docSnap.data();
-
-        console.log(data);
-
-        switch (data.type) {
-
-           case "Video":
-
-    lectureBtn.onclick = () => {
-
-        window.location.href =
-        `/viewer/video-player.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
-
-    };
-
-break;
-            // material.js में यह बदलाव करें
-case "Notes":
-    notesBtn.onclick = () => {
-        window.location.href = 
-        `/viewer/notes.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
-    };
-    break;
-
-            case "PDF":
-
-    pdfBtn.onclick = () => {
-
-        window.location.href =
-        `/viewer/pdf-viewer.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
-
-    };
-
-break;
-
-            case "Quiz":
-    // पुरानी लाइन को हटाकर इसे लिखें
-    quizBtn.onclick = () => {
-        window.location.href = 
-        `/viewer/quiz.html?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
-    };
-    break;
-
-        }
-
-    });
-
-}
-
-
-// ===========================
-// START
-// ===========================
-
-loadChapter();
-loadMaterials();
+//
