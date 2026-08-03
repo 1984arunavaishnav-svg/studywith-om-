@@ -68,7 +68,11 @@ lectureBtn.onclick = () => {
         return;
     }
 
-const videoUrl = new URL(data.lecture, window.location.href).href;
+const videoUrl =
+    `${window.location.origin}/studywith-om-/RBSE/${data.lecture}`;
+
+window.location.href =
+`/studywith-om-/viewer/video-player.html?url=${encodeURIComponent(videoUrl)}&title=${encodeURIComponent(chapterName)}`;
 
 window.location.href =
 `/viewer/video-player.html?url=${encodeURIComponent(videoUrl)}&title=${encodeURIComponent(chapterName)}`;
