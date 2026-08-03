@@ -68,9 +68,10 @@ lectureBtn.onclick = () => {
         return;
     }
 
-    window.location.href =
-        `/viewer/video-player.html?url=${encodeURIComponent(data.lecture)}&title=${encodeURIComponent(chapterName)}`;
+const videoUrl = new URL(data.lecture, window.location.href).href;
 
+window.location.href =
+`/viewer/video-player.html?url=${encodeURIComponent(videoUrl)}&title=${encodeURIComponent(chapterName)}`;
 };
 
 //
