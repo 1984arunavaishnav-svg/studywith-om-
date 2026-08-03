@@ -7,7 +7,7 @@ subjects: {
 "Hindi": {
 
 "Chapter(1)-परिवार": {
-lecture: "../RBSE/leacture.mp4",
+lecture: "leacture.mp4",
 notes:"#",
 pdf:"#",
 quiz:"#"
