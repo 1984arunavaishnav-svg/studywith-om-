@@ -74,8 +74,6 @@ const videoUrl =
 window.location.href =
 `/studywith-om-/viewer/video-player.html?url=${encodeURIComponent(videoUrl)}&title=${encodeURIComponent(chapterName)}`;
 
-window.location.href =
-`/viewer/video-player.html?url=${encodeURIComponent(videoUrl)}&title=${encodeURIComponent(chapterName)}`;
-};
+
 
 //
